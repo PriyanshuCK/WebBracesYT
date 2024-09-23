@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "domainName",
+      "targetTime": 3.9097887653741585
+    },
+    {
+      "name": "sceneEnd",
+      "targetTime": 7.163867525807833
+    }
+  ],
+  "seed": 47018938
+}

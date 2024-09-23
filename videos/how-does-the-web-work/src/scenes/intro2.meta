@@ -1,0 +1,30 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "popsInto",
+      "targetTime": 6.861985214054547
+    },
+    {
+      "name": "lecture",
+      "targetTime": 12.669344401254792
+    },
+    {
+      "name": "yogaPose",
+      "targetTime": 15.654102403122058
+    },
+    {
+      "name": "yogaGuru",
+      "targetTime": 18.97526006632276
+    },
+    {
+      "name": "yogaGuruEnd",
+      "targetTime": 21.37424299686286
+    },
+    {
+      "name": "sceneEnd",
+      "targetTime": 34.38437939361579
+    }
+  ],
+  "seed": 635625237
+}

@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "you'llLove",
+      "targetTime": 6.249071436990417
+    },
+    {
+      "name": "thatTells",
+      "targetTime": 7.249071436990417
+    },
+    {
+      "name": "whenYouType",
+      "targetTime": 9.447810822586181
+    },
+    {
+      "name": "knownAs",
+      "targetTime": 16.71934112709072
+    },
+    {
+      "name": "understandDNS",
+      "targetTime": 19.04765904018973
+    }
+  ],
+  "seed": 435058814
+}

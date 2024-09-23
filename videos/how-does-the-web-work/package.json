@@ -1,0 +1,10 @@
+{
+    "name": "@videos/how-does-the-web-work",
+    "private": true,
+    "description": "Source code for the How Does The Web Work video",
+    "license": "MIT",
+    "scripts": {
+      "serve": "vite"
+    }
+  }
+  

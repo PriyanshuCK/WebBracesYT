@@ -1,0 +1,22 @@
+{
+  "name": "@videos/seven-habits-of-highly-successful-programmers",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Source code for the 7 Habits of Highly Successful Programmers video",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@motion-canvas/core": "^3.17.0",
+    "@motion-canvas/2d": "^3.17.1",
+    "@motion-canvas/ffmpeg": "^1.1.0"
+  },
+  "devDependencies": {
+    "@motion-canvas/ui": "^3.17.0",
+    "@motion-canvas/vite-plugin": "^3.17.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.0.0"
+  }
+}

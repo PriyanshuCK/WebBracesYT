@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "itsLike",
+      "targetTime": 4.232882523626158
+    },
+    {
+      "name": "sceneEnd",
+      "targetTime": 14.732882523626158
+    }
+  ],
+  "seed": 3960850955
+}
