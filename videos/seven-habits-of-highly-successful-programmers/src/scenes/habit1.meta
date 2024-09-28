@@ -1,0 +1,58 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "imagineStanding",
+      "targetTime": 2.4092506662964186
+    },
+    {
+      "name": "theFirstHabit",
+      "targetTime": 12.66715684438345
+    },
+    {
+      "name": "startDeveloping",
+      "targetTime": 16.035613650905425
+    },
+    {
+      "name": "youWillHave",
+      "targetTime": 20.888258101253335
+    },
+    {
+      "name": "theresNoShort",
+      "targetTime": 23.169337619757858
+    },
+    {
+      "name": "develop",
+      "targetTime": 28.223045284836275
+    },
+    {
+      "name": "whatMatters",
+      "targetTime": 31.59200809643403
+    },
+    {
+      "name": "asYouBuild",
+      "targetTime": 40.81940712281684
+    },
+    {
+      "name": "teamUp",
+      "targetTime": 55.229211633793476
+    },
+    {
+      "name": "watchExpSwim",
+      "targetTime": 66.56543022643707
+    },
+    {
+      "name": "pickTech",
+      "targetTime": 69.19067537563883
+    },
+    {
+      "name": "startSmall",
+      "targetTime": 75.16376923946727
+    },
+    {
+      "name": "moreDevelop",
+      "targetTime": 84.02531617138149
+    }
+  ],
+  "seed": 1036546480
+}

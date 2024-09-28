@@ -1,7 +1,10 @@
-import {makeProject} from '@motion-canvas/core';
+import { makeProject } from '@motion-canvas/core';
 
-import example from './scenes/example?scene';
+import audio1 from "./audio/audio1.wav";
+
+import habit1 from './scenes/habit1?scene';
 
 export default makeProject({
-  scenes: [example],
+  scenes: [habit1],
+  audio: audio1,
 });
