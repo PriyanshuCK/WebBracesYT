@@ -18,6 +18,7 @@ import {
   createRefMap,
   createSignal,
   delay,
+  Direction,
   easeInOutBounce,
   easeOutBounce,
   linear,
@@ -89,7 +90,6 @@ export default makeScene2D(function* (view) {
 
   const num1 = createRef<Path>();
   const head1 = createRef<ExtendedTxt>();
-  const rects = createRefMap<ExtendedRect>();
   const texts = createRefMap<ExtendedTxt>();
   const rays = createRefMap<Ray>();
   const circles = createRefMap<ExtendedCircle>();
@@ -119,7 +119,7 @@ export default makeScene2D(function* (view) {
         text={"Start Developing"}
         opacity={0}
         y={spaceY[2]}
-        fontWeight={500}
+        fontWeight={600}
         fontSize={spaceY[2]}
       />
     </>
@@ -245,6 +245,8 @@ export default makeScene2D(function* (view) {
         fontSize={spaceY[1]}
         opacity={0}
         fill={colors.green[500]}
+        stroke={colors.green[500]}
+        lineWidth={1}
         x={206}
       />
     </>
@@ -392,6 +394,8 @@ export default makeScene2D(function* (view) {
         fontWeight={500}
         fontSize={spaceY[1]}
         fill={colors.orange[500]}
+        stroke={colors.orange[500]}
+        lineWidth={1}
         position={[262.5, 54]}
         opacity={0}
       />
@@ -634,7 +638,7 @@ export default makeScene2D(function* (view) {
         ref={icons.calc}
         icon={"mdi:calculator"}
         color={colors.sky[500]}
-        scale={7.5}
+        size={spaceY["1.25"]}
         opacity={0}
         y={spaceY[2]}
         x={spaceNX[2]}
@@ -643,7 +647,7 @@ export default makeScene2D(function* (view) {
         ref={icons.todo}
         icon={"pajamas:todo-done"}
         color={colors.lime[500]}
-        scale={7.5}
+        size={spaceY["1.25"]}
         opacity={0}
         y={spaceY[2]}
         x={spaceX[0]}
@@ -652,7 +656,7 @@ export default makeScene2D(function* (view) {
         ref={icons.html}
         icon={"devicon:html5"}
         color={colors.slate[0]}
-        scale={7.5}
+        size={spaceY["1.25"]}
         opacity={0}
         y={spaceY[2]}
         x={spaceX[2]}
@@ -676,7 +680,6 @@ export default makeScene2D(function* (view) {
   const circleYouProgress = createSignal(0);
   circles.you().scale(1);
   circles.you().opacity(0);
-  circles.you().position([spaceNX[6], spaceY[4.5]]);
   circles
     .you()
     .position(
@@ -986,6 +989,8 @@ export default makeScene2D(function* (view) {
         fontSize={spaceY[1]}
         fontWeight={500}
         fill={colors.sky[500]}
+        stroke={colors.sky[500]}
+        lineWidth={1}
         x={283.5}
         opacity={0}
       />

@@ -10,8 +10,8 @@ import {
 } from "@motion-canvas/core";
 
 export class ExtendedCircle extends Circle {
-  private colorSignal: SimpleSignal<keyof typeof colors>;
-  private highlightedSignal: SimpleSignal<boolean>;
+  public colorSignal: SimpleSignal<keyof typeof colors>;
+  public highlightedSignal: SimpleSignal<boolean>;
 
   constructor({
     children,
@@ -28,12 +28,14 @@ export class ExtendedCircle extends Circle {
       ...props,
     });
 
+    
     this.colorSignal = createSignal(color);
-    this.highlightedSignal = createSignal(highlighted);    
-
+    this.highlightedSignal = createSignal(highlighted);
+    
     const currentColor = colors[this.colorSignal()][500];
     this.stroke(currentColor);
     this.highlightedSignal() && this.fill(new Color(currentColor).alpha(0.1));
+    children && this.add(<>{children}</>);
   }
 
   public *tweenColor(newColor: keyof typeof colors, duration = 1) {

@@ -1,0 +1,30 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "takingTime",
+      "targetTime": 4.141883340645583
+    },
+    {
+      "name": "html",
+      "targetTime": 21.819977576066712
+    },
+    {
+      "name": "bigPic",
+      "targetTime": 28.870741632082108
+    },
+    {
+      "name": "vid",
+      "targetTime": 32.71380906811033
+    },
+    {
+      "name": "theEnd",
+      "targetTime": 43.67532596817449
+    },
+    {
+      "name": "sceneEnd",
+      "targetTime": 47.92532596817449
+    }
+  ],
+  "seed": 1028834439
+}

@@ -1,0 +1,62 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "oneThing",
+      "targetTime": 4.5015002461292095
+    },
+    {
+      "name": "everyProbSol",
+      "targetTime": 10.920501433340693
+    },
+    {
+      "name": "knowingKey",
+      "targetTime": 15.687501809773602
+    },
+    {
+      "name": "cultivated",
+      "targetTime": 22.852002258597455
+    },
+    {
+      "name": "solveProblem",
+      "targetTime": 24.918241738784637
+    },
+    {
+      "name": "faithMuscle",
+      "targetTime": 30.751041089018614
+    },
+    {
+      "name": "goWrong",
+      "targetTime": 34.41313781273151
+    },
+    {
+      "name": "looseConfi",
+      "targetTime": 39.46621384254601
+    },
+    {
+      "name": "evenExperienced",
+      "targetTime": 42.36217292453589
+    },
+    {
+      "name": "takeaway",
+      "targetTime": 51.78361445062358
+    },
+    {
+      "name": "hvFaith",
+      "targetTime": 54.57342147298446
+    },
+    {
+      "name": "staring",
+      "targetTime": 61.69486299907215
+    },
+    {
+      "name": "deepBreath",
+      "targetTime": 64.93264956242797
+    },
+    {
+      "name": "everyBug",
+      "targetTime": 67.31481185155951
+    }
+  ],
+  "seed": 4040045771
+}

@@ -1,0 +1,50 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "likePlant",
+      "targetTime": 3.6302410837233223
+    },
+    {
+      "name": "growthMindset",
+      "targetTime": 12.509317482174797
+    },
+    {
+      "name": "intelligenceNotFixed",
+      "targetTime": 14.63955856589812
+    },
+    {
+      "name": "butCanBe",
+      "targetTime": 17.52329370543699
+    },
+    {
+      "name": "aimForFruit",
+      "targetTime": 20.52119461100852
+    },
+    {
+      "name": "overcomingChallenges",
+      "targetTime": 33.93452073926979
+    },
+    {
+      "name": "youRNotConfined",
+      "targetTime": 41.47470903349645
+    },
+    {
+      "name": "withRightAttitude",
+      "targetTime": 45.456764897492555
+    },
+    {
+      "name": "shyAway",
+      "targetTime": 48.496953191719214
+    },
+    {
+      "name": "embrace",
+      "targetTime": 51.896533372833524
+    },
+    {
+      "name": "betterProgrammer",
+      "targetTime": 58.18314981948257
+    }
+  ],
+  "seed": 4040045771
+}

@@ -37,6 +37,8 @@ export class ExtendedRect extends Rect {
     const currentColor = colors[this.colorSignal()][500];
     this.stroke(currentColor);
     this.highlightedSignal() && this.fill(new Color(currentColor).alpha(0.1));
+
+    children && this.add(<>{children}</>);
   }
 
   public *tweenColor(newColor: keyof typeof colors, duration = 1) {

@@ -1,0 +1,50 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "itsEasy",
+      "targetTime": 8.063916034273234
+    },
+    {
+      "name": "evenExperienced",
+      "targetTime": 23.28214623424017
+    },
+    {
+      "name": "notExpected",
+      "targetTime": 41.510004997400834
+    },
+    {
+      "name": "first",
+      "targetTime": 56.24858158528386
+    },
+    {
+      "name": "encountered",
+      "targetTime": 60.120698347467716
+    },
+    {
+      "name": "takeBreak",
+      "targetTime": 65.93228576990509
+    },
+    {
+      "name": "askHelp",
+      "targetTime": 82.50349343926726
+    },
+    {
+      "name": "otherThings",
+      "targetTime": 107.5140482154233
+    },
+    {
+      "name": "difficult",
+      "targetTime": 109.82780304523206
+    },
+    {
+      "name": "pushForward",
+      "targetTime": 111.88785899107387
+    },
+    {
+      "name": "buildingMuscle",
+      "targetTime": 119.20857375601473
+    }
+  ],
+  "seed": 3138706993
+}
