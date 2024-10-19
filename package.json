@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "one": "npm run serve -w videos/how-does-the-web-work",
-    "two": "npm run serve -w videos/seven-habits-of-highly-successful-programmers"
+    "two": "npm run serve -w videos/seven-habits-of-highly-successful-programmers",
+    "three": "npm run serve -w videos/the-most-recommended-path-to-become-a-web-developer"
   },
   "workspaces": [
     "videos/*"

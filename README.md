@@ -4,10 +4,11 @@ Source code of videos uploaded on the [WebBraces](https://www.youtube.com/@WebBr
 
 ### Videos
 
-| Video No. | Video                                                                                                 | Uploaded On                | Source Code                                                                 | Command to Run |
-| --------- | ----------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------- | -------------- |
-| 2         | [4 Habits That Will Make You a Better Programmer](https://www.youtube.com/watch?v=FWyiYzgPNi4) | Thursday, October 10, 2024 | [↗](videos/seven-habits-of-highly-successful-programmers) | `npm run two`  |
-| 1         | [How Does the Web Work](https://www.youtube.com/watch?v=Y2aPI_c88lg)                                  | Saturday, August 03, 2024  | [↗](videos/how-does-the-web-work)                         | `npm run one`  |
+| Video No. | Video                                                                                          | Uploaded On                | Source Code                                                     | Command to Run  |
+| --------- | ---------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------- | --------------- |
+| 3         | [The Most Recommended Path to Become a Web Developer🌐](https://www.youtube.com/@WebBraces)    | Yet to be uploaded         | [↗](videos/the-most-recommended-path-to-become-a-web-developer) | `npm run three` |
+| 2         | [4 Habits That Will Make You a Better Programmer](https://www.youtube.com/watch?v=FWyiYzgPNi4) | Thursday, October 10, 2024 | [↗](videos/seven-habits-of-highly-successful-programmers)       | `npm run two`   |
+| 1         | [How Does the Web Work](https://www.youtube.com/watch?v=Y2aPI_c88lg)                           | Saturday, August 03, 2024  | [↗](videos/how-does-the-web-work)                               | `npm run one`   |
 
 ### Special Thanks
 
