@@ -341,11 +341,9 @@ export default makeScene2D(function* (view) {
   yield* all(
     ...pathsJourney.map((path) => path.end(1, 3)),
     ...pathsJourney.flatMap((path) => [
-      delay(2.5, path.fill(path.stroke(), 2)),
+      delay(1.75, path.fill(path.stroke(), 2)),
     ]),
     delay(2,texts.basedOn().opacity(1,1)),
     delay(2,svgs.journeyTitle().y(spaceNY[0.5], 1)),
   )
-  
-  yield* waitFor(1);
 });

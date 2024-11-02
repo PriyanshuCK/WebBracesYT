@@ -2,7 +2,6 @@
 node_modules
 output
 dist
-audio
 
 # Editor directories and files
 .vscode/*
@@ -14,3 +13,8 @@ audio
 *.njsproj
 *.sln
 *.sw?
+
+# Media files
+audio
+videos
+images
