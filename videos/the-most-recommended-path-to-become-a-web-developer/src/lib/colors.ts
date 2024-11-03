@@ -308,5 +308,44 @@ export const colorPalettes = [
   "rose",
 ];
 
+export const colors500 = [
+  "#ef4444", // red-500
+  "#f97316", // orange-500
+  "#f59e0b", // amber-500
+  "#eab308", // yellow-500
+  "#84cc16", // lime-500
+  "#22c55e", // green-500
+  "#10b981", // emerald-500
+  "#14b8a6", // teal-500
+  "#06b6d4", // cyan-500
+  "#0ea5e9", // sky-500
+  "#3b82f6", // blue-500
+  "#6366f1", // indigo-500
+  "#8b5cf6", // violet-500
+  "#a855f7", // purple-500
+  "#d946ef", // fuchsia-500
+  "#ec4899", // pink-500
+  "#f43f5e", // rose-500
+];
+export const colors700 = [
+  "#b91c1c", // red
+  "#c2410c", // orange
+  "#b45309", // amber
+  "#a16207", // yellow
+  "#4d7c0f", // lime
+  "#15803d", // green
+  "#047857", // emerald
+  "#0f766e", // teal
+  "#0e7490", // cyan
+  "#0369a1", // sky
+  "#1d4ed8", // blue
+  "#4338ca", // indigo
+  "#6d28d9", // violet
+  "#7e22ce", // purple
+  "#a21caf", // fuchsia
+  "#be185d", // pink
+  "#be123c", // rose
+];
+
 
 export default colors;
