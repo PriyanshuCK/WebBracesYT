@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "desert",
+      "targetTime": 3.38536595248606
+    },
+    {
+      "name": "desertDuration",
+      "targetTime": 4.143824213371415
+    },
+    {
+      "name": "problems",
+      "targetTime": 5.4926167635986936
+    },
+    {
+      "name": "communityEnd",
+      "targetTime": 23.075228921681514
+    }
+  ],
+  "seed": 968189762
+}

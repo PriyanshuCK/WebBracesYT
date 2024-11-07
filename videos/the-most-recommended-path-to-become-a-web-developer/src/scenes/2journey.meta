@@ -1,0 +1,18 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "nowTalk",
+      "targetTime": 75.73810537609312
+    },
+    {
+      "name": "commonStruggle",
+      "targetTime": 80.07413943898639
+    },
+    {
+      "name": "scene2End",
+      "targetTime": 83.78793561165688
+    }
+  ],
+  "seed": 3522704008
+}

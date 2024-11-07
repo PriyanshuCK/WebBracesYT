@@ -13,3 +13,9 @@ dist
 *.njsproj
 *.sln
 *.sw?
+
+
+# Media files
+audio
+videos
+images

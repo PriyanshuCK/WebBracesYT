@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "inDesert",
+      "targetTime": 4.226594979395257
+    },
+    {
+      "name": "topTeaches",
+      "targetTime": 9.401320461764945
+    },
+    {
+      "name": "remember",
+      "targetTime": 25.443674808494833
+    },
+    {
+      "name": "howToLearnEnd",
+      "targetTime": 35.90638858768517
+    }
+  ],
+  "seed": 3847921981
+}

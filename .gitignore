@@ -14,7 +14,3 @@ dist
 *.sln
 *.sw?
 
-# Media files
-audio
-videos
-images

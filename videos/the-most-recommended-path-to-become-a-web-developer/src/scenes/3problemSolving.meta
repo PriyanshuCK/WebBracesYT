@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "learnedBasics",
+      "targetTime": 8.494612959061502
+    },
+    {
+      "name": "putIntoPractice",
+      "targetTime": 9.95236035595693
+    },
+    {
+      "name": "projectVideo",
+      "targetTime": 11.74189781234703
+    },
+    {
+      "name": "projectEnd",
+      "targetTime": 31.838712508771795
+    }
+  ],
+  "seed": 4001089284
+}
