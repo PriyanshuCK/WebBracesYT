@@ -1,0 +1,58 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "specificSides",
+      "targetTime": 7.9644404320416236
+    },
+    {
+      "name": "paddingLeft",
+      "targetTime": 9.619157387248677
+    },
+    {
+      "name": "paddingRight",
+      "targetTime": 11.230340379400726
+    },
+    {
+      "name": "paddingTop",
+      "targetTime": 12.187349223186052
+    },
+    {
+      "name": "paddingBottom",
+      "targetTime": 13.075490805283538
+    },
+    {
+      "name": "differentValues",
+      "targetTime": 15.29577196844174
+    },
+    {
+      "name": "clockwise",
+      "targetTime": 16.952445352389297
+    },
+    {
+      "name": "onlyTwo",
+      "targetTime": 20.030651538705314
+    },
+    {
+      "name": "threeFirst",
+      "targetTime": 27.00849291673173
+    },
+    {
+      "name": "threeThird",
+      "targetTime": 30.39066161462665
+    },
+    {
+      "name": "neverNeg",
+      "targetTime": 32.483727219363566
+    },
+    {
+      "name": "scroll",
+      "targetTime": 50.79759297212905
+    },
+    {
+      "name": "scene3End",
+      "targetTime": 55.211253124415435
+    }
+  ],
+  "seed": 56780882
+}

@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "intro",
+      "targetTime": 59.51818064239094
+    },
+    {
+      "name": "webpage",
+      "targetTime": 62.35060427099767
+    },
+    {
+      "name": "outlineText",
+      "targetTime": 64.9239588186036
+    },
+    {
+      "name": "button",
+      "targetTime": 66.89118463394387
+    },
+    {
+      "name": "control",
+      "targetTime": 70.07466784492831
+    },
+    {
+      "name": "cssBoxModel",
+      "targetTime": 76.00853842379121
+    },
+    {
+      "name": "weird",
+      "targetTime": 85.59014961749621
+    },
+    {
+      "name": "css",
+      "targetTime": 90.9090435343543
+    },
+    {
+      "name": "scene1End",
+      "targetTime": 96.94273922470187
+    }
+  ],
+  "seed": 548448977
+}

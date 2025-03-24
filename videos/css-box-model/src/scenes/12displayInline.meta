@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "anchorSpan",
+      "targetTime": 2.0325055926883033
+    },
+    {
+      "name": "widthHeight",
+      "targetTime": 5.783378076383878
+    },
+    {
+      "name": "leftAndRight",
+      "targetTime": 12.480447427803425
+    },
+    {
+      "name": "topAndBottom",
+      "targetTime": 19.383221477637015
+    },
+    {
+      "name": "scene12End",
+      "targetTime": 24.036786334214042
+    }
+  ],
+  "seed": 3552784546
+}

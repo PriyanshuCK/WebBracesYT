@@ -1,0 +1,74 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "100%OfContainerWidth",
+      "targetTime": 4.165511800859445
+    },
+    {
+      "name": "eachBox",
+      "targetTime": 6.622878180698298
+    },
+    {
+      "name": "padding",
+      "targetTime": 8.26854578979409
+    },
+    {
+      "name": "border",
+      "targetTime": 10.334057590653533
+    },
+    {
+      "name": "width",
+      "targetTime": 12.847403196060874
+    },
+    {
+      "name": "4times25",
+      "targetTime": 19.727128395810194
+    },
+    {
+      "name": "butTheyDont",
+      "targetTime": 22.96642725874663
+    },
+    {
+      "name": "breakOurLayout",
+      "targetTime": 25.101913091566683
+    },
+    {
+      "name": "whyThisHappens",
+      "targetTime": 26.6356222495255
+    },
+    {
+      "name": "contentBox",
+      "targetTime": 29.425050952658893
+    },
+    {
+      "name": "thisMeans",
+      "targetTime": 32.639407037878016
+    },
+    {
+      "name": "soInEx",
+      "targetTime": 41.188355762151446
+    },
+    {
+      "name": "leftPadding",
+      "targetTime": 45.28822426870207
+    },
+    {
+      "name": "rightBorder",
+      "targetTime": 48.81269863083879
+    },
+    {
+      "name": "moreThan25",
+      "targetTime": 51.632343800086005
+    },
+    {
+      "name": "our4Boxes",
+      "targetTime": 54.33733719182011
+    },
+    {
+      "name": "scene8End",
+      "targetTime": 60.08796733266981
+    }
+  ],
+  "seed": 3207769676
+}

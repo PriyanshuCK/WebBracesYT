@@ -1,0 +1,30 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "block",
+      "targetTime": 1.2619543958631019
+    },
+    {
+      "name": "areActually",
+      "targetTime": 4.066571658048129
+    },
+    {
+      "name": "innerDisplay",
+      "targetTime": 7.032463348222995
+    },
+    {
+      "name": "outerDisplay",
+      "targetTime": 8.782463348222995
+    },
+    {
+      "name": "howTheBox",
+      "targetTime": 10.965069209373798
+    },
+    {
+      "name": "innerDisplayTypes",
+      "targetTime": 14.465069209373798
+    }
+  ],
+  "seed": 1537645954
+}

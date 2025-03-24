@@ -1,0 +1,30 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "box",
+      "targetTime": 2.855325527804722
+    },
+    {
+      "name": "borderWidth",
+      "targetTime": 5.314535818529823
+    },
+    {
+      "name": "setOnce",
+      "targetTime": 8.760022173514415
+    },
+    {
+      "name": "specificSides",
+      "targetTime": 12.724870399736302
+    },
+    {
+      "name": "adjustWidth",
+      "targetTime": 17.45559465906168
+    },
+    {
+      "name": "scene4End",
+      "targetTime": 21.655477733307645
+    }
+  ],
+  "seed": 532518283
+}
