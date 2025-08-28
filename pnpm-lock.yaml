@@ -49,6 +49,56 @@ importers:
         specifier: ^4.0.0
         version: 4.5.3
 
+  videos/css-box-model:
+    dependencies:
+      '@motion-canvas/2d':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/core':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/ffmpeg':
+        specifier: ^1.1.0
+        version: 1.1.1(@motion-canvas/core@3.17.2)(@motion-canvas/vite-plugin@3.17.2(vite@4.5.3))(vite@4.5.3)
+    devDependencies:
+      '@motion-canvas/ui':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/vite-plugin':
+        specifier: ^3.17.2
+        version: 3.17.2(vite@4.5.3)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.5.2
+      vite:
+        specifier: ^4.0.0
+        version: 4.5.3
+
+  videos/css-selectors-explained-simply-for-beginners:
+    dependencies:
+      '@motion-canvas/2d':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/core':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/ffmpeg':
+        specifier: ^1.1.0
+        version: 1.1.1(@motion-canvas/core@3.17.2)(@motion-canvas/vite-plugin@3.17.2(vite@4.5.3))(vite@4.5.3)
+    devDependencies:
+      '@motion-canvas/ui':
+        specifier: ^3.17.2
+        version: 3.17.2
+      '@motion-canvas/vite-plugin':
+        specifier: ^3.17.2
+        version: 3.17.2(vite@4.5.3)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.5.2
+      vite:
+        specifier: ^4.0.0
+        version: 4.5.3
+
   videos/how-does-the-web-work: {}
 
   videos/seven-habits-of-highly-successful-programmers:
@@ -352,8 +402,14 @@ packages:
   '@motion-canvas/2d@3.17.1':
     resolution: {integrity: sha512-R7jQgppSC46GuxFxKj4p91L0w8H0RDCq4XrTrm5LStyIZlywKrpc5xmve7ZvcPq9M6Jwbxbn4Q0A2MPpMRvb4A==}
 
+  '@motion-canvas/2d@3.17.2':
+    resolution: {integrity: sha512-Q2DMYSmJMTN8vvLcpofHEMuYEjx60z4hjlwbWJnWx3xnb7DU5suovJ47qM2sk46al/RDXJIz6rfALTr33brKaw==}
+
   '@motion-canvas/core@3.17.0':
     resolution: {integrity: sha512-bRQUygvm8vmqcmpJqZxewmTSzRrOA5KbWXqs32od7uEemuVZxdV/hZY9kinoUf7kn2/rJsDbRCVphgtUQpWhRg==}
+
+  '@motion-canvas/core@3.17.2':
+    resolution: {integrity: sha512-9M4NxNVR9LLxZ+ykTznMcbMlKjbe2NkmDIlFDl2uOyVkK5wFiRwF7k13a1I/n3BVxJJoKPt9UOQF/wn3LrBXJA==}
 
   '@motion-canvas/ffmpeg@1.1.1':
     resolution: {integrity: sha512-w2d7oFfR3hYHXeYtFGoHp6goY+vVL0LoZ2h1b/veTH5KvE7jrLp2Kl/XPHsYJ5ZDRHUT0Nhl05DBLdXYqdSqgg==}
@@ -365,6 +421,9 @@ packages:
   '@motion-canvas/ui@3.17.0':
     resolution: {integrity: sha512-GIyvn8MZxpu8gK8rd5eameIJfKl5BdEulZLH/6nnuHIHic72er0ZM73V4UdNl1sQOaXW3VdMxjKphFIY3g9UfQ==}
 
+  '@motion-canvas/ui@3.17.2':
+    resolution: {integrity: sha512-gbsdbFP60IhgckZei7NDuqQWekfLX+mUjyYpAEOe4OZSyIhoavZo+jako+liD9E7+dYu67E9YRjT+/BesLV7Pg==}
+
   '@motion-canvas/vite-plugin@3.15.1':
     resolution: {integrity: sha512-yeRMJQxTcYVZGVMnNXQPm0SySQzJXnaRrggGJ2bnDHMsqxCRJt/RfIioK0LMvBaUB+UWlPsJUTMltHuq+J64JA==}
     peerDependencies:
@@ -372,6 +431,11 @@ packages:
 
   '@motion-canvas/vite-plugin@3.17.0':
     resolution: {integrity: sha512-Nyr3nwwWgTVRWDdCWz7yOraI1ZZTLGL/dSMrkZ+9fWJZJzHunz3KhmDQQeUlIwvyzf8SUjdmXOYxltg/22J+kg==}
+    peerDependencies:
+      vite: 4.x || 5.x
+
+  '@motion-canvas/vite-plugin@3.17.2':
+    resolution: {integrity: sha512-7XrGFoyS6XWdvQN9J6Ch8ehLWD3eBX+sv4L6xxH5As5kF5YA+1MAPZ+QxMNUCcW0tp1VjE+rQkQWsZfXa7BR/g==}
     peerDependencies:
       vite: 4.x || 5.x
 
@@ -816,7 +880,22 @@ snapshots:
       mathjax-full: 3.2.2
       parse-svg-path: 0.1.2
 
+  '@motion-canvas/2d@3.17.2':
+    dependencies:
+      '@codemirror/language': 6.10.2
+      '@lezer/common': 1.2.1
+      '@lezer/highlight': 1.2.0
+      '@motion-canvas/core': 3.17.2
+      code-fns: 0.8.2
+      mathjax-full: 3.2.2
+      parse-svg-path: 0.1.2
+
   '@motion-canvas/core@3.17.0':
+    dependencies:
+      '@types/chroma-js': 2.4.4
+      chroma-js: 2.4.2
+
+  '@motion-canvas/core@3.17.2':
     dependencies:
       '@types/chroma-js': 2.4.4
       chroma-js: 2.4.2
@@ -839,9 +918,24 @@ snapshots:
       fluent-ffmpeg: 2.1.3
       vite: 4.5.3
 
+  '@motion-canvas/ffmpeg@1.1.1(@motion-canvas/core@3.17.2)(@motion-canvas/vite-plugin@3.17.2(vite@4.5.3))(vite@4.5.3)':
+    dependencies:
+      '@ffmpeg-installer/ffmpeg': 1.1.0
+      '@ffprobe-installer/ffprobe': 2.1.2
+      '@motion-canvas/core': 3.17.2
+      '@motion-canvas/vite-plugin': 3.17.2(vite@4.5.3)
+      fluent-ffmpeg: 2.1.3
+      vite: 4.5.3
+
   '@motion-canvas/ui@3.17.0':
     dependencies:
       '@motion-canvas/core': 3.17.0
+      '@preact/signals': 1.2.3(preact@10.22.0)
+      preact: 10.22.0
+
+  '@motion-canvas/ui@3.17.2':
+    dependencies:
+      '@motion-canvas/core': 3.17.2
       '@preact/signals': 1.2.3(preact@10.22.0)
       preact: 10.22.0
 
@@ -856,6 +950,16 @@ snapshots:
       - debug
 
   '@motion-canvas/vite-plugin@3.17.0(vite@4.5.3)':
+    dependencies:
+      fast-glob: 3.3.2
+      follow-redirects: 1.15.6
+      mime-types: 2.1.35
+      source-map: 0.6.1
+      vite: 4.5.3
+    transitivePeerDependencies:
+      - debug
+
+  '@motion-canvas/vite-plugin@3.17.2(vite@4.5.3)':
     dependencies:
       fast-glob: 3.3.2
       follow-redirects: 1.15.6
