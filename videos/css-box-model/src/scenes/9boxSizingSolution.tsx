@@ -228,7 +228,7 @@ export default makeScene2D(function* (view) {
       <Ray
         ref={rightPaddingRay}
         fromX={() => contentRay().to().x}
-        toX={() => paddingBG().right().x + 12}
+        toX={() => paddingBG().right().x - 16}
         y={spaceY["1.5"]}
         stroke={colors.slate[0]}
         startArrow
@@ -252,7 +252,7 @@ export default makeScene2D(function* (view) {
       <Ray
         ref={rightBorderRay}
         fromX={() => rightPaddingRay().to().x}
-        toX={() => rightPaddingRay().to().x - 24}
+        toX={() => rightPaddingRay().to().x + 24}
         y={spaceY["1.5"]}
         stroke={colors.slate[0]}
         startArrow

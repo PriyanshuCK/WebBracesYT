@@ -782,12 +782,12 @@ export default makeScene2D(function* (view) {
   );
   yield* all(
     circleYou().scale(1, 0.75),
-    delay(0.5, faceI().x(spaceNX[1.5] - 5, 0.75))
+    delay(0.5, faceI().x(spaceNX[1.5] - 8, 0.75))
   );
   yield* waitUntil("50px");
   yield* all(
     circleI().scale(1, 0.75),
-    delay(0.5, faceYou().x(spaceX[3.5] + 10, 0.75))
+    delay(0.5, faceYou().x(spaceX[3.5] + 7, 0.75))
   );
   yield* waitUntil("comfortable");
   yield* all(faceI().x(spaceNX[1], 1.25), faceYou().x(spaceX[3], 1.25));

@@ -144,7 +144,7 @@ export default makeScene2D(function* (view) {
         <ExtendedTxt
           text={() => `${paddingRSignal().toFixed(0)}px`}
           fill={colors.slate[950]}
-          x={() => paddingBG().right().x - paddingRSignal() / 2}
+          x={() => paddingBG().right().x - paddingRSignal() / 2 - 10}
           y={spaceY["0.5"]}
         />
       </Ray>
@@ -164,7 +164,7 @@ export default makeScene2D(function* (view) {
         <ExtendedTxt
           text={() => `${paddingLSignal().toFixed(0)}px`}
           fill={colors.slate[950]}
-          x={() => paddingBG().left().x + paddingLSignal() / 2}
+          x={() => paddingBG().left().x + paddingLSignal() / 2 + 10}
           y={spaceNY["0.5"]}
         />
       </Ray>

@@ -4,7 +4,10 @@ import { ExtendedRect, Grid } from "../nodes";
 import {
   all,
   createRef,
+  delay,
   Direction,
+  makeRef,
+  range,
   slideTransition,
   waitFor,
   waitUntil,
@@ -15,11 +18,11 @@ import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 export default makeScene2D(function* (view) {
   view.fill(colors.zinc[950]);
   view.fontFamily("Geist");
-  view.add(
-    <>
-      <Grid />
-    </>
-  );
+  // view.add(
+  //   <>
+  //     <Grid />
+  //   </>
+  // );
   const displayTxt = createRef<ExtendedTxt>();
   const blockTxt = createRef<ExtendedTxt>();
   const inlineTxt = createRef<ExtendedTxt>();
@@ -87,6 +90,7 @@ export default makeScene2D(function* (view) {
   const box1 = createRef<ExtendedRect>();
   const box2 = createRef<ExtendedRect>();
   const box3 = createRef<ExtendedRect>();
+  const rects: ExtendedRect[] = [];
   view.add(
     <>
       <Layout
@@ -112,15 +116,11 @@ export default makeScene2D(function* (view) {
           layout
           gap={spaceY[0.25]}
           padding={spaceY["0.25"]}
+          wrap={"wrap"}
         >
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
-          <ExtendedRect />
+          {range(12).map((i) => (
+            <ExtendedRect ref={makeRef(rects, i)} opacity={0} />
+          ))}
         </ExtendedRect>
         <ExtendedRect
           ref={box3}
@@ -139,11 +139,55 @@ export default makeScene2D(function* (view) {
   );
   yield* waitUntil("innerDisplayTypes");
   yield* all(
+    displayTxt().text("Inner Display Types", 0.75),
     box1().opacity(0, 0.75),
     box3().opacity(0, 0.75),
     box2().width("100%", 0.75),
-    layout().y(() => box2().height() / 2 - spaceY[2], 0.75),
-    box2().height(spaceY[4], 0.75)
+    layout().y(() => box2().height() / 2 - spaceY[2.75] / 2, 0.75),
+    box2().height(spaceY[2.75], 0.75)
   );
-  yield* waitFor(60);
+  yield* waitUntil("elementsInside");
+  yield* all(...rects.map((rect, i) => delay(0.02 * i, rect.opacity(1, 0.75))));
+  yield* all(box2().width("50%", 1), box2().height(spaceY[4], 1));
+  yield* all(box2().width("100%", 1), box2().height(spaceY[2.75], 1));
+  const displayFlex = createRef<ExtendedTxt>();
+  view.add(
+    <>
+      <ExtendedTxt ref={displayFlex} y={spaceY[3]} fontSize={spaceY["0.5"]} />
+    </>
+  );
+  yield* waitUntil("displayFlex");
+  yield* displayFlex().text("display: flex;", 1);
+  yield* waitUntil("stillUse");
+  yield* all(
+    box1().opacity(1, 0.75),
+    box3().opacity(1, 0.75),
+    layout().y(spaceY["0.5"], 0.75),
+    displayFlex().opacity(0, 0.75)
+  );
+  yield* waitUntil("thisChanges");
+  yield* box2().justifyContent("center", 0.75);
+  yield* box2().justifyContent("end", 0.75);
+  yield* box2().justifyContent("start", 0.75);
+  yield* rects[10].grow(1, 3);
+  yield* rects[6].grow(1, 1);
+  yield* rects[8].grow(2, 3);
+  yield* rects[9].grow(3, 3);
+  yield* rects[9].grow(1, 3);
+  yield* rects[8].grow(5, 3);
+  yield* waitUntil("somethingSpecial");
+
+  yield* all(
+    ...rects.map((rect, i) => delay(0.05 * (12 - i), rect.opacity(0, 0.75)))
+  );
+  yield* all(
+    box1().end(0, 0.75),
+    box3().end(0, 0.75),
+    box2().end(0, 0.75),
+    box1().opacity(0, 0.75),
+    box2().opacity(0, 0.75),
+    box3().opacity(0, 0.75),
+    displayTxt().opacity(0, 0.75)
+  );
+  yield* waitUntil("scene14End");
 });

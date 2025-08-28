@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "margin",
+      "targetTime": 1.4446417039639867
+    },
+    {
+      "name": "display",
+      "targetTime": 2.419378725834688
+    },
+    {
+      "name": "boxSizing",
+      "targetTime": 3.3123931942978615
+    },
+    {
+      "name": "scene02End",
+      "targetTime": 4.953330993067703
+    }
+  ],
+  "seed": 516948263
+}

@@ -216,7 +216,7 @@ export default makeScene2D(function* (view) {
   const ray2 = createRef<Ray>();
   const ray3 = createRef<Ray>();
   const ray4 = createRef<Ray>();
-
+  const wrapCorr = createRef<ExtendedTxt>();
   view.add(
     <>
       <Ray
@@ -321,6 +321,13 @@ export default makeScene2D(function* (view) {
           marginTop={spaceY["0.25"] / 2}
         />
       </Ray>
+      <ExtendedTxt
+        ref={wrapCorr}
+        text={"*wrap"}
+        opacity={0}
+        fill={colors.slate[950]}
+        y={spaceY[3]}
+      />
     </>
   );
   yield* all(
@@ -355,7 +362,8 @@ export default makeScene2D(function* (view) {
   yield* waitUntil("breakOurLayout");
   yield* all(
     container().wrap("wrap", 0.75),
-    container().height(spaceY[4.5] + 16, 0.75)
+    container().height(spaceY[4.5] + 16, 0.75),
+    wrapCorr().opacity(1, 0.75)
   );
   yield* waitUntil("whyThisHappens");
   const whyThisHappens = createRef<ExtendedTxt>();
@@ -371,6 +379,7 @@ export default makeScene2D(function* (view) {
   );
 
   yield* all(
+    wrapCorr().opacity(0, 0.75),
     window().y(spaceNY[1], 0.75),
     whyThisHappens().text("Why does this happen?🤔", 1.25),
     code().y(spaceNY[1], 0.75)
@@ -551,7 +560,7 @@ export default makeScene2D(function* (view) {
       <Ray
         ref={rightPaddingRay}
         fromX={() => contentRay().to().x}
-        toX={() => paddingBG().right().x + 12}
+        toX={() => paddingBG().right().x - 16}
         y={spaceY["1.5"]}
         stroke={colors.slate[0]}
         startArrow
@@ -575,7 +584,7 @@ export default makeScene2D(function* (view) {
       <Ray
         ref={rightBorderRay}
         fromX={() => rightPaddingRay().to().x}
-        toX={() => rightPaddingRay().to().x - 24}
+        toX={() => rightPaddingRay().to().x + 24}
         y={spaceY["1.5"]}
         stroke={colors.slate[0]}
         startArrow

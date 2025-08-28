@@ -2,40 +2,36 @@
   "version": 0,
   "timeEvents": [
     {
-      "name": "intro",
-      "targetTime": 59.51818064239094
-    },
-    {
       "name": "webpage",
-      "targetTime": 62.35060427099767
+      "targetTime": 3.5824236286067332
     },
     {
       "name": "outlineText",
-      "targetTime": 64.9239588186036
+      "targetTime": 6.155778176212657
     },
     {
       "name": "button",
-      "targetTime": 66.89118463394387
+      "targetTime": 8.123003991552928
     },
     {
       "name": "control",
-      "targetTime": 70.07466784492831
+      "targetTime": 11.306487202537376
     },
     {
       "name": "cssBoxModel",
-      "targetTime": 76.00853842379121
+      "targetTime": 17.24035778140027
     },
     {
       "name": "weird",
-      "targetTime": 85.59014961749621
+      "targetTime": 26.82196897510527
     },
     {
       "name": "css",
-      "targetTime": 90.9090435343543
+      "targetTime": 32.14086289196336
     },
     {
       "name": "scene1End",
-      "targetTime": 96.94273922470187
+      "targetTime": 38.17455858231093
     }
   ],
   "seed": 548448977

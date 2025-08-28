@@ -16,6 +16,8 @@ import {
   createRef,
   createRefMap,
   delay,
+  Direction,
+  slideTransition,
   waitFor,
   waitUntil,
 } from "@motion-canvas/core";
@@ -41,7 +43,6 @@ export default makeScene2D(function* (view) {
   //     <Grid />
   //   </>
   // );
-  yield* waitUntil("intro");
   const everythingIsABox = createRef<ExtendedTxt>();
   const boxHighlighted = createRef<ExtendedTxt>();
   view.add(
@@ -67,7 +68,11 @@ export default makeScene2D(function* (view) {
       />
     </>
   );
-  yield* all(everythingIsABox().opacity(1, 1), everythingIsABox().y(0, 1));
+  yield* all(
+    everythingIsABox().opacity(1, 1.5),
+    everythingIsABox().y(0, 1.5),
+    slideTransition(Direction.Right, 0.75)
+  );
   yield* boxHighlighted().opacity(1, 1);
   yield* waitUntil("webpage");
   const window = createRef<Window>();
