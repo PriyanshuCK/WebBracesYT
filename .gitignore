@@ -14,3 +14,7 @@ dist
 *.sln
 *.sw?
 
+# Media files
+*.mp4
+*.mov
+*.wav
