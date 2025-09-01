@@ -1,7 +1,7 @@
 import { Circle, Code, makeScene2D } from '@motion-canvas/2d';
 import { all, createRef, delay, waitFor } from '@motion-canvas/core';
 import colors from '../lib/colors';
-import { ExtendedRect, Grid, CSSCode, HTMLCode } from '../nodes';
+import { ExtendedRect, Grid, CSSCode, HTMLCode, Window } from '../nodes';
 import spaceX, { spaceNX, spaceNY, spaceY } from '../lib/space';
 import { ExtendedTxt } from '../nodes/ExtendedTxt';
 
@@ -10,21 +10,22 @@ export default makeScene2D(function*(view) {
 	view.fontFamily('Geist');
 	const htmlView = createRef<ExtendedRect>();
 	const cssView = createRef<ExtendedRect>();
-	const browserView = createRef<ExtendedRect>();
+	const browserView = createRef<Window>();
 	const cssCode = createRef<Code>();
 	const htmlCode = createRef<Code>();
+	// <Grid />
 	view.add(
 		<>
-			<Grid />
 			<ExtendedRect
 				layout
 				ref={htmlView}
 				lineWidth={1}
-				width={spaceX[8.5]}
-				height={spaceY[4.5]}
-				position={[spaceNX['4.75'], spaceY['2.75']]}
+				width={spaceX[8.75]}
+				height={spaceY[4.75]}
+				position={[spaceNX[1] * 4.625, spaceY[1] * 2.625]}
 				opacity={0}
 				padding={spaceX[0.25]}
+				color={"slate"}
 			>
 				<HTMLCode
 					ref={htmlCode}
@@ -40,8 +41,9 @@ export default makeScene2D(function*(view) {
 `}
 				/>
 			</ExtendedRect>
-			<ExtendedRect layout ref={cssView} lineWidth={1} width={spaceX[8.5]} height={spaceY[4.5]} position={[spaceX['4.75'], spaceY['2.75']]}
+			<ExtendedRect layout ref={cssView} lineWidth={1} width={spaceX[8.75]} height={spaceY[4.75]} position={[spaceX[1] * 4.625, spaceY[1] * 2.625]}
 				opacity={0}
+				color={"slate"}
 				padding={spaceX[0.25]}
 			>
 				<CSSCode
@@ -61,12 +63,11 @@ h1 {
 `}
 				/>
 			</ExtendedRect>
-			<ExtendedRect layout ref={browserView} lineWidth={1} width={spaceX[18]} height={spaceY[4.5]} position={[spaceX['0'], spaceNY['2.75']]}
+			<Window ref={browserView} lineWidth={1} width={spaceX[18]} height={spaceY[4.75]} position={[spaceX['0'], spaceNY[1] * 2.625]}
 				opacity={0} fill={colors.slate[0]}
-				padding={spaceX[0.25]}
 			>
 				<ExtendedTxt text="Browser" fill={colors.slate[800]} />
-			</ExtendedRect>
+			</Window>
 		</>
 	);
 
@@ -79,11 +80,11 @@ h1 {
 	yield* waitFor(2);
 
 	yield* all(
-		htmlView().y(spaceNY['2.75'], 0.75),
-		cssView().x(spaceNX['4.75'], 0.75),
-		browserView().x(spaceX['4.75'], 0.75),
+		htmlView().y(spaceNY[1] * 2.625, 0.75),
+		cssView().x(spaceNX[1] * 4.625, 0.75),
+		browserView().x(spaceX[1] * 4.625, 0.75),
 		browserView().y(0, 0.75),
-		browserView().width(spaceX[8.5], 0.75),
+		browserView().width(spaceX[8.75], 0.75),
 		browserView().height(spaceY[10], 0.75),
 	);
 
