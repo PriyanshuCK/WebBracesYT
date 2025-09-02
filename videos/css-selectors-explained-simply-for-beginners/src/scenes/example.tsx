@@ -13,14 +13,13 @@ export default makeScene2D(function*(view) {
 	const SCREEN_HEIGHT = 1080;
 	const PADDING = 20;
 	const BORDER_WIDTH = 2;
-	const TITLE_HEIGHT = 40;
 
 	// Color scheme
 	const colors = {
 		html: '#E34F26',      // HTML orange
 		css: '#1572B6',       // CSS blue  
 		browser: '#4CAF50',   // Green for browser
-		background: '#1e1e1e', // Dark background (VS Code style)
+		background: '#2D2D2D', // Dark background
 		text: '#FFFFFF',      // White text
 		border: '#555555'     // Gray borders
 	};
@@ -34,9 +33,9 @@ export default makeScene2D(function*(view) {
 	const cssTitle: Reference<Txt> = createRef<Txt>();
 	const browserTitle: Reference<Txt> = createRef<Txt>();
 
-	const htmlCode: Reference<Code> = createRef<Code>();
-	const cssCode: Reference<Code> = createRef<Code>();
-	const browserImage: Reference<Img> = createRef<Img>();
+	const htmlContent: Reference<Txt> = createRef<Txt>();
+	const cssContent: Reference<Txt> = createRef<Txt>();
+	const browserContent: Reference<Txt> = createRef<Txt>();
 
 	// Layout configurations
 	const layouts = {
@@ -129,19 +128,18 @@ export default makeScene2D(function*(view) {
 		}
 	};
 
-	// Helper function to create code viewport (HTML/CSS)
-	function createCodeViewport(
+	// Helper function to create viewport
+	function createViewport(
 		color: string,
 		title: string,
-		initialCode: string,
-		language: 'html' | 'css',
-		viewportRef: Reference<Rect>,
+		content: string = '',
+		ref: Reference<Rect>,
 		titleRef: Reference<Txt>,
-		codeRef: Reference<Code>
+		contentRef: Reference<Txt>
 	) {
 		return (
 			<Rect
-				ref={viewportRef}
+				ref={ref}
 				fill={colors.background}
 				stroke={color}
 				lineWidth={BORDER_WIDTH}
@@ -149,9 +147,9 @@ export default makeScene2D(function*(view) {
 			>
 				{/* Title bar */}
 				<Rect
-					width={() => viewportRef().width()}
-					height={TITLE_HEIGHT}
-					y={() => -viewportRef().height() / 2 + TITLE_HEIGHT / 2}
+					width={() => ref().width()}
+					height={40}
+					y={() => -ref().height() / 2 + 20}
 					fill={color}
 					radius={[8, 8, 0, 0]}
 				>
@@ -165,134 +163,49 @@ export default makeScene2D(function*(view) {
 					/>
 				</Rect>
 
-				{/* Code content */}
-				<Code
-					ref={codeRef}
-					// language={language}
-					code={initialCode}
-					fontSize={12}
+				{/* Content area */}
+				<Txt
+					ref={contentRef}
+					text={content}
+					fill={colors.text}
+					fontSize={14}
 					fontFamily="'JetBrains Mono', monospace"
-					y={() => TITLE_HEIGHT / 2}
-					width={() => viewportRef().width() - PADDING * 2}
-					height={() => viewportRef().height() - TITLE_HEIGHT - PADDING}
+					y={20}
+					textAlign="left"
+					textWrap={true}
+					width={() => ref().width() - 40}
+					height={() => ref().height() - 80}
 				/>
 			</Rect>
 		);
 	}
-
-	// Helper function to create browser viewport
-	function createBrowserViewport(
-		color: string,
-		title: string,
-		imageSrc: string,
-		viewportRef: Reference<Rect>,
-		titleRef: Reference<Txt>,
-		imageRef: Reference<Img>
-	) {
-		return (
-			<Rect
-				ref={viewportRef}
-				fill={colors.background}
-				stroke={color}
-				lineWidth={BORDER_WIDTH}
-				radius={8}
-			>
-				{/* Title bar */}
-				<Rect
-					width={() => viewportRef().width()}
-					height={TITLE_HEIGHT}
-					y={() => -viewportRef().height() / 2 + TITLE_HEIGHT / 2}
-					fill={color}
-					radius={[8, 8, 0, 0]}
-				>
-					<Txt
-						ref={titleRef}
-						text={title}
-						fill={colors.text}
-						fontSize={16}
-						fontWeight={600}
-						fontFamily="'JetBrains Mono', monospace"
-					/>
-				</Rect>
-
-				{/* Browser content (image) */}
-				<Img
-					ref={imageRef}
-					src={imageSrc}
-					y={() => TITLE_HEIGHT / 2}
-					width={() => viewportRef().width() - PADDING * 2}
-					height={() => viewportRef().height() - TITLE_HEIGHT - PADDING}
-					radius={4}
-					// Maintain aspect ratio while fitting container
-					scale={() => {
-						const containerWidth = viewportRef().width() - PADDING * 2;
-						const containerHeight = viewportRef().height() - TITLE_HEIGHT - PADDING;
-						const imageAspect = imageRef().naturalSize().width / imageRef().naturalSize().height;
-						const containerAspect = containerWidth / containerHeight;
-
-						if (imageAspect > containerAspect) {
-							// Image is wider - fit to width
-							return containerWidth / imageRef().naturalSize().width;
-						} else {
-							// Image is taller - fit to height
-							return containerHeight / imageRef().naturalSize().height;
-						}
-					}}
-				/>
-			</Rect>
-		);
-	}
-
-	// Initial content
-	const initialHtmlCode = `<!DOCTYPE html>
-<html>
-<head>
-  <title>Example</title>
-</head>
-<body>
-  <h1>Hello World</h1>
-</body>
-</html>`;
-
-	const initialCssCode = `body {
-  font-family: Arial;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  color: #333;
-}`;
 
 	// Create the three viewports
-	view.add(createCodeViewport(
+	view.add(createViewport(
 		colors.html,
 		'HTML',
-		initialHtmlCode,
-		'html',
+		'<!DOCTYPE html>\n<html>\n<head>\n  <title>Example</title>\n</head>\n<body>\n  <h1>Hello World</h1>\n</body>\n</html>',
 		htmlViewport,
 		htmlTitle,
-		htmlCode
+		htmlContent
 	));
 
-	view.add(createCodeViewport(
+	view.add(createViewport(
 		colors.css,
 		'CSS',
-		initialCssCode,
-		'css',
+		'body {\n  font-family: Arial;\n  margin: 0;\n  padding: 20px;\n}\n\nh1 {\n  color: #333;\n}',
 		cssViewport,
 		cssTitle,
-		cssCode
+		cssContent
 	));
 
-	// Note: Replace with your actual image paths
-	view.add(createBrowserViewport(
+	view.add(createViewport(
 		colors.browser,
 		'Browser Preview',
-		exampleImage, // Replace with your image
+		'[Screenshot of rendered webpage would appear here]',
 		browserViewport,
 		browserTitle,
-		browserImage
+		browserContent
 	));
 
 	// Helper function to animate to a specific layout
@@ -314,60 +227,18 @@ h1 {
 		);
 	}
 
-	// Helper function to update code content with animation
-	function* updateCode(
-		codeRef: Reference<Code>,
-		newCode: string,
+	// Helper function to update content with animation
+	function* updateContent(
+		contentRef: Reference<Txt>,
+		newContent: string,
 		duration: number = 0.5
 	) {
 		yield* tween(duration, value => {
 			const progress = easeInOutCubic(value);
 			if (progress > 0.5) {
-				codeRef().code(newCode);
+				contentRef().text(newContent);
 			}
 		});
-	}
-
-	// Helper function to change browser image with fade animation
-	function* changeBrowserImage(
-		newImageSrc: string,
-		duration: number = 0.5
-	) {
-		// Fade out
-		yield* browserImage().opacity(0, duration / 2, easeInOutCubic);
-
-		// Change image source
-		browserImage().src(newImageSrc);
-
-		// Fade in
-		yield* browserImage().opacity(1, duration / 2, easeInOutCubic);
-	}
-
-	// Combined function to change layout and browser image simultaneously
-	function* changeLayoutWithImage(
-		layoutName: keyof typeof layouts,
-		newImageSrc?: string,
-		newHtmlCode?: string,
-		newCssCode?: string,
-		duration: number = 1
-	) {
-		const tasks = [animateToLayout(layoutName, duration)];
-
-		// Add image transition if new image provided
-		if (newImageSrc) {
-			tasks.push(changeBrowserImage(newImageSrc, duration));
-		}
-
-		// Add code updates if provided
-		if (newHtmlCode) {
-			tasks.push(updateCode(htmlCode, newHtmlCode, duration * 0.5));
-		}
-
-		if (newCssCode) {
-			tasks.push(updateCode(cssCode, newCssCode, duration * 0.5));
-		}
-
-		yield* all(...tasks);
 	}
 
 	// Initialize with the initial layout
@@ -376,148 +247,209 @@ h1 {
 	// Wait a moment
 	yield* waitFor(1);
 
-	// Example animation sequence demonstrating the system
+	// Example animation sequence - you can modify this as needed
 
-	// 1. Add more HTML content and switch to large HTML layout with new browser image
-	const complexHtmlCode = `<!DOCTYPE html>
-<html>
-<head>
-  <title>Complex Example</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <section id="hero">
-      <h1>Welcome to Our Site</h1>
-      <p>This is a complex webpage example.</p>
-      <button>Get Started</button>
-    </section>
-    
-    <section id="features">
-      <div class="feature">
-        <h3>Feature 1</h3>
-        <p>Description of feature 1</p>
-      </div>
-      <div class="feature">
-        <h3>Feature 2</h3>
-        <p>Description of feature 2</p>
-      </div>
-    </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2024 Example Site</p>
-  </footer>
-</body>
-</html>`;
-
-	yield* changeLayoutWithImage(
-		'largeHtml',
-		exampleImage, // New browser image
-		complexHtmlCode
+	// 1. Add more HTML content and switch to large HTML layout
+	yield* all(
+		updateContent(
+			htmlContent,
+			'<!DOCTYPE html>\n<html>\n<head>\n  <title>Complex Example</title>\n  <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n  <header>\n    <nav>\n      <ul>\n        <li><a href="#home">Home</a></li>\n        <li><a href="#about">About</a></li>\n        <li><a href="#contact">Contact</a></li>\n      </ul>\n    </nav>\n  </header>\n  \n  <main>\n    <section id="hero">\n      <h1>Welcome to Our Site</h1>\n      <p>This is a complex webpage example.</p>\n      <button>Get Started</button>\n    </section>\n    \n    <section id="features">\n      <div class="feature">\n        <h3>Feature 1</h3>\n        <p>Description of feature 1</p>\n      </div>\n      <div class="feature">\n        <h3>Feature 2</h3>\n        <p>Description of feature 2</p>\n      </div>\n    </section>\n  </main>\n  \n  <footer>\n    <p>&copy; 2024 Example Site</p>\n  </footer>\n</body>\n</html>',
+			0.5
+		),
+		animateToLayout('largeHtml', 1)
 	);
 
 	yield* waitFor(2);
 
-	// 2. Switch to large CSS layout with updated CSS and corresponding browser image
-	const complexCssCode = `* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Arial", sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
-
-header {
-  background: #2c3e50;
-  color: white;
-  padding: 1rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #3498db;
-}
-
-#hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-#hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.feature {
-  padding: 2rem;
-  border: 1px solid #ddd;
-  margin: 1rem;
-  border-radius: 8px;
-}
-
-footer {
-  background: #34495e;
-  color: white;
-  text-align: center;
-  padding: 2rem;
-}`;
-
-	yield* changeLayoutWithImage(
-		'largeCss',
-		exampleImage, // Styled version
-		undefined, // No HTML change
-		complexCssCode
+	// 2. Switch to large CSS layout
+	yield* all(
+		updateContent(
+			cssContent,
+			'* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: "Arial", sans-serif;\n  line-height: 1.6;\n  color: #333;\n}\n\nheader {\n  background: #2c3e50;\n  color: white;\n  padding: 1rem;\n}\n\nnav ul {\n  list-style: none;\n  display: flex;\n  gap: 2rem;\n}\n\nnav a {\n  color: white;\n  text-decoration: none;\n  transition: color 0.3s;\n}\n\nnav a:hover {\n  color: #3498db;\n}\n\n#hero {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  padding: 4rem 2rem;\n  text-align: center;\n}\n\n#hero h1 {\n  font-size: 3rem;\n  margin-bottom: 1rem;\n}\n\n.feature {\n  padding: 2rem;\n  border: 1px solid #ddd;\n  margin: 1rem;\n  border-radius: 8px;\n}\n\nfooter {\n  background: #34495e;\n  color: white;\n  text-align: center;\n  padding: 2rem;\n}',
+			0.5
+		),
+		animateToLayout('largeCss', 1)
 	);
 
 	yield* waitFor(2);
 
-	// 3. Switch to large browser layout showing final result
-	yield* changeLayoutWithImage(
-		'largeBrowser',
-		exampleImage // Final rendered page
+	// 3. Switch to large browser layout
+	yield* all(
+		updateContent(
+			browserContent,
+			'[Rendered webpage screenshot]\n\n🌐 Browser Preview:\n\n┌─ Navigation Bar ─────────────┐\n│ Home  About  Contact        │\n└─────────────────────────────┘\n\n┌─ Hero Section ──────────────┐\n│                             │\n│     Welcome to Our Site     │\n│                             │\n│  This is a complex webpage  │\n│         example.            │\n│                             │\n│      [Get Started]          │\n│                             │\n└─────────────────────────────┘\n\n┌─ Features ──────────────────┐\n│  ┌─ Feature 1 ─┐ ┌─ Feature 2 ─┐ │\n│  │Description  │ │Description  │ │\n│  │of feature 1 │ │of feature 2 │ │\n│  └─────────────┘ └─────────────┘ │\n└─────────────────────────────────┘\n\n┌─ Footer ────────────────────┐\n│    © 2024 Example Site      │\n└─────────────────────────────┘',
+			0.5
+		),
+		animateToLayout('largeBrowser', 1)
 	);
 
 	yield* waitFor(2);
 
-	// 4. Return to initial layout with original simple content
-	yield* changeLayoutWithImage(
-		'initial',
-		exampleImage, // Back to simple
-		initialHtmlCode,
-		initialCssCode
-	);
+	// 4. Return to initial layout
+	yield* animateToLayout('initial', 1);
 
 	yield* waitFor(1);
 });
 
-// Additional utility functions for advanced usage
+// Additional utility functions you can use in your scenes:
 
 // Function to create a custom layout configuration
+export function createCustomLayout(
+	htmlRatio: number,    // 0-1, portion of screen for HTML
+	cssRatio: number,     // 0-1, portion of screen for CSS  
+	browserRatio: number, // 0-1, portion of screen for browser
+	orientation: 'horizontal' | 'vertical' | 'mixed' = 'mixed'
+) {
+	const SCREEN_WIDTH = 1920;
+	const SCREEN_HEIGHT = 1080;
+	const PADDING = 20;
+
+	// Normalize ratios
+	const total = htmlRatio + cssRatio + browserRatio;
+	const normalizedHtml = htmlRatio / total;
+	const normalizedCss = cssRatio / total;
+	const normalizedBrowser = browserRatio / total;
+
+	if (orientation === 'horizontal') {
+		// All viewports side by side
+		const htmlWidth = SCREEN_WIDTH * normalizedHtml - PADDING;
+		const cssWidth = SCREEN_WIDTH * normalizedCss - PADDING;
+		const browserWidth = SCREEN_WIDTH * normalizedBrowser - PADDING;
+
+		return {
+			html: {
+				x: -SCREEN_WIDTH / 2 + htmlWidth / 2 + PADDING / 2,
+				y: 0,
+				width: htmlWidth,
+				height: SCREEN_HEIGHT - PADDING * 2
+			},
+			css: {
+				x: -SCREEN_WIDTH / 2 + htmlWidth + cssWidth / 2 + PADDING * 1.5,
+				y: 0,
+				width: cssWidth,
+				height: SCREEN_HEIGHT - PADDING * 2
+			},
+			browser: {
+				x: SCREEN_WIDTH / 2 - browserWidth / 2 - PADDING / 2,
+				y: 0,
+				width: browserWidth,
+				height: SCREEN_HEIGHT - PADDING * 2
+			}
+		};
+	} else if (orientation === 'vertical') {
+		// All viewports stacked vertically
+		const htmlHeight = SCREEN_HEIGHT * normalizedHtml - PADDING;
+		const cssHeight = SCREEN_HEIGHT * normalizedCss - PADDING;
+		const browserHeight = SCREEN_HEIGHT * normalizedBrowser - PADDING;
+
+		return {
+			html: {
+				x: 0,
+				y: -SCREEN_HEIGHT / 2 + htmlHeight / 2 + PADDING / 2,
+				width: SCREEN_WIDTH - PADDING * 2,
+				height: htmlHeight
+			},
+			css: {
+				x: 0,
+				y: -SCREEN_HEIGHT / 2 + htmlHeight + cssHeight / 2 + PADDING * 1.5,
+				width: SCREEN_WIDTH - PADDING * 2,
+				height: cssHeight
+			},
+			browser: {
+				x: 0,
+				y: SCREEN_HEIGHT / 2 - browserHeight / 2 - PADDING / 2,
+				width: SCREEN_WIDTH - PADDING * 2,
+				height: browserHeight
+			}
+		};
+	} else {
+		// Mixed layout - largest viewport gets priority
+		if (normalizedHtml >= normalizedCss && normalizedHtml >= normalizedBrowser) {
+			// HTML is largest - give it full height on left
+			return {
+				html: {
+					x: -SCREEN_WIDTH / 4,
+					y: 0,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT - PADDING * 2
+				},
+				css: {
+					x: SCREEN_WIDTH / 4,
+					y: -SCREEN_HEIGHT * (normalizedCss / (normalizedCss + normalizedBrowser)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedCss / (normalizedCss + normalizedBrowser)) - PADDING
+				},
+				browser: {
+					x: SCREEN_WIDTH / 4,
+					y: SCREEN_HEIGHT * (normalizedBrowser / (normalizedCss + normalizedBrowser)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedBrowser / (normalizedCss + normalizedBrowser)) - PADDING
+				}
+			};
+		} else if (normalizedCss >= normalizedBrowser) {
+			// CSS is largest
+			return {
+				css: {
+					x: -SCREEN_WIDTH / 4,
+					y: 0,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT - PADDING * 2
+				},
+				html: {
+					x: SCREEN_WIDTH / 4,
+					y: -SCREEN_HEIGHT * (normalizedHtml / (normalizedHtml + normalizedBrowser)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedHtml / (normalizedHtml + normalizedBrowser)) - PADDING
+				},
+				browser: {
+					x: SCREEN_WIDTH / 4,
+					y: SCREEN_HEIGHT * (normalizedBrowser / (normalizedHtml + normalizedBrowser)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedBrowser / (normalizedHtml + normalizedBrowser)) - PADDING
+				}
+			};
+		} else {
+			// Browser is largest
+			return {
+				browser: {
+					x: SCREEN_WIDTH / 4,
+					y: 0,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT - PADDING * 2
+				},
+				html: {
+					x: -SCREEN_WIDTH / 4,
+					y: -SCREEN_HEIGHT * (normalizedHtml / (normalizedHtml + normalizedCss)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedHtml / (normalizedHtml + normalizedCss)) - PADDING
+				},
+				css: {
+					x: -SCREEN_WIDTH / 4,
+					y: SCREEN_HEIGHT * (normalizedCss / (normalizedHtml + normalizedCss)) / 2,
+					width: SCREEN_WIDTH / 2 - PADDING,
+					height: SCREEN_HEIGHT * (normalizedCss / (normalizedHtml + normalizedCss)) - PADDING
+				}
+			};
+		}
+	}
+}
+
+// Function to animate to a custom layout
+export function* animateToCustomLayout(
+	htmlViewport: Reference<Rect>,
+	cssViewport: Reference<Rect>,
+	browserViewport: Reference<Rect>,
+	layout: ReturnType<typeof createCustomLayout>,
+	duration: number = 1
+) {
+	yield* all(
+		htmlViewport().position([layout.html.x, layout.html.y], duration, easeInOutCubic),
+		htmlViewport().size([layout.html.width, layout.html.height], duration, easeInOutCubic),
+
+		cssViewport().position([layout.css.x, layout.css.y], duration, easeInOutCubic),
+		cssViewport().size([layout.css.width, layout.css.height], duration, easeInOutCubic),
+
+		browserViewport().position([layout.browser.x, layout.browser.y], duration, easeInOutCubic),
+		browserViewport().size([layout.browser.width, layout.browser.height], duration, easeInOutCubic),
+	);
+}
