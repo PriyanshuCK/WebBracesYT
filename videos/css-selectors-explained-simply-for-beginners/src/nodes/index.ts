@@ -6,4 +6,5 @@ export * from "./ExtendedFillSVG";
 export * from "./ExtendedStrokeSVG";
 export * from "./Face";
 export * from "./Grid";
+export * from "./ViewportManager";
 export * from "./Window";
