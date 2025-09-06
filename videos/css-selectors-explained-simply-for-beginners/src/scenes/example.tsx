@@ -1,18 +1,30 @@
 import { Code, lines, makeScene2D } from '@motion-canvas/2d';
 import { all, Reference, waitFor } from '@motion-canvas/core';
 import { Grid, ViewportManager } from '../nodes';
-import exampleImage from 'C:\\Users\\priyanshu.sharma1\\Pictures\\rect1.png';
+import h_eq from '../images/h_eq.png';
+import h_b2 from '../images/h_b2.png';
+import c_eq from '../images/c_eq.png';
+import c_b2 from '../images/c_b2.png';
+import b_eq from '../images/b_eq.png';
+import eq_h from '../images/eq_h.png';
+import eq_v from '../images/eq_v.png';
+import test1 from '../images/test1.png';
+import test2 from '../images/test2.png';
+import test3 from '../images/test3.png';
 import colors from '../lib/colors';
 
 export default makeScene2D(function*(view) {
 	view.fontFamily('Geist');
 	view.fill(colors.zinc[950]);
-	// view.add(<Grid />);
+	view.add(<Grid />);
 
 	const viewportManager = new ViewportManager()
 		.addHtml('<h1>Hello World</h1>')
 		.addCss('h1 { color: blue; }')
-		.addBrowser(exampleImage);
+		.addBrowser(h_eq);
+
+	// Log allowed aspect ratios for debugging
+	console.log('Allowed aspect ratios:', viewportManager.getAllowedAspectRatios());
 
 	viewportManager.addToView(view);
 
@@ -20,9 +32,9 @@ export default makeScene2D(function*(view) {
 	const htmlCode: Reference<Code> = refs.html?.code;
 	const cssCode: Reference<Code> = refs.css?.code;
 
-	yield* viewportManager.animateToPresetLayout('B_EQ', {
+	yield* viewportManager.animateToPresetLayout('H_EQ', {
 		duration: 0,
-		browserImage: exampleImage
+		browserImage: h_eq
 	});
 
 	yield* waitFor(1);
@@ -37,10 +49,11 @@ export default makeScene2D(function*(view) {
 
 	yield* waitFor(1);
 
+	// This will now validate the image aspect ratio before changing
 	yield* all(
 		viewportManager.animateToPresetLayout('H_B2', {
 			duration: 1.2,
-			browserImage: exampleImage
+			browserImage: h_b2  // Will be validated automatically
 		}),
 		cssCode().code.append(`
 \
@@ -49,7 +62,23 @@ export default makeScene2D(function*(view) {
   margin: 20px 0;
   color: #666;
 }
+`, 2),
+	);
 
+	yield* waitFor(2);
+
+	// Example of direct validation (useful for conditional logic)
+	yield* all(
+		viewportManager.animateToPresetLayout('C_EQ', {
+			duration: 1.2,
+			browserImage: c_eq  // We can also validate directly
+			// No need to specify browserImage here since we already changed it above
+		}));
+
+	yield* all(
+		refs.css.viewport().tweenColor("violet", 1),
+		refs.css.viewport().lineWidth(2, 1),
+		cssCode().code.append(`
 .btn {
   background: #007bff;
   color: white;
@@ -60,16 +89,8 @@ export default makeScene2D(function*(view) {
 }`, 2)
 	);
 
-	yield* waitFor(2);
-
-	yield* viewportManager.animateToPresetLayout('C_EQ', {
-		duration: 1.2,
-		browserImage: exampleImage
-	});
-
 	if (cssCode) {
 		yield* cssCode().code.append(`
-
 .btn:hover {
   background: #0056b3;
   transform: translateY(-2px);
@@ -81,22 +102,35 @@ export default makeScene2D(function*(view) {
 
 	yield* viewportManager.animateToPresetLayout('C_B2', {
 		duration: 1.2,
-		browserImage: exampleImage
+		browserImage: c_b2  // Validation will occur automatically
 	});
 
 	yield* waitFor(2);
 
-	yield* viewportManager.animateToPresetLayout('EQ_H', {
-		duration: 1.2,
-		browserImage: exampleImage
-	});
+	yield* all(
+		refs.css.viewport().tweenColor("slate", 1),
+		refs.css.viewport().lineWidth(1, 1)
+	);
+
+	yield* all(
+		viewportManager.animateToPresetLayout('EQ_H', {
+			duration: 1.2,
+			browserImage: eq_h  // Will be validated
+		}),
+		htmlCode().code.remove(lines(1, 2), 1)
+	)
+		;
 
 	yield* waitFor(2);
 
-	yield* viewportManager.animateToPresetLayout('EQ_V', {
-		duration: 1.2,
-		browserImage: exampleImage
-	});
+	yield* all(
+		viewportManager.animateToPresetLayout('EQ_V', {
+			duration: 1.2,
+			browserImage: eq_v  // Will be validated
+		}),
+		cssCode().code.remove(lines(6, 19), 1),
+		htmlCode().code.append(`<p>Simple paragraph</p>`, 1)
+	);
 
 	yield* waitFor(2);
 
@@ -126,7 +160,7 @@ export default makeScene2D(function*(view) {
 
 	yield* viewportManager.animateToLayout({
 		duration: 1.2,
-		browserImage: exampleImage
+		browserImage: b_eq  // Will be validated
 	});
 
 	yield* waitFor(2);
@@ -135,17 +169,17 @@ export default makeScene2D(function*(view) {
 
 	yield* viewportManager.animateToLayout({
 		duration: 1.2,
-		browserImage: exampleImage
+		browserImage: b_eq  // Will be validated
 	});
 
 	yield* waitFor(2);
 
 	yield* viewportManager.animateToLayoutWithRatios(
-		{ html: 4, css: 2, browser: 1 },
+		{ html: 4, css: 1, browser: 2 },
 		{
 			orientation: 'smart',
 			duration: 1.5,
-			browserImage: exampleImage
+			browserImage: test1  // Will be validated
 		}
 	);
 
@@ -156,7 +190,7 @@ export default makeScene2D(function*(view) {
 		{
 			orientation: 'horizontal',
 			duration: 1.5,
-			browserImage: exampleImage
+			browserImage: test2  // Will be validated
 		}
 	);
 
@@ -167,7 +201,7 @@ export default makeScene2D(function*(view) {
 		{
 			orientation: 'vertical',
 			duration: 1.5,
-			browserImage: exampleImage
+			browserImage: test3  // Will be validated
 		}
 	);
 
@@ -195,7 +229,7 @@ export default makeScene2D(function*(view) {
 	viewportManager.showViewport('browser');
 	yield* viewportManager.animateToLayout({
 		duration: 1.2,
-		browserImage: exampleImage
+		browserImage: b_eq  // Will be validated
 	});
 
 	yield* waitFor(1.5);
@@ -214,35 +248,15 @@ export default makeScene2D(function*(view) {
   background: white;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-
-.card h2 {
-  color: #333;
-  margin-top: 0;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: bold;
-  color: #007bff;
-}`, 2)
+`, 2)
 		);
 	}
 
 	yield* waitFor(2);
 
-	const presets = ['H_EQ', 'H_B2', 'C_EQ', 'C_B2', 'B_EQ', 'EQ_H', 'EQ_V'];
-
-	for (const preset of presets) {
-		yield* viewportManager.animateToPresetLayout(preset, {
-			duration: 1,
-			browserImage: exampleImage
-		});
-		yield* waitFor(1.2);
-	}
-
 	yield* viewportManager.animateToPresetLayout('B_EQ', {
 		duration: 1.5,
-		browserImage: exampleImage
+		browserImage: b_eq  // Final validation
 	});
 
 	yield* waitFor(1);

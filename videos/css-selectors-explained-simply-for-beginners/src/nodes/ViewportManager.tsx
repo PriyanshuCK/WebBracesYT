@@ -21,8 +21,8 @@ export interface ViewportConfig {
 export const defaultViewportConfig: ViewportConfig = {
 	borderColor: colors.zinc["500"],
 	backgroundColor: colors.zinc["950"],
-	titleColor: colors.zinc["500"],
-	textColor: colors.zinc["100"],
+	titleColor: colors.zinc["900"],
+	textColor: colors.zinc["500"],
 	borderWidth: 1,
 	borderRadius: 8,
 	titleHeight: 40,
@@ -46,9 +46,66 @@ export interface ViewportLayout {
 
 export type DynamicLayoutConfig = Record<ViewportType, ViewportLayout>;
 
+export interface AspectRatioInfo {
+	presetName: string;
+	width: number;
+	height: number;
+	ratio: number;
+	tolerance: number;
+}
+
+export class ImageAspectValidator {
+	private static readonly DEFAULT_TOLERANCE = 0.05;
+	private allowedAspectRatios: AspectRatioInfo[] = [];
+
+	constructor(
+		private screenWidth: number,
+		private screenHeight: number,
+		private padding: number,
+		private titleHeight: number
+	) {
+		this.calculateAllowedAspectRatios();
+	}
+
+	private calculateAllowedAspectRatios(): void {
+		const layoutManager = new LayoutManager(this.screenWidth, this.screenHeight, this.padding);
+		const presetLayouts = layoutManager.getPresetLayouts();
+
+		const browserDimensions = new Set<string>();
+
+		Object.entries(presetLayouts).forEach(([presetName, layout]) => {
+			const browserLayout = layout.browser;
+			if (browserLayout) {
+				const imageWidth = browserLayout.width;
+				const imageHeight = browserLayout.height - this.titleHeight;
+				const aspectRatio = imageWidth / imageHeight;
+
+				const key = `${presetName}: ${imageWidth.toFixed(2)}x${imageHeight.toFixed(2)}`;
+				if (!browserDimensions.has(key)) {
+					browserDimensions.add(key);
+					this.allowedAspectRatios.push({
+						presetName: presetName,
+						width: imageWidth,
+						height: imageHeight,
+						ratio: aspectRatio,
+						tolerance: ImageAspectValidator.DEFAULT_TOLERANCE
+					});
+				}
+			}
+		});
+
+		console.log('Allowed aspect ratios for browser viewport:',
+			this.allowedAspectRatios.map(ar => `${ar.width}×${ar.height} (${ar.ratio.toFixed(3)})`));
+	}
+
+	getAllowedAspectRatios(): AspectRatioInfo[] {
+		return [...this.allowedAspectRatios];
+	}
+}
+
 export interface CodeViewportComponent {
 	component: Node;
-	viewport: Reference<Rect>;
+	viewport: Reference<ExtendedRect>;
 	code: Reference<Code>;
 	title: Reference<Txt>;
 	type: 'html' | 'css';
@@ -59,20 +116,28 @@ export interface BrowserViewportComponent {
 	viewport: Reference<Rect>;
 	image: Reference<Img>;
 	title: Reference<Txt>;
-	changeImage: (src: string, duration?: number) => Generator<any, void, unknown>;
 	type: 'browser';
+	changeImage: (src: string, duration?: number) => Generator<any, void, unknown>;
 }
 
 export type AnyViewportComponent = CodeViewportComponent | BrowserViewportComponent;
+
+type ViewportRefProps<T extends ViewportType> =
+	T extends 'browser'
+	? Pick<BrowserViewportComponent, 'viewport' | 'title' | 'image' | 'changeImage'>
+	: Pick<CodeViewportComponent, 'viewport' | 'title' | 'code'>;
+
+type ViewportRefs = {
+	[K in ViewportType]?: ViewportRefProps<K>;
+};
 
 export function createCodeViewport(
 	title: string,
 	language: 'html' | 'css',
 	initialCode: string = '',
 	config: ViewportConfig = defaultViewportConfig,
-	fontSize: number = 14
 ): CodeViewportComponent {
-	const viewportRef = createRef<Rect>();
+	const viewportRef = createRef<ExtendedRect>();
 	const titleRef = createRef<Txt>();
 	const codeRef = createRef<Code>();
 
@@ -87,37 +152,29 @@ export function createCodeViewport(
 			direction={"row-reverse"}
 			padding={config.padding}
 		>
-			<ExtendedRect
-				height={config.titleHeight}
-				width={70}
-				layout
-				justifyContent={"center"}
-				alignItems={"center"}
-				color={"slate"}
-				lineWidth={1}
-				opacity={0.6}
+			<Rect
+				height={spaceY[0.33]}
 			>
 				<Txt
 					ref={titleRef}
 					text={title}
 					fill={config.textColor}
-					fontSize={12}
-					fontFamily="'SF Pro Display', 'Segoe UI', system-ui, sans-serif"
+					fontWeight={600}
+					fontSize={16}
+					fontFamily={"'Cascadia Code', Consolas, 'Courier New', Monospace"}
 				/>
-			</ExtendedRect >
+			</Rect >
 			{language === 'html' ? (
 				<HTMLCode
 					ref={codeRef}
 					code={initialCode}
 					grow={1}
-					fontSize={fontSize * 1.5}
 				/>
 			) : (
 				<CSSCode
 					ref={codeRef}
 					code={initialCode}
 					grow={1}
-					fontSize={fontSize * 1.5}
 				/>
 			)}
 		</ExtendedRect>
@@ -135,7 +192,8 @@ export function createCodeViewport(
 export function createBrowserViewport(
 	title: string,
 	initialImageSrc: string = '',
-	config: ViewportConfig = defaultViewportConfig
+	config: ViewportConfig = defaultViewportConfig,
+	aspectValidator?: ImageAspectValidator
 ): BrowserViewportComponent {
 	const viewportRef: Reference<Rect> = createRef<Rect>();
 	const titleRef: Reference<Txt> = createRef<Txt>();
@@ -144,7 +202,7 @@ export function createBrowserViewport(
 	const viewport = (
 		<Rect
 			ref={viewportRef}
-			fill={config.backgroundColor}
+			fill={"white"}
 			stroke={config.borderColor}
 			lineWidth={config.borderWidth}
 			radius={config.borderRadius}
@@ -161,9 +219,7 @@ export function createBrowserViewport(
 					ref={titleRef}
 					text={title}
 					fill={config.textColor}
-					fontSize={16}
-					fontWeight={600}
-					fontFamily="'SF Pro Display', 'Segoe UI', system-ui, sans-serif"
+					fontSize={12}
 				/>
 			</Rect>
 
@@ -171,23 +227,9 @@ export function createBrowserViewport(
 				ref={imageRef}
 				src={initialImageSrc}
 				y={() => config.titleHeight / 2}
-				width={() => viewportRef().width() - config.padding * 2}
-				height={() => viewportRef().height() - config.titleHeight - config.padding * 2}
-				radius={4}
-				scale={() => {
-					if (!imageRef().naturalSize) return 1;
-
-					const containerWidth = viewportRef().width() - config.padding * 2;
-					const containerHeight = viewportRef().height() - config.titleHeight - config.padding * 2;
-					const imageAspect = imageRef().naturalSize().width / imageRef().naturalSize().height;
-					const containerAspect = containerWidth / containerHeight;
-
-					if (imageAspect > containerAspect) {
-						return containerWidth / imageRef().naturalSize().width;
-					} else {
-						return containerHeight / imageRef().naturalSize().height;
-					}
-				}}
+				width={() => viewportRef().width()}
+				height={() => viewportRef().height() - config.titleHeight}
+				radius={[0, 0, config.borderRadius, config.borderRadius]}
 			/>
 		</Rect>
 	);
@@ -203,8 +245,8 @@ export function createBrowserViewport(
 		viewport: viewportRef,
 		image: imageRef,
 		title: titleRef,
+		type: 'browser',
 		changeImage,
-		type: 'browser'
 	};
 }
 
@@ -240,7 +282,7 @@ class SingleViewportStrategy extends LayoutStrategy {
 		const layout = {} as DynamicLayoutConfig;
 
 		layout[viewport] = {
-			x: 0, // Centered
+			x: 0,
 			y: 0,
 			width: this.screenWidth / 2,
 			height: this.fullHeight
@@ -306,9 +348,10 @@ class TripleViewportStrategy extends LayoutStrategy {
 			.map(([type]) => type as ViewportType);
 
 		const [primary, ...secondary] = sortedByRatio;
+		const offsetX = halfWidth / 2 + this.padding / 2;
 
 		layout[primary] = {
-			x: -halfWidth / 2 - this.padding / 2,
+			x: primary === 'browser' ? offsetX : -offsetX,
 			y: 0,
 			width: halfWidth,
 			height: fullHeight
@@ -318,7 +361,7 @@ class TripleViewportStrategy extends LayoutStrategy {
 
 		if (sortedSecondary.length === 1) {
 			layout[sortedSecondary[0]] = {
-				x: halfWidth / 2 + this.padding / 2,
+				x: primary === 'browser' ? -offsetX : offsetX,
 				y: 0,
 				width: halfWidth,
 				height: fullHeight
@@ -329,14 +372,14 @@ class TripleViewportStrategy extends LayoutStrategy {
 			const thirdRatio = ratios[third] / (ratios[second] + ratios[third]);
 
 			layout[second] = {
-				x: halfWidth / 2 + this.padding / 2,
+				x: primary === 'browser' ? -offsetX : offsetX,
 				y: fullHeight / 2 - (fullHeight - this.padding) * secondRatio / 2,
 				width: halfWidth,
 				height: (fullHeight - this.padding) * secondRatio
 			};
 
 			layout[third] = {
-				x: halfWidth / 2 + this.padding / 2,
+				x: primary === 'browser' ? -offsetX : offsetX,
 				y: -fullHeight / 2 + (fullHeight - this.padding) * thirdRatio / 2,
 				width: halfWidth,
 				height: (fullHeight - this.padding) * thirdRatio
@@ -489,6 +532,10 @@ export class LayoutManager {
 			'EQ_H': horizontalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 1, css: 1, browser: 1 }),
 
 			'EQ_V': verticalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 1, css: 1, browser: 1 }),
+
+			'test1': tripleStrategy.calculateLayout(['html', 'css', 'browser'], { html: 4, css: 1, browser: 2 }),
+			'test2': horizontalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 1, css: 3, browser: 2 }),
+			'test3': verticalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 2, css: 1, browser: 3 }),
 		};
 	}
 
@@ -538,6 +585,7 @@ export class ViewportManager {
 	private layoutManager: LayoutManager;
 	private viewports: Map<ViewportType, AnyViewportComponent> = new Map();
 	private activeViewports: Set<ViewportType> = new Set();
+	private aspectValidator: ImageAspectValidator;
 
 	private htmlConfig: ViewportConfig;
 	private cssConfig: ViewportConfig;
@@ -556,20 +604,26 @@ export class ViewportManager {
 		this.browserConfig = browserConfig;
 
 		this.layoutManager = new LayoutManager(screenWidth, screenHeight, padding);
+		this.aspectValidator = new ImageAspectValidator(
+			screenWidth,
+			screenHeight,
+			padding,
+			browserConfig.titleHeight
+		);
 	}
 
-	addHtml(initialCode: string = '', fontSize: number = 14): this {
+	addHtml(initialCode: string = ''): this {
 		if (!this.viewports.has('html')) {
-			const viewport = createCodeViewport('HTML', 'html', initialCode, this.htmlConfig, fontSize);
+			const viewport = createCodeViewport('HTML', 'html', initialCode, this.htmlConfig);
 			this.viewports.set('html', viewport);
 			this.activeViewports.add('html');
 		}
 		return this;
 	}
 
-	addCss(initialCode: string = '', fontSize: number = 14): this {
+	addCss(initialCode: string = ''): this {
 		if (!this.viewports.has('css')) {
-			const viewport = createCodeViewport('CSS', 'css', initialCode, this.cssConfig, fontSize);
+			const viewport = createCodeViewport('CSS', 'css', initialCode, this.cssConfig);
 			this.viewports.set('css', viewport);
 			this.activeViewports.add('css');
 		}
@@ -578,7 +632,7 @@ export class ViewportManager {
 
 	addBrowser(initialImage: string = ''): this {
 		if (!this.viewports.has('browser')) {
-			const viewport = createBrowserViewport('Browser Preview', initialImage, this.browserConfig);
+			const viewport = createBrowserViewport('Browser - file:///C:/Users/PriyanshuCK/Desktop/index.html', initialImage, this.browserConfig);
 			this.viewports.set('browser', viewport);
 			this.activeViewports.add('browser');
 		}
@@ -613,7 +667,7 @@ export class ViewportManager {
 	}
 
 	getViewportRefs() {
-		const refs: any = {};
+		const refs: ViewportRefs = {};
 
 		this.viewports.forEach((viewport, type) => {
 			if (type === 'browser') {
@@ -716,7 +770,7 @@ export class ViewportManager {
 		this.activeViewports.add('css');
 		this.activeViewports.add('browser');
 
-		const animations = [];
+		const animations: Generator<any, void, unknown>[] = [];
 
 		(['html', 'css', 'browser'] as ViewportType[]).forEach(type => {
 			const viewport = this.viewports.get(type);
@@ -732,11 +786,9 @@ export class ViewportManager {
 			}
 		});
 
-		if (browserImage) {
+		if (browserImage && this.activeViewports.has('browser')) {
 			const browserViewport = this.viewports.get('browser') as BrowserViewportComponent;
-			if (browserViewport) {
-				animations.push(browserViewport.changeImage(browserImage, duration * 0.8));
-			}
+			animations.push(browserViewport.changeImage(browserImage, duration * 0.8));
 		}
 
 		yield* all(...animations);
@@ -798,4 +850,8 @@ export class ViewportManager {
 
 		yield* all(...animations);
 	};
+
+	getAllowedAspectRatios(): AspectRatioInfo[] {
+		return this.aspectValidator.getAllowedAspectRatios();
+	}
 }
