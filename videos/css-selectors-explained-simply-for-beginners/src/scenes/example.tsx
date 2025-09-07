@@ -1,5 +1,5 @@
 import { Code, lines, makeScene2D } from '@motion-canvas/2d';
-import { all, Reference, waitFor } from '@motion-canvas/core';
+import { all, createRef, delay, Reference, waitFor } from '@motion-canvas/core';
 import { Grid, ViewportManager } from '../nodes';
 import h_eq from '../images/h_eq.png';
 import h_b2 from '../images/h_b2.png';
@@ -12,32 +12,86 @@ import test1 from '../images/test1.png';
 import test2 from '../images/test2.png';
 import test3 from '../images/test3.png';
 import colors from '../lib/colors';
+import spaceX, { spaceNY, spaceY } from '../lib/space';
+import { ExtendedTxt } from '../nodes/ExtendedTxt';
 
 export default makeScene2D(function*(view) {
 	view.fontFamily('Geist');
 	view.fill(colors.zinc[950]);
-	view.add(<Grid />);
+	// view.add(<Grid />);
 
 	const viewportManager = new ViewportManager()
 		.addHtml('<h1>Hello World</h1>')
 		.addCss('h1 { color: blue; }')
 		.addBrowser(h_eq);
 
-	// Log allowed aspect ratios for debugging
-	console.log('Allowed aspect ratios:', viewportManager.getAllowedAspectRatios());
-
 	viewportManager.addToView(view);
 
-	const refs = viewportManager.getViewportRefs();
-	const htmlCode: Reference<Code> = refs.html?.code;
-	const cssCode: Reference<Code> = refs.css?.code;
+	const wrapper = viewportManager.getWrapper();
+
+	wrapper().position([0, spaceY[1]]);
+	wrapper().opacity(0);
+	yield* viewportManager.animateToLayout();
+
+	yield* all(
+		wrapper().position([0, 0], 1),
+		wrapper().opacity(1, 1),
+	);
+
+	yield* waitFor(1);
+
+	const typeSelectors = createRef<ExtendedTxt>();
+	view.add(
+		<>
+			<ExtendedTxt ref={typeSelectors} y={spaceNY[4.5]} fontSize={spaceY[0.67]} fontWeight={500} opacity={0} />
+		</>
+	);
+
+	yield* wrapper().size([spaceX[18], spaceY[8]], 1);
+	viewportManager.updateLayoutDimensions(spaceX[18], spaceY[8]);
+	yield* all(
+		viewportManager.animateToPresetLayout('B_EQ', { duration: 1 }),
+		wrapper().y(spaceY[1], 1),
+		delay(0.2, typeSelectors().text('Type Selectors', 1)),
+		delay(0.2, typeSelectors().opacity(1, 1))
+	);
+
+	yield* waitFor(2);
+
+	yield* all(
+		wrapper().position([spaceX[6], spaceY[4]], 1),
+		wrapper().rotation(15, 1),
+		wrapper().scale(0.8, 1)
+	);
+
+	yield* waitFor(1);
+
+	yield* all(
+		wrapper().scale(0.3, 1),
+		wrapper().opacity(0, 1),
+		wrapper().rotation(0, 1)
+	);
+
+	yield* waitFor(1);
+
+	yield* all(
+		wrapper().position([0, spaceY[1]], 1),
+		wrapper().scale(1, 1),
+		wrapper().opacity(1, 1)
+	);
+
+	yield* waitFor(1);
 
 	yield* viewportManager.animateToPresetLayout('H_EQ', {
-		duration: 0,
+		duration: 1,
 		browserImage: h_eq
 	});
 
 	yield* waitFor(1);
+
+	const refs = viewportManager.getViewportRefs();
+	const htmlCode: Reference<Code> = refs.html?.code;
+	const cssCode: Reference<Code> = refs.css?.code;
 
 	if (htmlCode) {
 		yield* htmlCode().code.append(`
@@ -118,10 +172,19 @@ export default makeScene2D(function*(view) {
 			browserImage: eq_h  // Will be validated
 		}),
 		htmlCode().code.remove(lines(1, 2), 1)
-	)
-		;
+	);
 
 	yield* waitFor(2);
+
+	yield* wrapper().size([spaceX[18], spaceY[10]], 1);
+	viewportManager.updateLayoutDimensions(spaceX[18], spaceY[10]);
+	yield* all(
+		delay(0.2, viewportManager.animateToPresetLayout('EQ_H')),
+		typeSelectors().opacity(0, 0.75),
+		typeSelectors().y(spaceNY[4], 0.75),
+		delay(0.2, wrapper().y(spaceY[0], 0.75))
+	);
+	yield* waitFor(1);
 
 	yield* all(
 		viewportManager.animateToPresetLayout('EQ_V', {

@@ -1,7 +1,6 @@
 import { Rect, Txt, Code, Img, View2D, Node } from '@motion-canvas/2d/lib/components';
 import { createRef, Reference } from '@motion-canvas/core/lib/utils';
 import { all } from '@motion-canvas/core/lib/flow';
-import { easeInOutCubic } from '@motion-canvas/core/lib/tweening';
 import colors from '../lib/colors';
 import spaceX, { spaceY } from '../lib/space';
 import { ExtendedRect } from './ExtendedRectangle';
@@ -94,8 +93,8 @@ export class ImageAspectValidator {
 			}
 		});
 
-		console.log('Allowed aspect ratios for browser viewport:',
-			this.allowedAspectRatios.map(ar => `${ar.width}×${ar.height} (${ar.ratio.toFixed(3)})`));
+		//		console.log('Allowed aspect ratios for browser viewport:',
+		//			this.allowedAspectRatios.map(ar => `${ar.presetName}: ${ar.width.toFixed(3)}×${ar.height.toFixed(3)} (${ar.ratio.toFixed(3)})`));
 	}
 
 	getAllowedAspectRatios(): AspectRatioInfo[] {
@@ -193,7 +192,6 @@ export function createBrowserViewport(
 	title: string,
 	initialImageSrc: string = '',
 	config: ViewportConfig = defaultViewportConfig,
-	aspectValidator?: ImageAspectValidator
 ): BrowserViewportComponent {
 	const viewportRef: Reference<Rect> = createRef<Rect>();
 	const titleRef: Reference<Txt> = createRef<Txt>();
@@ -235,9 +233,9 @@ export function createBrowserViewport(
 	);
 
 	const changeImage = function*(newImageSrc: string, duration: number = 0.6) {
-		yield* imageRef().opacity(0, duration / 2, easeInOutCubic);
+		yield* imageRef().opacity(0, duration / 2);
 		imageRef().src(newImageSrc);
-		yield* imageRef().opacity(1, duration / 2, easeInOutCubic);
+		yield* imageRef().opacity(1, duration / 2);
 	};
 
 	return {
@@ -587,6 +585,12 @@ export class ViewportManager {
 	private activeViewports: Set<ViewportType> = new Set();
 	private aspectValidator: ImageAspectValidator;
 
+	private wrapperRef: Reference<Rect>;
+	private wrapperContainer: Node;
+	private screenWidth: number;
+	private screenHeight: number;
+	private padding: number;
+
 	private htmlConfig: ViewportConfig;
 	private cssConfig: ViewportConfig;
 	private browserConfig: ViewportConfig;
@@ -602,6 +606,9 @@ export class ViewportManager {
 		this.htmlConfig = htmlConfig;
 		this.cssConfig = cssConfig;
 		this.browserConfig = browserConfig;
+		this.screenWidth = screenWidth;
+		this.screenHeight = screenHeight;
+		this.padding = padding;
 
 		this.layoutManager = new LayoutManager(screenWidth, screenHeight, padding);
 		this.aspectValidator = new ImageAspectValidator(
@@ -610,6 +617,33 @@ export class ViewportManager {
 			padding,
 			browserConfig.titleHeight
 		);
+
+		this.wrapperRef = createRef<Rect>();
+		this.wrapperContainer = (
+			<Rect
+				ref={this.wrapperRef}
+				size={[screenWidth, screenHeight]}
+				fill={null}
+				stroke={null}
+			/>
+		);
+	}
+
+	getWrapper(): Reference<Rect> {
+		return this.wrapperRef;
+	}
+
+	addToView(view: View2D): void {
+		view.add(this.wrapperContainer);
+		this.getComponents().forEach(component => {
+			this.wrapperRef().add(component);
+		});
+	}
+
+	private addComponentToWrapper(component: Node): void {
+		if (this.wrapperRef()) {
+			this.wrapperRef().add(component);
+		}
 	}
 
 	addHtml(initialCode: string = ''): this {
@@ -617,6 +651,7 @@ export class ViewportManager {
 			const viewport = createCodeViewport('HTML', 'html', initialCode, this.htmlConfig);
 			this.viewports.set('html', viewport);
 			this.activeViewports.add('html');
+			this.addComponentToWrapper(viewport.component);
 		}
 		return this;
 	}
@@ -626,17 +661,35 @@ export class ViewportManager {
 			const viewport = createCodeViewport('CSS', 'css', initialCode, this.cssConfig);
 			this.viewports.set('css', viewport);
 			this.activeViewports.add('css');
+			this.addComponentToWrapper(viewport.component);
 		}
 		return this;
 	}
 
 	addBrowser(initialImage: string = ''): this {
 		if (!this.viewports.has('browser')) {
-			const viewport = createBrowserViewport('Browser - file:///C:/Users/PriyanshuCK/Desktop/index.html', initialImage, this.browserConfig);
+			const viewport = createBrowserViewport(
+				'Browser - file:///C:/Users/PriyanshuCK/Desktop/index.html',
+				initialImage,
+				this.browserConfig
+			);
 			this.viewports.set('browser', viewport);
 			this.activeViewports.add('browser');
+			this.addComponentToWrapper(viewport.component);
 		}
 		return this;
+	}
+
+	updateLayoutDimensions(width: number, height: number): void {
+		this.screenWidth = width;
+		this.screenHeight = height;
+		this.layoutManager = new LayoutManager(width, height, this.padding);
+		this.aspectValidator = new ImageAspectValidator(
+			width,
+			height,
+			this.padding,
+			this.browserConfig.titleHeight
+		);
 	}
 
 	removeViewport(type: ViewportType): this {
@@ -660,10 +713,6 @@ export class ViewportManager {
 			.map(type => this.viewports.get(type))
 			.filter(Boolean)
 			.map(v => v!.component);
-	}
-
-	addToView(view: View2D): void {
-		this.getComponents().forEach(component => view.add(component));
 	}
 
 	getViewportRefs() {
@@ -725,9 +774,9 @@ export class ViewportManager {
 				const targetLayout = layout[type];
 				animations.push(
 					all(
-						viewport.viewport().position([targetLayout.x, targetLayout.y], duration, easeInOutCubic),
-						viewport.viewport().size([targetLayout.width, targetLayout.height], duration, easeInOutCubic),
-						viewport.viewport().opacity(1, duration / 2, easeInOutCubic)
+						viewport.viewport().position([targetLayout.x, targetLayout.y], duration),
+						viewport.viewport().size([targetLayout.width, targetLayout.height], duration),
+						viewport.viewport().opacity(1, duration / 2)
 					)
 				);
 			}
@@ -736,7 +785,7 @@ export class ViewportManager {
 		if (hideInactive) {
 			this.viewports.forEach((viewport, type) => {
 				if (!this.activeViewports.has(type)) {
-					animations.push(viewport.viewport().opacity(0, duration / 2, easeInOutCubic));
+					animations.push(viewport.viewport().opacity(0, duration / 2));
 				}
 			});
 		}
@@ -778,9 +827,9 @@ export class ViewportManager {
 				const targetLayout = layout[type];
 				animations.push(
 					all(
-						viewport.viewport().position([targetLayout.x, targetLayout.y], duration, easeInOutCubic),
-						viewport.viewport().size([targetLayout.width, targetLayout.height], duration, easeInOutCubic),
-						viewport.viewport().opacity(1, duration / 2, easeInOutCubic)
+						viewport.viewport().position([targetLayout.x, targetLayout.y], duration),
+						viewport.viewport().size([targetLayout.width, targetLayout.height], duration),
+						viewport.viewport().opacity(1, duration / 2)
 					)
 				);
 			}
@@ -827,9 +876,9 @@ export class ViewportManager {
 				const targetLayout = layout[type];
 				animations.push(
 					all(
-						viewport.viewport().position([targetLayout.x, targetLayout.y], duration, easeInOutCubic),
-						viewport.viewport().size([targetLayout.width, targetLayout.height], duration, easeInOutCubic),
-						viewport.viewport().opacity(1, duration / 2, easeInOutCubic)
+						viewport.viewport().position([targetLayout.x, targetLayout.y], duration),
+						viewport.viewport().size([targetLayout.width, targetLayout.height], duration),
+						viewport.viewport().opacity(1, duration / 2)
 					)
 				);
 			}
@@ -838,7 +887,7 @@ export class ViewportManager {
 		if (hideInactive) {
 			this.viewports.forEach((viewport, type) => {
 				if (!this.activeViewports.has(type)) {
-					animations.push(viewport.viewport().opacity(0, duration / 2, easeInOutCubic));
+					animations.push(viewport.viewport().opacity(0, duration / 2));
 				}
 			});
 		}
