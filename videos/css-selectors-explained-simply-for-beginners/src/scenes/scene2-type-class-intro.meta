@@ -1,0 +1,46 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "type-selector",
+      "targetTime": 4.3469074475238285
+    },
+    {
+      "name": "all-elements-of-type",
+      "targetTime": 6.665388768180241
+    },
+    {
+      "name": "all-paragraphs",
+      "targetTime": 9.384154691046978
+    },
+    {
+      "name": "but-sometimes",
+      "targetTime": 10.384154691046978
+    },
+    {
+      "name": "don't-style",
+      "targetTime": 12.199835667851788
+    },
+    {
+      "name": "maybe-10",
+      "targetTime": 14.21631557223756
+    },
+    {
+      "name": "only-two",
+      "targetTime": 17.20435869022215
+    },
+    {
+      "name": "class-selectors",
+      "targetTime": 19.341440191217913
+    },
+    {
+      "name": "specific-elements",
+      "targetTime": 22.410307514737017
+    },
+    {
+      "name": "style-them",
+      "targetTime": 25.66185199411918
+    }
+  ],
+  "seed": 841587742
+}
