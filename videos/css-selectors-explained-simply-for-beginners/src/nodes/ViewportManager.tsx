@@ -93,8 +93,7 @@ export class ImageAspectValidator {
 			}
 		});
 
-		//		console.log('Allowed aspect ratios for browser viewport:',
-		//			this.allowedAspectRatios.map(ar => `${ar.presetName}: ${ar.width.toFixed(3)}×${ar.height.toFixed(3)} (${ar.ratio.toFixed(3)})`));
+		console.log('ARs:', this.allowedAspectRatios);
 	}
 
 	getAllowedAspectRatios(): AspectRatioInfo[] {

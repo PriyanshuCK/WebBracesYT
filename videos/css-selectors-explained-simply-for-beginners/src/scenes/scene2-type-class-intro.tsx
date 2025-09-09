@@ -10,6 +10,9 @@ import beq4 from '../images/s2/beq4.png';
 import beq5 from '../images/s2/beq5.png';
 import beq6 from '../images/s2/beq6.png';
 import beq8 from '../images/s2/beq8.png';
+import beq9 from '../images/s2/beq9.png';
+import beq10 from '../images/s2/beq10.png';
+import beq11 from '../images/s2/beq11.png';
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 
 export default makeScene2D(function*(view) {
@@ -305,6 +308,119 @@ p {
 		delay(0.75, viewportManager.animateToLayout({ browserImage: beq8, duration: 0.5 })),
 	)
 
+	const highlightRect3 = createRef<ExtendedRect>();
+	const tag3 = createRef<Icon>();
+	const arrow5 = createRef<Circle>();
+	view.add(
+		<>
+			<ExtendedRect
+				ref={highlightRect3}
+				position={[spaceNX[9] + 8, spaceY[0] - 8]}
+				size={0}
+				highlighted
+				color={"yellow"}
+				lineWidth={3}
+				opacity={0}
+			/>
+			<Icon
+				ref={tag3}
+				icon={"heroicons:tag-20-solid"}
+				color={colors.yellow[500]}
+				size={spaceY["0.5"]}
+				x={() => highlightRect3().right().x}
+				y={() => highlightRect3().bottom().y}
+				opacity={0}
+			/>
+			<Circle
+				ref={arrow5}
+				x={spaceNX[3.25]}
+				y={spaceY[2.5]}
+				size={spaceY[4.5]}
+				stroke={colors.slate[0]}
+				startAngle={270}
+				endAngle={360}
+				endArrow
+				arrowSize={10}
+				lineWidth={3}
+				end={0}
+			/>
+		</>
+	);
+
+	yield* all(
+		highlightRect3().position([spaceNX[6] - 16, spaceY[0.25] - 8], 0.75),
+		highlightRect3().size([spaceX[5.5], spaceY[0.5]], 0.75),
+		highlightRect3().opacity(1, 0.75),
+		delay(0.5, tag3().opacity(1, 0.75)),
+		delay(0.5, arrow5().end(1, 0.75)),
+		delay(1.25, viewportManager.animateToLayout({ browserImage: beq9, duration: 0.5 })),
+	);
+
+	yield* waitUntil("first-in-html");
+
+	yield* all(
+		highlightRect1().opacity(0, 0.75),
+		highlightRect1().position([spaceNX[9] + 8, spaceNY[1.5]], 0.75),
+		highlightRect1().size(0, 0.75),
+		highlightRect2().opacity(0, 0.75),
+		highlightRect2().position([spaceNX[9] + 8, spaceY[1.33]], 0.75),
+		highlightRect2().size(0, 0.75),
+		highlightRect3().opacity(0, 0.75),
+		highlightRect3().position([spaceNX[9] + 8, spaceY[0] - 8], 0.75),
+		highlightRect3().size(0, 0.75),
+		makeBlue().opacity(0, 0.5),
+		makeYellow().opacity(0, 0.5),
+		arrow3().end(0, 0.5),
+		arrow4().end(0, 0.5),
+		arrow5().end(0, 0.5),
+		tag1().opacity(0, 0.5),
+		tag2().opacity(0, 0.5),
+		tag3().opacity(0, 0.5),
+		viewportManager.animateToLayout({ browserImage: beq6, duration: 0.5 })
+	);
+
+	yield* all(
+		htmlCode().code.replace(lines(0, 9), `\
+<h2>Useful VS Code Shortcuts</h2>
+
+<p>Alt+↑↓ moves line</p>
+<p>Ctrl+D selects next occurrence</p>
+<p>Ctrl+/ comments</p>
+`, 0.75),
+		viewportManager.animateToLayout({ browserImage: beq10, duration: 1 })
+	);
+
+	yield* waitUntil("class-attribute");
+	yield* all(
+		htmlCode().code.insert([2, 2], ` class=""`, 0.75),
+		htmlCode().code.insert([4, 2], ` class=""`, 0.75),
+	);
+
+	yield* waitUntil("class-highlight");
+
+	yield* all(
+		htmlCode().code.insert([2, 10], `highlight`, 0.75),
+		htmlCode().code.insert([4, 10], `highlight`, 0.75)
+	);
+
+	yield* waitUntil("now-in-css");
+	viewportManager.showViewport('css');
+	yield* viewportManager.animateToLayout({ browserImage: beq10, duration: 1 }
+	);
+
+	yield* waitUntil("dot-followed-by-class-name");
+	yield* cssCode().code.append(`.`, 0.75);
+	yield* cssCode().code.append(`\
+highlight`, 0.75);
+
+	yield* all(
+		cssCode().code.append(` {
+  color: green;
+}
+`, 0.75),
+	);
+	yield* viewportManager.animateToLayout({ browserImage: beq11, duration: 0.75 });
+	// have only 2 or 3 tags
 	// beq7 - both green
 
 	yield* waitFor(30);

@@ -40,6 +40,26 @@
     {
       "name": "style-them",
       "targetTime": 25.66185199411918
+    },
+    {
+      "name": "first-in-html",
+      "targetTime": 31.198177021245662
+    },
+    {
+      "name": "class-attribute",
+      "targetTime": 33.3125242202209
+    },
+    {
+      "name": "class-highlight",
+      "targetTime": 39.41329373380252
+    },
+    {
+      "name": "now-in-css",
+      "targetTime": 42.040548181602496
+    },
+    {
+      "name": "dot-followed-by-class-name",
+      "targetTime": 44.61220306813271
     }
   ],
   "seed": 841587742
