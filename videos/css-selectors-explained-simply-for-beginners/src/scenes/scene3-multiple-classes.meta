@@ -1,0 +1,78 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "give-an-element",
+      "targetTime": 1.4338409407227029
+    },
+    {
+      "name": "our-dot-highlight",
+      "targetTime": 4.9728881800181295
+    },
+    {
+      "name": "still-match",
+      "targetTime": 6.893308251639679
+    },
+    {
+      "name": "other-classes",
+      "targetTime": 9.168799580944171
+    },
+    {
+      "name": "apply-style",
+      "targetTime": 12.443885787579315
+    },
+    {
+      "name": "do-this",
+      "targetTime": 15.9040283029452
+    },
+    {
+      "name": "this-rule",
+      "targetTime": 21.6140357774213
+    },
+    {
+      "name": "only-apply",
+      "targetTime": 23.047876718144003
+    },
+    {
+      "name": "that-have-these",
+      "targetTime": 28.52792511955788
+    },
+    {
+      "name": "so-this-html",
+      "targetTime": 30.52792511955788
+    },
+    {
+      "name": "incredibly-useful",
+      "targetTime": 33.79439546849228
+    },
+    {
+      "name": "let's-take-buttons",
+      "targetTime": 37.482531806074164
+    },
+    {
+      "name": "base-button-style",
+      "targetTime": 40.27096262025444
+    },
+    {
+      "name": "variations-like",
+      "targetTime": 44.97556930677072
+    },
+    {
+      "name": "mix&match",
+      "targetTime": 48.886255062795264
+    },
+    {
+      "name": "primaryLarge",
+      "targetTime": 52.74694081881981
+    },
+    {
+      "name": "secondaryLarge",
+      "targetTime": 54.646646342221416
+    },
+    {
+      "name": "justPrimary",
+      "targetTime": 56.354734278389415
+    }
+  ],
+  "seed": 2447903078
+}

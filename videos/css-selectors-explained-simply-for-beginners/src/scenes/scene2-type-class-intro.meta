@@ -50,6 +50,14 @@
       "targetTime": 33.3125242202209
     },
     {
+      "name": "to-the-elements",
+      "targetTime": 34.638018861458505
+    },
+    {
+      "name": "example-here",
+      "targetTime": 37.49816587932971
+    },
+    {
       "name": "class-highlight",
       "targetTime": 39.41329373380252
     },
@@ -59,7 +67,27 @@
     },
     {
       "name": "dot-followed-by-class-name",
-      "targetTime": 44.61220306813271
+      "targetTime": 44.252518917359204
+    },
+    {
+      "name": "leaving-other",
+      "targetTime": 51.581233431725956
+    },
+    {
+      "name": "we-used-dot",
+      "targetTime": 54.066299066183085
+    },
+    {
+      "name": "no-dot-html",
+      "targetTime": 57.588888780620735
+    },
+    {
+      "name": "dot-in-css",
+      "targetTime": 59.72817577712547
+    },
+    {
+      "name": "s3-end",
+      "targetTime": 77.65622709771498
     }
   ],
   "seed": 841587742

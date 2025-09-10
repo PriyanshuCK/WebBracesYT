@@ -1,4 +1,4 @@
-import { Rect, Txt, Code, Img, View2D, Node } from '@motion-canvas/2d/lib/components';
+import { Rect, Txt, Code, Img, View2D, Node, Camera } from '@motion-canvas/2d/lib/components';
 import { createRef, Reference } from '@motion-canvas/core/lib/utils';
 import { all } from '@motion-canvas/core/lib/flow';
 import colors from '../lib/colors';
@@ -531,7 +531,7 @@ export class LayoutManager {
 			'EQ_V': verticalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 1, css: 1, browser: 1 }),
 
 			'test1': tripleStrategy.calculateLayout(['html', 'css', 'browser'], { html: 4, css: 1, browser: 2 }),
-			'test2': horizontalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 1, css: 3, browser: 2 }),
+			'test2': horizontalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 7.2, css: 4.8, browser: 6 }),
 			'test3': verticalStrategy.calculateLayout(['html', 'css', 'browser'], { html: 2, css: 1, browser: 3 }),
 		};
 	}
@@ -585,6 +585,7 @@ export class ViewportManager {
 	private aspectValidator: ImageAspectValidator;
 
 	private wrapperRef: Reference<Rect>;
+	private cameraRef: Reference<Camera>;
 	private wrapperContainer: Node;
 	private screenWidth: number;
 	private screenHeight: number;
@@ -618,18 +619,25 @@ export class ViewportManager {
 		);
 
 		this.wrapperRef = createRef<Rect>();
+		this.cameraRef = createRef<Camera>();
 		this.wrapperContainer = (
-			<Rect
-				ref={this.wrapperRef}
-				size={[screenWidth, screenHeight]}
-				fill={null}
-				stroke={null}
-			/>
+			<Camera ref={this.cameraRef}>
+				<Rect
+					ref={this.wrapperRef}
+					size={[screenWidth, screenHeight]}
+					fill={null}
+					stroke={null}
+				/>
+			</Camera>
 		);
 	}
 
 	getWrapper(): Reference<Rect> {
 		return this.wrapperRef;
+	}
+
+	getViewportCamera(): Reference<Camera> {
+		return this.cameraRef;
 	}
 
 	addToView(view: View2D): void {
