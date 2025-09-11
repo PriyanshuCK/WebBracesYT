@@ -76,6 +76,26 @@
     {
       "name": "saves-us",
       "targetTime": 60.49647718685949
+    },
+    {
+      "name": "dot-primary",
+      "targetTime": 65.70628180701826
+    },
+    {
+      "name": "dot-secondary",
+      "targetTime": 66.97967372405948
+    },
+    {
+      "name": "dozens",
+      "targetTime": 68.93039635727169
+    },
+    {
+      "name": "real-power",
+      "targetTime": 72.05009035292053
+    },
+    {
+      "name": "s3-end",
+      "targetTime": 75.06677996076763
     }
   ],
   "seed": 2447903078

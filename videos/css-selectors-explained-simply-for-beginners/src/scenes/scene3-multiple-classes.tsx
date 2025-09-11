@@ -1,7 +1,7 @@
 import { Code, Layout, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, ExtendedRect, Grid, ViewportManager } from "../nodes";
-import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
+import { all, createRef, createRefArray, DEFAULT, delay, Direction, Reference, sequence, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import h2b1 from "../images/s3/h2b1.png";
 import h2b2 from "../images/s3/h2b2.png";
@@ -16,7 +16,7 @@ import { ExtendedTxt } from "../nodes/ExtendedTxt";
 export default makeScene2D(function*(view) {
 	view.fontFamily('Geist');
 	view.fill(colors.zinc[950]);
-	// view.opacity(0.3);
+	view.opacity(0.3);
 	view.add(<Grid />);
 
 	const viewportManager = new ViewportManager()
@@ -289,37 +289,67 @@ button.large {
 	yield* waitUntil("saves-us");
 	const browserViewport = refs.browser?.viewport;
 
+	const inefficientClasses = [
+		'.primary-small-button',
+		'.small-button',
+		'.primary-button',
+		'.secondary-large-button',
+		'.large-button',
+		'.secondary-small-button',
+		'.primary-large-button',
+	];
+	const items = createRefArray<ExtendedTxt>();
+
 	view.add(
 		<Layout layout direction="column" gap={spaceY[0.5]} x={spaceX[6]} >
-			<ExtendedTxt
-				text={"primary-small-button"}
-			/>
-			<ExtendedTxt
-				text={"small-button"}
-			/>
-			<ExtendedTxt
-				text={"primary-button"}
-			/>
-			<ExtendedTxt
-				text={"secondary-large-button"}
-			/>
-			<ExtendedTxt
-				text={"large-button"}
-			/>
-			<ExtendedTxt
-				text={"secondary-small-button"}
-			/>
-			<ExtendedTxt
-				text={"primary-large-button"}
-			/>
+			{inefficientClasses.map(text => (
+				<ExtendedTxt ref={items} text={text} opacity={0} />
+			))}
+		</Layout>
+	);
+
+	yield* browserViewport().opacity(0, 0.75);
+
+	yield* sequence(0.2, ...items.map(node => node.opacity(1, 0.5)));
+
+	yield* waitUntil("dot-primary")
+	cursor().position([spaceX[3.5], spaceY[3.75]]);
+	yield* all(
+		cursor().opacity(1, 0.75),
+		cursor().position([spaceX[5.75], spaceY[3]], 0.75)
+	);
+
+	yield* waitUntil("dot-secondary");
+	yield* cursor().position([spaceX[6.25], spaceY[2]], 0.75);
+
+	yield* waitUntil("dozens");
+	yield* cursor().position([spaceX[7], spaceNY[2]], 0.75);
+
+	yield* waitFor(0.5)
+	yield* all(
+		cursor().position([spaceNX[5], spaceNY[1.5]], 1),
+		delay(0.5, htmlCode().selection(
+			htmlCode().findAllRanges(/\bclass\s*=\s*(?:"[^"]*"|'[^']*')/g),
+			0.6
+		)),
+	);
+
+	yield* waitUntil("real-power");
+	const emojis = createRefArray<ExtendedTxt>();
+	view.add(
+		<Layout layout gap={spaceX[5]} y={spaceY[4]} >
+			{["💪🏻", "✨", "👎🏻"].map(text => (
+				<ExtendedTxt ref={emojis} text={text} opacity={0} fontSize={spaceY[0.75]} />
+			))}
 		</Layout>
 	);
 
 	yield* all(
-		browserViewport().opacity(0, 0.75),
+		sequence(0.2, ...emojis.map(node => node.opacity(1, 0.5))),
+		cursor().opacity(0, 0.75),
+		cursor().position([spaceNX[6], spaceNY[0.5]], 0.75),
+		htmlCode().selection(DEFAULT, 0.75),
 	);
 
-
-
-	yield* waitFor(90);
+	yield* waitUntil("s3-end");
 });
