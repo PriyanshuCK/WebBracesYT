@@ -1,4 +1,4 @@
-import { Code, lines, makeScene2D, word } from "@motion-canvas/2d";
+import { Code, Layout, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, ExtendedRect, Grid, ViewportManager } from "../nodes";
 import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
@@ -11,11 +11,12 @@ import eqh2 from "../images/s3/eqh2.png";
 import eqh3 from "../images/s3/eqh3.png";
 import eqh4 from "../images/s3/eqh4.png";
 import eqh5 from "../images/s3/eqh5.png";
+import { ExtendedTxt } from "../nodes/ExtendedTxt";
 
 export default makeScene2D(function*(view) {
 	view.fontFamily('Geist');
 	view.fill(colors.zinc[950]);
-	view.opacity(0.3);
+	// view.opacity(0.3);
 	view.add(<Grid />);
 
 	const viewportManager = new ViewportManager()
@@ -284,6 +285,41 @@ button.large {
 		htmlCode().selection(DEFAULT, 0.75),
 		cssCode().selection(DEFAULT, 0.75),
 	);
+
+	yield* waitUntil("saves-us");
+	const browserViewport = refs.browser?.viewport;
+
+	view.add(
+		<Layout layout direction="column" gap={spaceY[0.5]} x={spaceX[6]} >
+			<ExtendedTxt
+				text={"primary-small-button"}
+			/>
+			<ExtendedTxt
+				text={"small-button"}
+			/>
+			<ExtendedTxt
+				text={"primary-button"}
+			/>
+			<ExtendedTxt
+				text={"secondary-large-button"}
+			/>
+			<ExtendedTxt
+				text={"large-button"}
+			/>
+			<ExtendedTxt
+				text={"secondary-small-button"}
+			/>
+			<ExtendedTxt
+				text={"primary-large-button"}
+			/>
+		</Layout>
+	);
+
+	yield* all(
+		browserViewport().opacity(0, 0.75),
+	);
+
+
 
 	yield* waitFor(90);
 });
