@@ -1,4 +1,4 @@
-import { Rect, Txt, Code, Img, View2D, Node, Camera } from '@motion-canvas/2d/lib/components';
+import { Rect, Txt, Code, Img, View2D, Node } from '@motion-canvas/2d/lib/components';
 import { createRef, Reference } from '@motion-canvas/core/lib/utils';
 import { all } from '@motion-canvas/core/lib/flow';
 import colors from '../lib/colors';
@@ -585,7 +585,6 @@ export class ViewportManager {
 	private aspectValidator: ImageAspectValidator;
 
 	private wrapperRef: Reference<Rect>;
-	private cameraRef: Reference<Camera>;
 	private wrapperContainer: Node;
 	private screenWidth: number;
 	private screenHeight: number;
@@ -619,25 +618,18 @@ export class ViewportManager {
 		);
 
 		this.wrapperRef = createRef<Rect>();
-		this.cameraRef = createRef<Camera>();
 		this.wrapperContainer = (
-			<Camera ref={this.cameraRef}>
-				<Rect
-					ref={this.wrapperRef}
-					size={[screenWidth, screenHeight]}
-					fill={null}
-					stroke={null}
-				/>
-			</Camera>
+			<Rect
+				ref={this.wrapperRef}
+				size={[screenWidth, screenHeight]}
+				fill={null}
+				stroke={null}
+			/>
 		);
 	}
 
 	getWrapper(): Reference<Rect> {
 		return this.wrapperRef;
-	}
-
-	getViewportCamera(): Reference<Camera> {
-		return this.cameraRef;
 	}
 
 	addToView(view: View2D): void {

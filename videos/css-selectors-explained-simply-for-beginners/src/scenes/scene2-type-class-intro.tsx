@@ -1,4 +1,4 @@
-import { Camera, Circle, Code, Icon, Layout, lines, makeScene2D, Rect, Txt, word } from "@motion-canvas/2d";
+import { Circle, Code, Icon, Layout, lines, makeScene2D, Rect, Txt, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, ExtendedCircle, ExtendedRect, Grid, ViewportManager } from "../nodes";
 import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
@@ -466,7 +466,6 @@ highlight`, 0.75),
 	yield* cursor().position([spaceX[3.75], spaceY[1.25]], 1);
 
 	yield* waitUntil("we-used-dot")
-	const camera = viewportManager.getViewportCamera();
 	const browserViewport = refs.browser?.viewport;
 	const htmlViewport = refs.html?.viewport;
 	const cssViewport = refs.css?.viewport;
@@ -480,15 +479,11 @@ highlight`, 0.75),
 		wrapper().y(spaceY[0], 1.5),
 		delay(1.25, browserViewport().opacity(0, 0.25)),
 		cursor().position([spaceNX[3] - 8, spaceNY[3.75] + 8], 1.5),
-		camera().centerOn([cssViewport().left().x + spaceX[2.33], cssViewport().left().y], 1.5),
-		camera().zoom(1.5, 1.5),
 	);
 
 	yield* waitUntil("no-dot-html")
 
 	yield* all(
-		camera().centerOn([cssViewport().left().x + spaceX[2.33], cssViewport().left().y + spaceY[2]], 1.25),
-		camera().zoom(1.25, 1.25),
 		htmlCode().selection(
 			htmlCode().findAllRanges('class="highlight"'), 0.6),
 		cursor().position([spaceNX[0.5], spaceY[2] + 8], 1.25),
@@ -496,7 +491,6 @@ highlight`, 0.75),
 
 	yield* waitUntil("dot-in-css");
 	yield* all(
-		camera().reset(1),
 		htmlCode().selection(DEFAULT, 0.75),
 		htmlCode().code.replace(lines(0, 6), `\
 <p class="highlight">
