@@ -2,8 +2,24 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "are-case-sensitive",
+      "targetTime": 1.882975310416146
+    },
+    {
+      "name": "different",
+      "targetTime": 4.837024519327697
+    },
+    {
+      "name": "whenWorkingWithHTML",
+      "targetTime": 6.6512023527141455
+    },
+    {
+      "name": "the-browser",
+      "targetTime": 9.346465203859958
+    },
+    {
       "name": "s4-end",
-      "targetTime": 2.5861718253801307
+      "targetTime": 107.70430047647454
     }
   ],
   "seed": 3177809425
