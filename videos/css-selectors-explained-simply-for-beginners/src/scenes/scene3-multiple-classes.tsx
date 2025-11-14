@@ -14,51 +14,51 @@ import eqh5 from "../images/s3/eqh5.png";
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 
 export default makeScene2D(function*(view) {
-	view.fontFamily('Geist');
-	view.fill(colors.zinc[950]);
-	view.opacity(0.3);
-	view.add(<Grid />);
+  view.fontFamily('Geist');
+  view.fill(colors.zinc[950]);
+  // view.opacity(0.3);
+  // view.add(<Grid />);
 
-	const viewportManager = new ViewportManager()
-		.addHtml(`\
+  const viewportManager = new ViewportManager()
+    .addHtml(`\
 <p class="highlight">
 	 This has the highlight class.
 </p>`)
-		.addCss()
-		.addBrowser();
+    .addCss()
+    .addBrowser();
 
-	viewportManager.addToView(view);
+  viewportManager.addToView(view);
 
-	const refs = viewportManager.getViewportRefs();
-	const htmlCode: Reference<Code> = refs.html?.code;
-	const cssCode: Reference<Code> = refs.css?.code;
-	const cssViewport = refs.css?.viewport;
+  const refs = viewportManager.getViewportRefs();
+  const htmlCode: Reference<Code> = refs.html?.code;
+  const cssCode: Reference<Code> = refs.css?.code;
+  const cssViewport = refs.css?.viewport;
 
-	viewportManager.removeViewport('browser');
-	yield* viewportManager.animateToLayout({ duration: 0 });
-	yield* slideTransition(Direction.Right, 0.75);
+  viewportManager.removeViewport('browser');
+  yield* viewportManager.animateToLayout({ duration: 0 });
+  yield* slideTransition(Direction.Right, 0.75);
 
-	const cursor = createRef<Cursor>();
-	view.add(
-		<>
-			<Cursor ref={cursor} position={[spaceNX[4.5], spaceNY[3.5]]} opacity={0} color={"green"} />
-		</>
-	);
+  const cursor = createRef<Cursor>();
+  view.add(
+    <>
+      <Cursor ref={cursor} position={[spaceNX[4.5], spaceNY[3.5]]} opacity={0} color={"green"} />
+    </>
+  );
 
-	yield* waitUntil("give-an-element");
-	yield* all(
-		cursor().opacity(1, 0.75),
-		cursor().position([spaceNX[6.5], spaceNY[4.5]], 0.75),
-	)
+  yield* waitUntil("give-an-element");
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceNX[6.5], spaceNY[4.5]], 0.75),
+  )
 
-	yield* all(
-		htmlCode().code.insert([0, 19], " important", 0.75),
-		htmlCode().code.replace(word(1, 11, 19), "multiple classes", 0.75),
-		cursor().x(spaceNX[4.5], 1.25),
-	);
+  yield* all(
+    htmlCode().code.insert([0, 19], " important", 0.75),
+    htmlCode().code.replace(word(1, 11, 19), "multiple classes", 0.75),
+    cursor().x(spaceNX[4.5], 1.25),
+  );
 
-	yield* all(
-		cssCode().code.append(`\
+  yield* all(
+    cssCode().code.append(`\
 .highlight {
   background-color: yellow;
 }
@@ -66,103 +66,103 @@ export default makeScene2D(function*(view) {
 .important {
   font-weight: bold;
 }`, 0.75),
-		cursor().opacity(0, 0.5),
-		cursor().position([spaceNX[3.5], spaceNY[3.5]], 0.5),
-	);
+    cursor().opacity(0, 0.5),
+    cursor().position([spaceNX[3.5], spaceNY[3.5]], 0.5),
+  );
 
-	yield* waitUntil("our-dot-highlight");
-	cursor().position([spaceX[5.5], spaceY[3.75]]);
-	viewportManager.showViewport('browser');
-	yield* all(
-		viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b1, duration: 0.75 }),
-		cssCode().code.remove(lines(3), 0.75),
-	);
+  yield* waitUntil("our-dot-highlight");
+  cursor().position([spaceX[5.5], spaceY[3.75]]);
+  viewportManager.showViewport('browser');
+  yield* all(
+    viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b1, duration: 0.75 }),
+    cssCode().code.remove(lines(3), 0.75),
+  );
 
-	yield* waitUntil("still-match");
-	yield* all(
-		cursor().opacity(1, 0.75),
-		cursor().position([spaceX[3.5], spaceY[2.75]], 0.75),
-	);
+  yield* waitUntil("still-match");
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceX[3.5], spaceY[2.75]], 0.75),
+  );
 
-	yield* waitUntil("other-classes");
-	yield* all(
-		cursor().position([spaceNX[4.5], spaceNY[4.5]], 1),
-	);
+  yield* waitUntil("other-classes");
+  yield* all(
+    cursor().position([spaceNX[4.5], spaceNY[4.5]], 1),
+  );
 
-	yield* waitUntil("apply-style");
-	yield* cssCode().code.remove(lines(0, 5), 0.75);
-	yield* all(
-		viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b2 }),
-		cursor().x(spaceNX[7], 1).back(1),
-	);
+  yield* waitUntil("apply-style");
+  yield* cssCode().code.remove(lines(0, 5), 0.75);
+  yield* all(
+    viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b2 }),
+    cursor().x(spaceNX[7], 1).back(1),
+  );
 
-	yield* waitUntil("do-this");
-	yield* all(
-		delay(0.5, cssCode().code.append(`\
+  yield* waitUntil("do-this");
+  yield* all(
+    delay(0.5, cssCode().code.append(`\
 .highlight.important {
   border: 3px solid red;
 }`, 0.75)),
-		cursor().position([spaceX[3.5], spaceY[2.75]], 1.25),
-		delay(0.5, viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b3 })),
-	);
+    cursor().position([spaceX[3.5], spaceY[2.75]], 1.25),
+    delay(0.5, viewportManager.animateToPresetLayout('H_B2', { browserImage: h2b3 })),
+  );
 
-	yield* all(
-		cursor().position([spaceX[0.33] + 8, spaceY[2.25] + 8], 1).to([spaceX[3.75], spaceY[2.25] + 8], 1.5).to([spaceX[2] + 8, spaceY[2.25] + 8], 0.75),
-		cssCode().selection(word(0, 0, 20), 0.75),
-	);
+  yield* all(
+    cursor().position([spaceX[0.33] + 8, spaceY[2.25] + 8], 1).to([spaceX[3.75], spaceY[2.25] + 8], 1.5).to([spaceX[2] + 8, spaceY[2.25] + 8], 0.75),
+    cssCode().selection(word(0, 0, 20), 0.75),
+  );
 
-	yield* waitUntil("this-rule")
-	yield* all(
-		cursor().position([spaceX[3.5], spaceY[2.75]], 0.75),
-		cssCode().selection(lines(1), 0.75),
-	);
+  yield* waitUntil("this-rule")
+  yield* all(
+    cursor().position([spaceX[3.5], spaceY[2.75]], 0.75),
+    cssCode().selection(lines(1), 0.75),
+  );
 
-	yield* waitUntil("only-apply")
-	yield* all(
-		cursor().position([spaceNX[7], spaceNY[4.5]], 1).to([spaceNX[4], spaceNY[4.5]], 1.5),
-		cssCode().selection(DEFAULT, 0.75),
-		delay(0.5, htmlCode().selection(
-			htmlCode().findAllRanges('class="highlight important"'), 0.75)),
-	);
+  yield* waitUntil("only-apply")
+  yield* all(
+    cursor().position([spaceNX[7], spaceNY[4.5]], 1).to([spaceNX[4], spaceNY[4.5]], 1.5),
+    cssCode().selection(DEFAULT, 0.75),
+    delay(0.5, htmlCode().selection(
+      htmlCode().findAllRanges('class="highlight important"'), 0.75)),
+  );
 
-	yield* all(
-		delay(0.5, cursor().position([spaceX[3.5], spaceY[2.75]], 1.5)),
-		htmlCode().selection(DEFAULT, 0.75),
-	);
+  yield* all(
+    delay(0.5, cursor().position([spaceX[3.5], spaceY[2.75]], 1.5)),
+    htmlCode().selection(DEFAULT, 0.75),
+  );
 
-	yield* waitUntil("that-have-these")
-	yield* cssCode().selection(word(0, 0, 20), 0.75);
-	yield* waitFor(0.5)
-	yield* cssCode().selection(DEFAULT, 0.75);
+  yield* waitUntil("that-have-these")
+  yield* cssCode().selection(word(0, 0, 20), 0.75);
+  yield* waitFor(0.5)
+  yield* cssCode().selection(DEFAULT, 0.75);
 
-	yield* waitUntil("so-this-html");
+  yield* waitUntil("so-this-html");
 
-	const highlightRect1 = createRef<ExtendedRect>();
-	view.add(
-		<>
-			<ExtendedRect
-				ref={highlightRect1}
-				position={[spaceX[3], spaceNY[4.33]]}
-				size={0}
-				color="green"
-				highlighted
-			/>
-		</>
-	);
+  const highlightRect1 = createRef<ExtendedRect>();
+  view.add(
+    <>
+      <ExtendedRect
+        ref={highlightRect1}
+        position={[spaceX[3], spaceNY[4.33]]}
+        size={0}
+        color="green"
+        highlighted
+      />
+    </>
+  );
 
-	yield* all(
-		cursor().opacity(0, 0.75),
-		viewportManager.animateToPresetLayout('test2', { browserImage: eqh1 }),
-		cssCode().code.replace(
-			cssCode().findFirstRange('red'), "#eb0", 0.75),
-		htmlCode().code.replace(lines(1, 2), `\
+  yield* all(
+    cursor().opacity(0, 0.75),
+    viewportManager.animateToPresetLayout('test2', { browserImage: eqh1 }),
+    cssCode().code.replace(
+      cssCode().findFirstRange('red'), "#eb0", 0.75),
+    htmlCode().code.replace(lines(1, 2), `\
   I have both classes!
 </p>
 <p class="highlight important warning">
   I have both classes plus more!
 </p>
 `, 0.75),
-		cssCode().code.append(`
+    cssCode().code.append(`
 .highlight {
   background-color: #ff9;
 }
@@ -173,17 +173,17 @@ export default makeScene2D(function*(view) {
   color: red;
 }
 `, 0.75),
-		htmlCode().selection(lines(0, 5), 0.75),
-	);
+    htmlCode().selection(lines(0, 5), 0.75),
+  );
 
-	yield* all(
-		highlightRect1().position([spaceX[6] + 8, spaceNY[3.75]], 0.75),
-		highlightRect1().size([spaceX[6], spaceY[1.25]], 0.75),
-	);
+  yield* all(
+    highlightRect1().position([spaceX[6] + 8, spaceNY[3.75]], 0.75),
+    highlightRect1().size([spaceX[6], spaceY[1.25]], 0.75),
+  );
 
-	yield* all(
-		viewportManager.animateToPresetLayout('test2', { browserImage: eqh2 }),
-		htmlCode().code.append(`\
+  yield* all(
+    viewportManager.animateToPresetLayout('test2', { browserImage: eqh2 }),
+    htmlCode().code.append(`\
 <p class="highlight">
   I only have highlight class.
 </p>
@@ -191,22 +191,22 @@ export default makeScene2D(function*(view) {
   I only have important class.
 </p>
 `, 0.75),
-		htmlCode().selection(lines(6, 11), 0.75),
-		highlightRect1().y(spaceNY[2.5] + 4, 0.75),
-	);
+    htmlCode().selection(lines(6, 11), 0.75),
+    highlightRect1().y(spaceNY[2.5] + 4, 0.75),
+  );
 
-	yield* waitUntil("incredibly-useful");
-	yield* all(
-		htmlCode().selection(DEFAULT, 0.75),
-		highlightRect1().size(0, 0.75),
-		highlightRect1().opacity(0, 0.75),
-		highlightRect1().position([spaceX[3], spaceNY[3.75]], 0.75),
-	);
+  yield* waitUntil("incredibly-useful");
+  yield* all(
+    htmlCode().selection(DEFAULT, 0.75),
+    highlightRect1().size(0, 0.75),
+    highlightRect1().opacity(0, 0.75),
+    highlightRect1().position([spaceX[3], spaceNY[3.75]], 0.75),
+  );
 
-	yield* waitUntil("let's-take-buttons");
+  yield* waitUntil("let's-take-buttons");
 
-	yield* all(
-		htmlCode().code.replace(lines(0, 11), `\
+  yield* all(
+    htmlCode().code.replace(lines(0, 11), `\
 <button>
   Primary Button
 </button>
@@ -217,139 +217,139 @@ export default makeScene2D(function*(view) {
   Large Primary Button
 </button>
 `, 0.75),
-		viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh3 }),
-		cssCode().code.remove(lines(0, 11), 0.75),
-	);
+    viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh3 }),
+    cssCode().code.remove(lines(0, 11), 0.75),
+  );
 
-	yield* waitUntil("base-button-style");
-	yield* all(
-		viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh4 }),
-		cssCode().code.append(`\
+  yield* waitUntil("base-button-style");
+  yield* all(
+    viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh4 }),
+    cssCode().code.append(`\
 button { 
     padding: 10px 20px; 
     border-radius: 5px; 
 }
 `, 0.75),
-	);
+  );
 
-	yield* waitUntil("variations-like");
-	yield* cssCode().code.append(`\
+  yield* waitUntil("variations-like");
+  yield* cssCode().code.append(`\
 button.primary { 
     background: blue; 
     color: white; 
 }
 `, 0.75);
 
-	yield* cssCode().code.append(`\
+  yield* cssCode().code.append(`\
 button.secondary { 
     background: gray; 
     color: black; 
 }
 `, 0.75);
 
-	yield* cssCode().code.append(`\
+  yield* cssCode().code.append(`\
 button.large { 
     font-size: 18px; 
     padding: 15px 30px; 
 }
 `, 0.75);
 
-	yield* waitUntil("mix&match");
-	yield* all(
-		htmlCode().code.insert([0, 7], ` class="primary"`, 0.75),
-		delay(0.6, htmlCode().code.insert([3, 7], ` class="secondary large"`, 1)),
-		delay(1.2, htmlCode().code.insert([6, 7], ` class="primary large"`, 1)),
-		delay(1.2, viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh5 })),
-	);
+  yield* waitUntil("mix&match");
+  yield* all(
+    htmlCode().code.insert([0, 7], ` class="primary"`, 0.75),
+    delay(0.6, htmlCode().code.insert([3, 7], ` class="secondary large"`, 1)),
+    delay(1.2, htmlCode().code.insert([6, 7], ` class="primary large"`, 1)),
+    delay(1.2, viewportManager.animateToPresetLayout('EQ_H', { browserImage: eqh5 })),
+  );
 
-	yield* waitUntil("primaryLarge");
-	yield* all(
-		htmlCode().selection(lines(6, 8), 0.75),
-		cssCode().selection([lines(0, 7), lines(12, 15)], 0.75),
-	);
+  yield* waitUntil("primaryLarge");
+  yield* all(
+    htmlCode().selection(lines(6, 8), 0.75),
+    cssCode().selection([lines(0, 7), lines(12, 15)], 0.75),
+  );
 
-	yield* waitUntil("secondaryLarge");
-	yield* all(
-		htmlCode().selection(lines(3, 5), 0.75),
-		cssCode().selection([lines(0, 3), lines(8, 15)], 0.75),
-	);
+  yield* waitUntil("secondaryLarge");
+  yield* all(
+    htmlCode().selection(lines(3, 5), 0.75),
+    cssCode().selection([lines(0, 3), lines(8, 15)], 0.75),
+  );
 
-	yield* waitUntil("justPrimary");
-	yield* all(
-		htmlCode().selection(lines(0, 2), 0.75),
-		cssCode().selection([lines(0, 7)], 0.75),
-	);
+  yield* waitUntil("justPrimary");
+  yield* all(
+    htmlCode().selection(lines(0, 2), 0.75),
+    cssCode().selection([lines(0, 7)], 0.75),
+  );
 
-	yield* waitFor(0.5);
-	yield* all(
-		htmlCode().selection(DEFAULT, 0.75),
-		cssCode().selection(DEFAULT, 0.75),
-	);
+  yield* waitFor(0.5);
+  yield* all(
+    htmlCode().selection(DEFAULT, 0.75),
+    cssCode().selection(DEFAULT, 0.75),
+  );
 
-	yield* waitUntil("saves-us");
-	const browserViewport = refs.browser?.viewport;
+  yield* waitUntil("saves-us");
+  const browserViewport = refs.browser?.viewport;
 
-	const inefficientClasses = [
-		'.primary-small-button',
-		'.small-button',
-		'.primary-button',
-		'.secondary-large-button',
-		'.large-button',
-		'.secondary-small-button',
-		'.primary-large-button',
-	];
-	const items = createRefArray<ExtendedTxt>();
+  const inefficientClasses = [
+    '.primary-small-button',
+    '.small-button',
+    '.primary-button',
+    '.secondary-large-button',
+    '.large-button',
+    '.secondary-small-button',
+    '.primary-large-button',
+  ];
+  const items = createRefArray<ExtendedTxt>();
 
-	view.add(
-		<Layout layout direction="column" gap={spaceY[0.5]} x={spaceX[6]} >
-			{inefficientClasses.map(text => (
-				<ExtendedTxt ref={items} text={text} opacity={0} />
-			))}
-		</Layout>
-	);
+  view.add(
+    <Layout layout direction="column" gap={spaceY[0.5]} x={spaceX[6]} >
+      {inefficientClasses.map(text => (
+        <ExtendedTxt ref={items} text={text} opacity={0} />
+      ))}
+    </Layout>
+  );
 
-	yield* browserViewport().opacity(0, 0.75);
+  yield* browserViewport().opacity(0, 0.75);
 
-	yield* sequence(0.2, ...items.map(node => node.opacity(1, 0.5)));
+  yield* sequence(0.2, ...items.map(node => node.opacity(1, 0.5)));
 
-	yield* waitUntil("dot-primary")
-	cursor().position([spaceX[3.5], spaceY[3.75]]);
-	yield* all(
-		cursor().opacity(1, 0.75),
-		cursor().position([spaceX[5.75], spaceY[3]], 0.75)
-	);
+  yield* waitUntil("dot-primary")
+  cursor().position([spaceX[3.5], spaceY[3.75]]);
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceX[5.75], spaceY[3]], 0.75)
+  );
 
-	yield* waitUntil("dot-secondary");
-	yield* cursor().position([spaceX[6.25], spaceY[2]], 0.75);
+  yield* waitUntil("dot-secondary");
+  yield* cursor().position([spaceX[6.25], spaceY[2]], 0.75);
 
-	yield* waitUntil("dozens");
-	yield* cursor().position([spaceX[7], spaceNY[2]], 0.75);
+  yield* waitUntil("dozens");
+  yield* cursor().position([spaceX[7], spaceNY[2]], 0.75);
 
-	yield* waitFor(0.5)
-	yield* all(
-		cursor().position([spaceNX[5], spaceNY[1.5]], 1),
-		delay(0.5, htmlCode().selection(
-			htmlCode().findAllRanges(/\bclass\s*=\s*(?:"[^"]*"|'[^']*')/g),
-			0.6
-		)),
-	);
+  yield* waitFor(0.5)
+  yield* all(
+    cursor().position([spaceNX[5], spaceNY[1.5]], 1),
+    delay(0.5, htmlCode().selection(
+      htmlCode().findAllRanges(/\bclass\s*=\s*(?:"[^"]*"|'[^']*')/g),
+      0.6
+    )),
+  );
 
-	yield* waitUntil("real-power");
-	const emojis = createRefArray<ExtendedTxt>();
-	view.add(
-		<Layout layout gap={spaceX[5]} y={spaceY[4]} >
-			{["💪🏻", "✨", "👎🏻"].map(text => (
-				<ExtendedTxt ref={emojis} text={text} opacity={0} fontSize={spaceY[0.75]} />
-			))}
-		</Layout>
-	);
+  yield* waitUntil("real-power");
+  const emojis = createRefArray<ExtendedTxt>();
+  view.add(
+    <Layout layout gap={spaceX[5]} y={spaceY[4]} >
+      {["💪🏻", "✨", "👎🏻"].map(text => (
+        <ExtendedTxt ref={emojis} text={text} opacity={0} fontSize={spaceY[0.75]} />
+      ))}
+    </Layout>
+  );
 
-	yield* all(
-		sequence(0.2, ...emojis.map(node => node.opacity(1, 0.5))),
-		cursor().opacity(0, 0.75),
-		cursor().position([spaceNX[6], spaceNY[0.5]], 0.75),
-		htmlCode().selection(DEFAULT, 0.75),
-	);
+  yield* all(
+    sequence(0.2, ...emojis.map(node => node.opacity(1, 0.5))),
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceNX[6], spaceNY[0.5]], 0.75),
+    htmlCode().selection(DEFAULT, 0.75),
+  );
 
-	yield* waitUntil("s3-end");
+  yield* waitUntil("s3-end");
 });

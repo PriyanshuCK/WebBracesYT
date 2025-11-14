@@ -18,8 +18,28 @@
       "targetTime": 9.346465203859958
     },
     {
+      "name": "exactly-as",
+      "targetTime": 12.340913814087566
+    },
+    {
+      "name": "these-three",
+      "targetTime": 14.749330103707367
+    },
+    {
+      "name": "completely-different",
+      "targetTime": 15.749330103707367
+    },
+    {
+      "name": "why-confusion",
+      "targetTime": 17.749330103707365
+    },
+    {
+      "name": "cssDoesntCare",
+      "targetTime": 20.865287510462444
+    },
+    {
       "name": "s4-end",
-      "targetTime": 107.70430047647454
+      "targetTime": 111.22312278307703
     }
   ],
   "seed": 3177809425
