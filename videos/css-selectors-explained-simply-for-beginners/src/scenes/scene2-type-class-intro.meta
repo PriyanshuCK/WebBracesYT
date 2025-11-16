@@ -86,8 +86,28 @@
       "targetTime": 59.72817577712547
     },
     {
+      "name": "indicates-class",
+      "targetTime": 62.126213018247476
+    },
+    {
+      "name": "other-selectors",
+      "targetTime": 64.9120332232928
+    },
+    {
+      "name": "indicates-type-selector",
+      "targetTime": 65.6620332232928
+    },
+    {
+      "name": "indicates-id-selector",
+      "targetTime": 68.57057296565759
+    },
+    {
+      "name": "this-pattern",
+      "targetTime": 71.01805988205263
+    },
+    {
       "name": "s3-end",
-      "targetTime": 77.65622709771498
+      "targetTime": 77.70669983427118
     }
   ],
   "seed": 841587742

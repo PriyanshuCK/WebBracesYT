@@ -1,7 +1,7 @@
-import { Circle, Code, Icon, Layout, lines, makeScene2D, Rect, Txt, word } from "@motion-canvas/2d";
+import { Circle, Code, Icon, Layout, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
-import { Cursor, ExtendedCircle, ExtendedRect, Grid, ViewportManager } from "../nodes";
-import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
+import { Cursor, ExtendedRect, ViewportManager } from "../nodes";
+import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import beq1 from '../images/s2/beq1.png';
 import beq2 from '../images/s2/beq2.png';
@@ -466,19 +466,17 @@ highlight`, 0.75),
   yield* cursor().position([spaceX[3.75], spaceY[1.25]], 1);
 
   yield* waitUntil("we-used-dot")
-  const browserViewport = refs.browser?.viewport;
-  const htmlViewport = refs.html?.viewport;
-  const cssViewport = refs.css?.viewport;
 
-  viewportManager.updateLayoutDimensions(spaceX[18], spaceY[10]);
+  viewportManager.updateLayoutDimensions(spaceX[18], spaceY[4]);
+  viewportManager.removeViewport("browser");
   yield* all(
     classSelectors().opacity(0, 1.5),
     classSelectors().y(spaceNY[5.5], 1.5),
     viewportManager.animateToLayout({ duration: 1.5 }),
-    wrapper().size([spaceX[18], spaceY[10]], 1.5),
+    wrapper().size([spaceX[18], spaceY[4]], 1.5),
     wrapper().y(spaceY[0], 1.5),
-    delay(1.25, browserViewport().opacity(0, 0.25)),
-    cursor().position([spaceNX[3] - 8, spaceNY[3.75] + 8], 1.5),
+    cursor().position([spaceX[0.33] + 8, spaceNY[1.5] + 8], 1.5),
+    cssCode().selection(cssCode().findFirstRange(".highlight"), 1.5),
   );
 
   yield* waitUntil("no-dot-html")
@@ -486,10 +484,102 @@ highlight`, 0.75),
   yield* all(
     htmlCode().selection(
       htmlCode().findAllRanges('class="highlight"'), 0.6),
-    cursor().position([spaceNX[0.5], spaceY[2] + 8], 1.25),
+    cursor().position([spaceNX[7] - 8, spaceNY[1] + 8], 1.25),
+  );
+
+  const table = createRef<Layout>();
+  const leftColumn = createRef<Layout>();
+  const rightColumn = createRef<Layout>();
+  const selectorHeader = createRef<ExtendedTxt>();
+  const selectsHeader = createRef<ExtendedTxt>();
+  const selector1 = createRef<ExtendedTxt>();
+  const selects1 = createRef<ExtendedTxt>();
+  const selector2 = createRef<ExtendedTxt>();
+  const selects2 = createRef<ExtendedTxt>();
+  const selector3 = createRef<ExtendedTxt>();
+  const selects3 = createRef<ExtendedTxt>();
+  view.add(
+    <Layout
+      ref={table}
+      layout
+      gap={spaceX[1]}
+      position={[spaceX[2.5], spaceY[2]]}
+    >
+      <Layout
+        ref={leftColumn}
+        layout
+        direction="column"
+        height={spaceY[4]}
+        justifyContent="space-around"
+      >
+        <ExtendedTxt
+          ref={selectorHeader}
+          text="Selector"
+          fontSize={spaceY[0.5]}
+          fontWeight={500}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selector1}
+          text=".highlight"
+          fontSize={spaceY[0.33] + 4}
+          fill={"#f7cd7a"}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selector2}
+          text="p"
+          fontSize={spaceY[0.33] + 4}
+          fill={"#e0787b"}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selector3}
+          text="#highlight"
+          fontSize={spaceY[0.33] + 4}
+          fill={"#8aa9f9"}
+          opacity={0}
+        />
+      </Layout>
+
+      <Layout
+        ref={rightColumn}
+        layout
+        direction="column"
+        height={spaceY[4]}
+        justifyContent="space-around"
+      >
+        <ExtendedTxt
+          ref={selectsHeader}
+          text="Selects"
+          fontSize={spaceY[0.5]}
+          fontWeight={500}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selects1}
+          text="elements with the highlight class"
+          fontSize={spaceY[0.33]}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selects2}
+          text="all <p> elements"
+          fontSize={spaceY[0.33]}
+          opacity={0}
+        />
+        <ExtendedTxt
+          ref={selects3}
+          text="the element with the highlight id (discussing soon)"
+          fontSize={spaceY[0.33]}
+          opacity={0}
+        />
+      </Layout>
+    </Layout>
   );
 
   yield* waitUntil("dot-in-css");
+  viewportManager.updateLayoutDimensions(spaceX[18], spaceY[2]);
   yield* all(
     htmlCode().selection(DEFAULT, 0.75),
     htmlCode().code.replace(lines(0, 6), `\
@@ -497,274 +587,43 @@ highlight`, 0.75),
 		This is a paragraph with a class.
 </p>
 `, 1),
+    wrapper().size([spaceX[18], spaceY[2]], 0.75),
+    wrapper().y(spaceNY[2], 0.75),
+    viewportManager.animateToLayout({ duration: 0.75 }),
+    selector1().opacity(1, 0.75),
+    selects1().opacity(1, 0.75),
+    cursor().position([spaceNX[2.5] + 8, spaceY[1.75] + 8], 0.75),
   );
 
-  const tableContainer = createRef<Rect>();
-  const headerRow = createRef<Rect>();
-  const selectorHeader = createRef<Txt>();
-  const selectsHeader = createRef<Txt>();
+  yield* waitUntil("indicates-class");
+  yield* cursor().x(spaceX[4.5], 1.5);
 
-  const row1Container = createRef<Rect>();
-  const row2Container = createRef<Rect>();
-  const row3Container = createRef<Rect>();
-
-  const selector1 = createRef<Txt>();
-  const selector2 = createRef<Txt>();
-  const selector3 = createRef<Txt>();
-
-  const selects1 = createRef<Txt>();
-  const selects2 = createRef<Txt>();
-  const selects3 = createRef<Txt>();
-
-  // Vertical divider references
-  const divider1 = createRef<Rect>();
-  const divider2 = createRef<Rect>();
-  const divider3 = createRef<Rect>();
-
-  // Table styling
-  const totalTableWidth = spaceX[9] - 20;
-  const selectorColumnWidth = spaceX[3]; // Narrower for content fitting
-  const selectsColumnWidth = totalTableWidth - selectorColumnWidth; // Wider for descriptions
-  const rowHeight = spaceY[0.75];
-  const headerHeight = spaceY[1];
-  const borderColor = colors.zinc[600];
-  const headerBg = colors.zinc[800];
-  const rowBg = colors.zinc[950];
-  const textColor = colors.zinc[0];
-  const highlightColor = '#ffd700';
-
-  view.add(
-    <Layout x={spaceX[4.5] + 10}>
-      <Rect
-        ref={tableContainer}
-        width={totalTableWidth}
-        height={headerHeight + rowHeight} // Initially just header + first row
-        fill={rowBg}
-        stroke={borderColor}
-        lineWidth={2}
-        radius={8}
-        opacity={0}
-      >
-        <Rect
-          ref={headerRow}
-          width={totalTableWidth - 4}
-          height={headerHeight}
-          fill={headerBg}
-          y={-rowHeight / 2}
-          stroke={borderColor}
-          lineWidth={1}
-          opacity={0}
-        >
-          <Txt
-            ref={selectorHeader}
-            text="Selector"
-            fill={textColor}
-            fontSize={32}
-            fontWeight={700}
-            x={-selectsColumnWidth / 2}
-            opacity={0}
-          />
-          <Txt
-            ref={selectsHeader}
-            text="Selects"
-            fill={textColor}
-            fontSize={32}
-            fontWeight={700}
-            x={selectorColumnWidth / 2}
-            opacity={0}
-          />
-          {/* Header vertical divider */}
-          <Rect
-            width={2}
-            height={headerHeight - 4}
-            fill={borderColor}
-            x={selectorColumnWidth - totalTableWidth / 2}
-            opacity={0}
-            ref={createRef<Rect>()}
-          />
-        </Rect>
-
-        {/* Row 1 Container */}
-        <Rect
-          ref={row1Container}
-          width={totalTableWidth - 4}
-          height={rowHeight}
-          fill={rowBg}
-          y={headerHeight / 2}
-          stroke={borderColor}
-          lineWidth={1}
-          opacity={0}
-        >
-          <Txt
-            ref={selector1}
-            text=".highlight"
-            fill={highlightColor}
-            fontSize={26}
-            x={-selectsColumnWidth / 2}
-            opacity={0}
-          />
-          <Txt
-            ref={selects1}
-            text="elements with the highlight class"
-            fill={textColor}
-            fontSize={22}
-            x={selectorColumnWidth / 2}
-            opacity={0}
-          />
-          <Rect
-            ref={divider1}
-            width={2}
-            height={rowHeight - 4}
-            fill={borderColor}
-            x={selectorColumnWidth - totalTableWidth / 2}
-            opacity={0}
-          />
-        </Rect>
-
-        {/* Row 2 Container */}
-        <Rect
-          ref={row2Container}
-          width={totalTableWidth - 4}
-          height={rowHeight}
-          fill={rowBg}
-          y={headerHeight / 2 + rowHeight}
-          stroke={borderColor}
-          lineWidth={1}
-          opacity={0}
-          scaleY={0}
-        >
-          <Txt
-            ref={selector2}
-            text="p"
-            fill={highlightColor}
-            fontSize={26}
-            x={-selectsColumnWidth / 2}
-            opacity={0}
-          />
-          <Txt
-            ref={selects2}
-            text="all <p> elements"
-            fill={textColor}
-            fontSize={22}
-            x={selectorColumnWidth / 2}
-            opacity={0}
-          />
-          <Rect
-            ref={divider2}
-            width={2}
-            height={rowHeight - 4}
-            fill={borderColor}
-            x={selectorColumnWidth - totalTableWidth / 2}
-            opacity={0}
-          />
-        </Rect>
-
-        {/* Row 3 Container */}
-        <Rect
-          ref={row3Container}
-          width={totalTableWidth - 4}
-          height={rowHeight}
-          fill={rowBg}
-          y={headerHeight / 2 + rowHeight * 2}
-          stroke={borderColor}
-          lineWidth={1}
-          opacity={0}
-          scaleY={0}
-        >
-          <Txt
-            ref={selector3}
-            text="#highlight"
-            fill={highlightColor}
-            fontSize={26}
-            x={-selectsColumnWidth / 2}
-            opacity={0}
-          />
-          <Txt
-            ref={selects3}
-            text="the element with the highlight id (discussing soon)"
-            fill={textColor}
-            fontSize={22}
-            x={selectorColumnWidth / 2}
-            opacity={0}
-          />
-          <Rect
-            ref={divider3}
-            width={2}
-            height={rowHeight - 4}
-            fill={borderColor}
-            x={selectorColumnWidth - totalTableWidth / 2}
-            opacity={0}
-          />
-        </Rect>
-      </Rect>
-    </Layout>
-  );
-
-  // Animation sequence
-  yield* waitFor(0.5);
-
-  // Initial appearance: table container with header and first empty row
-  yield* tableContainer().opacity(1, 0.8);
-
-  yield* waitFor(0.2);
-
-  // Animate header
+  yield* waitUntil("other-selectors");
   yield* all(
-    headerRow().opacity(1, 0.6),
-    selectorHeader().opacity(1, 0.6),
-    selectsHeader().opacity(1, 0.6),
-    headerRow().children()[2].opacity(1, 0.6)
-  );
+    selectorHeader().opacity(1, 0.75),
+    selectsHeader().opacity(1, 0.75),
+  )
 
-  // Show first row background
-  yield* row1Container().opacity(1, 0.4);
-  yield* divider1().opacity(1, 0.4);
-
-  yield* waitFor(0.3);
-
-  // Animate first row content
+  yield* waitUntil("indicates-type-selector");
   yield* all(
-    selector1().opacity(1, 0.5),
-    selects1().opacity(1, 0.5)
-  );
+    selector2().opacity(1, 0.75),
+    selects2().opacity(1, 0.75),
+    cursor().position([spaceNX[2.5] + 8, spaceY[2.75] + 8], 1),
+  )
 
-  yield* waitFor(0.5);
-
-  // Grow table for second row and animate its appearance
+  yield* waitUntil("indicates-id-selector");
   yield* all(
-    tableContainer().height(headerHeight + rowHeight * 2, 0.6),
-    row2Container().scale.y(1, 0.6),
-    row2Container().opacity(1, 0.4)
-  );
+    selector3().opacity(1, 0.75),
+    selects3().opacity(1, 0.75),
+    cursor().position([spaceNX[2.5] + 8, spaceY[3.75] + 8], 0.75),
+  )
 
-  yield* divider2().opacity(1, 0.4);
-
-  yield* waitFor(0.2);
-
-  // Animate second row content
+  yield* waitUntil("this-pattern");
   yield* all(
-    selector2().opacity(1, 0.5),
-    selects2().opacity(1, 0.5)
-  );
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceNX[1.5] + 8, spaceY[4.75] + 8], 0.75),
+  )
 
-  yield* waitFor(0.5);
-
-  // Grow table for third row and animate its appearance
-  yield* all(
-    tableContainer().height(headerHeight + rowHeight * 3, 0.6),
-    row3Container().scale.y(1, 0.6),
-    row3Container().opacity(1, 0.4)
-  );
-
-  yield* divider3().opacity(1, 0.4);
-
-  yield* waitFor(0.2);
-
-  // Animate third row content
-  yield* all(
-    selector3().opacity(1, 0.5),
-    selects3().opacity(1, 0.5)
-  );
   yield* waitUntil("s3-end");
 }
 )
