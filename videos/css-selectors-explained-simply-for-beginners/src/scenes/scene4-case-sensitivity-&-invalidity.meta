@@ -38,8 +38,132 @@
       "targetTime": 20.865287510462444
     },
     {
+      "name": "actual-html",
+      "targetTime": 26.48299025313404
+    },
+    {
+      "name": "html-case-sensitive",
+      "targetTime": 31.70577230023215
+    },
+    {
+      "name": "most-developers",
+      "targetTime": 34.087854451021286
+    },
+    {
+      "name": "hyphen",
+      "targetTime": 36.087854451021286
+    },
+    {
+      "name": "this-way",
+      "targetTime": 39.75090246816561
+    },
+    {
+      "name": "now-invalid",
+      "targetTime": 44.90162467146635
+    },
+    {
+      "name": "or-special-characters",
+      "targetTime": 47.08342670296365
+    },
+    {
+      "name": "allowed-in-html",
+      "targetTime": 49.011084757368074
+    },
+    {
+      "name": "but-in-css",
+      "targetTime": 51.12468882036267
+    },
+    {
+      "name": "start-with-number",
+      "targetTime": 52.434598834679626
+    },
+    {
+      "name": "invalid-selectors",
+      "targetTime": 58.87459999359781
+    },
+    {
+      "name": "browser-ignore",
+      "targetTime": 60.15144701793663
+    },
+    {
+      "name": "no-style-applied",
+      "targetTime": 63.72162814822091
+    },
+    {
+      "name": "use-numbers",
+      "targetTime": 68.045115893513
+    },
+    {
+      "name": "or-special-characters-2",
+      "targetTime": 69.8647126255909
+    },
+    {
+      "name": "escape-them",
+      "targetTime": 71.86972012158517
+    },
+    {
+      "name": "the-backslash",
+      "targetTime": 73.77679145252792
+    },
+    {
+      "name": "treat-it-normal",
+      "targetTime": 76.41349982088882
+    },
+    {
+      "name": "for-example",
+      "targetTime": 78.87786463637059
+    },
+    {
+      "name": "class-like-this",
+      "targetTime": 80.0632588752231
+    },
+    {
+      "name": "escaped-like-this",
+      "targetTime": 82.39665373170892
+    },
+    {
+      "name": "and-for-this",
+      "targetTime": 87.18821189504958
+    },
+    {
+      "name": "escapes-the-number",
+      "targetTime": 92.02637210667808
+    },
+    {
+      "name": "space-tells",
+      "targetTime": 93.80079014311293
+    },
+    {
+      "name": "its-odd",
+      "targetTime": 96.32023947877313
+    },
+    {
+      "name": "it-works",
+      "targetTime": 97.32023947877313
+    },
+    {
+      "name": "honestly-easier",
+      "targetTime": 98.32023947877313
+    },
+    {
+      "name": "stick-to-letters",
+      "targetTime": 99.87496099152982
+    },
+    {
+      "name": "stick-to-numbers",
+      "targetTime": 100.80555926279374
+    },
+    {
+      "name": "stick-to-hyphens",
+      "targetTime": 102.60949842793094
+    },
+    {
+      "name": "stick-to-underscores",
+      "targetTime": 103.62096159677573
+    },
+    {
       "name": "s4-end",
-      "targetTime": 111.22312278307703
+      "targetTime": 104.96925218063782
     }
   ],
   "seed": 3177809425
