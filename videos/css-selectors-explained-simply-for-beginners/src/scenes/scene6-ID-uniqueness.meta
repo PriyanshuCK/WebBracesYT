@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "you-can-apply",
+      "targetTime": 3.0334980601768864
+    },
+    {
+      "name": "IDs-are-different",
+      "targetTime": 6.783498060176886
+    },
+    {
+      "name": "so-only-one",
+      "targetTime": 10.1057927360916
+    },
+    {
+      "name": "less-flexible",
+      "targetTime": 14.126280045108444
+    },
+    {
+      "name": "s6-end",
+      "targetTime": 39.655369740370155
+    }
+  ],
+  "seed": 309190047
+}
