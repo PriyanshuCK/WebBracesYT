@@ -18,8 +18,80 @@
       "targetTime": 10.479198996016065
     },
     {
+      "name": "think-of-it",
+      "targetTime": 12.80605951906019
+    },
+    {
+      "name": "each-has-unique",
+      "targetTime": 14.796350303626376
+    },
+    {
+      "name": "no-two-are-same",
+      "targetTime": 16.104481156681164
+    },
+    {
+      "name": "in-html-add",
+      "targetTime": 18.35316585469864
+    },
+    {
+      "name": "add-id-attr",
+      "targetTime": 19.74398276005784
+    },
+    {
+      "name": "and-in-css",
+      "targetTime": 22.84408318036907
+    },
+    {
+      "name": "use-hash",
+      "targetTime": 24.278184954967234
+    },
+    {
+      "name": "just-like-class",
+      "targetTime": 27.010081826082132
+    },
+    {
+      "name": "ids-use-hash",
+      "targetTime": 29.440299914506774
+    },
+    {
+      "name": "IDs-have-more-power",
+      "targetTime": 32.95175902332581
+    },
+    {
+      "name": "high-specificity",
+      "targetTime": 36.05945673047074
+    },
+    {
+      "name": "this-means-style-same",
+      "targetTime": 38.247952047709035
+    },
+    {
+      "name": "both-a-class",
+      "targetTime": 40.30084377929946
+    },
+    {
+      "name": "and-an-id",
+      "targetTime": 41.216898607835496
+    },
+    {
+      "name": "ids-style-win",
+      "targetTime": 41.966898607835496
+    },
+    {
+      "name": "like-friend",
+      "targetTime": 44.80360856589388
+    },
+    {
+      "name": "like-teacher",
+      "targetTime": 47.043360442436864
+    },
+    {
+      "name": "follow-teacher",
+      "targetTime": 49.191278299192945
+    },
+    {
       "name": "s5-end",
-      "targetTime": 100.15402949803354
+      "targetTime": 50.34802495677343
     }
   ],
   "seed": 1904701812
