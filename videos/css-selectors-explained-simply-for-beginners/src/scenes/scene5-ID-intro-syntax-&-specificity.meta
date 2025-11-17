@@ -2,8 +2,24 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "id-selectors-let",
+      "targetTime": 1.8595852228517256
+    },
+    {
+      "name": "one-crucial-difference",
+      "targetTime": 5.600362722467999
+    },
+    {
+      "name": "while-you-can-give",
+      "targetTime": 7.740979012098498
+    },
+    {
+      "name": "an-id-must-be-unique",
+      "targetTime": 10.479198996016065
+    },
+    {
       "name": "s5-end",
-      "targetTime": 15.946879290206901
+      "targetTime": 100.15402949803354
     }
   ],
   "seed": 1904701812
