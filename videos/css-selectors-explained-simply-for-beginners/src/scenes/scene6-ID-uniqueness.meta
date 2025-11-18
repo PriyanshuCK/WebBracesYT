@@ -34,8 +34,36 @@
       "targetTime": 22.5120975857822
     },
     {
+      "name": "create-new-id",
+      "targetTime": 24.651747668098352
+    },
+    {
+      "name": "same-styles",
+      "targetTime": 26.45561763669178
+    },
+    {
+      "name": "inefficient",
+      "targetTime": 27.95313005627549
+    },
+    {
+      "name": "thinking",
+      "targetTime": 29.5150480412061
+    },
+    {
+      "name": "classes-can-do-same",
+      "targetTime": 31.044291624473466
+    },
+    {
+      "name": "more-flexible",
+      "targetTime": 32.70868469488076
+    },
+    {
+      "name": "why-do-ids-exist",
+      "targetTime": 33.86858503678748
+    },
+    {
       "name": "s6-end",
-      "targetTime": 43.04118728104392
+      "targetTime": 36.063403590205844
     }
   ],
   "seed": 309190047

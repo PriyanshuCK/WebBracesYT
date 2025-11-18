@@ -6,12 +6,13 @@ import { ExtendedTxt } from "../nodes/ExtendedTxt";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import eqh1 from "../images/s6/eqh1.png"
 import eqh2 from "../images/s6/eqh2.png"
+import eqh3 from "../images/s6/eqh3.png"
 
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
   // view.opacity(0.7);
-  view.add(<Grid />);
+  // view.add(<Grid />);
 
   yield* slideTransition(Direction.Right, 0.75);
 
@@ -172,8 +173,6 @@ Reusable class — paragraph 2
     cssCode().code.replace(lines(0, 14), `\
 #btn {
   padding: 1rem 2rem;
-  font-size: 1.75rem;
-  font-weight: 500;
   color: #fafafa;
   background: #0a0a0a;
   border: none;
@@ -203,6 +202,77 @@ Reusable class — paragraph 2
   yield* all(
     cursor().position([spaceNX[6.5], spaceNY[1]], 1),
     htmlCode().code.replace(word(3, 7, 1), ` id="btn"> ❌`, 0.75),
+  )
+
+  yield* waitUntil("create-new-id")
+  yield* all(
+    htmlCode().code.replace(word(3, 12, 7), `comment-btn">`, 0.75),
+    htmlCode().code.insert([0, 12], `like-`, 0.75),
+    cursor().x(spaceNX[5.75], 0.75),
+    cssCode().code.insert([0, 1], `like-`, 0.75),
+  )
+
+  yield* waitUntil("same-styles")
+  yield* all(
+    cursor().position([spaceNX[1.25], spaceY[3.25]], 0.75),
+    cssCode().code.append(`\
+#comment-btn {
+  padding: 1rem 2rem;
+  color: #fafafa;
+  background: #0a0a0a;
+  border: none;
+  border-radius: 0.75rem;
+}
+`, 0.75),
+    viewportManager.animateToPresetLayout('EQ_H', { duration: 0.75, browserImage: eqh3 }),
+  )
+
+  yield* waitUntil("inefficient")
+  const duplicateStylesTxt = createRef<ExtendedTxt>();
+  view.add(
+    <>
+      <ExtendedTxt
+        ref={duplicateStylesTxt}
+        text="Duplicate Styles 👎🏻"
+        fontSize={spaceY[0.5]}
+        y={spaceY[4.25]}
+        opacity={0}
+      />
+    </>
+  )
+
+  yield* all(
+    duplicateStylesTxt().opacity(1, 0.75),
+    cursor().position([spaceX[0], spaceY[4.75]], 0.75),
+  )
+
+  yield* waitUntil("thinking")
+  yield* all(
+    delay(0.5, duplicateStylesTxt().text("🤔", 0.1)),
+    duplicateStylesTxt().opacity(0, 0.5).to(1, 0.5),
+    delay(0.5, duplicateStylesTxt().fontSize(spaceY[0.75], 0.5)),
+  );
+  yield* waitUntil("classes-can-do-same")
+  yield* all(
+    htmlCode().code.replace(word(0, 8, 9), `class="`, 0.75),
+    htmlCode().code.replace(word(3, 8, 12), `class="`, 0.75),
+    cssCode().code.replace(word(0, 0, 6), `.`, 0.75),
+    cssCode().code.remove(lines(7, 13), 0.75),
+    cursor().position([spaceNX[1.5], spaceY[0.25]], 0.75),
+    classReuseTxt().opacity(0, 0.75),
+  )
+
+  yield* waitUntil("more-flexible")
+  yield* cursor().position([spaceNX[6.5], spaceNY[1]], 0.75);
+
+  yield* waitUntil("why-do-ids-exist")
+  classReuseTxt().text("")
+  yield* all(
+    cursor().position([spaceNX[4.5], spaceNY[3]], 0.75),
+    cursor().opacity(0, 0.75),
+    duplicateStylesTxt().opacity(0, 0.75),
+    classReuseTxt().text("Why Do IDs Exist? 🤔", 1),
+    classReuseTxt().opacity(1, 0.75),
   )
 
   yield* waitUntil("s6-end");
