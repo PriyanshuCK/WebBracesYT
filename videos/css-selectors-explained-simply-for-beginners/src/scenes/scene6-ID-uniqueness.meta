@@ -18,8 +18,24 @@
       "targetTime": 14.126280045108444
     },
     {
+      "name": "imagine-style-button",
+      "targetTime": 16.765427562415116
+    },
+    {
+      "name": "using-an-id",
+      "targetTime": 17.987757020810566
+    },
+    {
+      "name": "another-button",
+      "targetTime": 19.9693581188497
+    },
+    {
+      "name": "cant-reuse-id",
+      "targetTime": 22.5120975857822
+    },
+    {
       "name": "s6-end",
-      "targetTime": 39.655369740370155
+      "targetTime": 43.04118728104392
     }
   ],
   "seed": 309190047

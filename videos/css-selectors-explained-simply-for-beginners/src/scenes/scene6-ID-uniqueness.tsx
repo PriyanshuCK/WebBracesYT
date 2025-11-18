@@ -1,14 +1,16 @@
-import { Code, lines, makeScene2D } from "@motion-canvas/2d";
+import { Code, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, Grid, ViewportManager } from "../nodes";
-import { all, createRef, DEFAULT, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
+import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
+import eqh1 from "../images/s6/eqh1.png"
+import eqh2 from "../images/s6/eqh2.png"
 
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
-  view.opacity(0.7);
+  // view.opacity(0.7);
   view.add(<Grid />);
 
   yield* slideTransition(Direction.Right, 0.75);
@@ -154,6 +156,53 @@ Reusable class — paragraph 2
   yield* all(
     cursor().position([0, spaceNY[4]], 0.75),
     classReuseTxt().text("IDs are less", 0.5).to("IDs are less flexible for styling", 1),
+  )
+
+  yield* waitUntil("imagine-style-button")
+  viewportManager.showViewport("browser")
+  htmlCode().selection(DEFAULT)
+  cssCode().selection(DEFAULT)
+  yield* all(
+    viewportManager.animateToPresetLayout('EQ_H', { duration: 0.75, browserImage: eqh1 }),
+    htmlCode().code.replace(lines(0, 14), `\
+<button id="btn">
+  Like 😊
+</button>
+`, 0.75),
+    cssCode().code.replace(lines(0, 14), `\
+#btn {
+  padding: 1rem 2rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #fafafa;
+  background: #0a0a0a;
+  border: none;
+  border-radius: 0.75rem;
+}
+`, 0.75),
+    cursor().position([spaceX[4], spaceNY[1.75]], 0.75),
+  )
+
+  yield* waitUntil("using-an-id")
+  yield* cursor().position([spaceNX[7], spaceNY[2.5]], 0.75);
+
+  yield* waitUntil("another-button")
+  yield* all(
+    htmlCode().code.append(`\
+<button>
+  Comment ☺️
+</button>
+`, 0.75),
+    cursor().y(spaceNY[0.5], 0.75),
+    viewportManager.animateToPresetLayout('EQ_H', { duration: 0.75, browserImage: eqh2 }),
+  )
+
+  yield* cursor().position([spaceX[4], spaceNY[1.75]], 1.25);
+
+  yield* waitUntil("cant-reuse-id")
+  yield* all(
+    cursor().position([spaceNX[6.5], spaceNY[1]], 1),
+    htmlCode().code.replace(word(3, 7, 1), ` id="btn"> ❌`, 0.75),
   )
 
   yield* waitUntil("s6-end");
