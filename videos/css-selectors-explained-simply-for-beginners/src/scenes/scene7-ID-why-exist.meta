@@ -58,8 +58,28 @@
       "targetTime": 32.3890829066042
     },
     {
+      "name": "form-labels",
+      "targetTime": 33.1390829066042
+    },
+    {
+      "name": "labels-start",
+      "targetTime": 34.074137953658166
+    },
+    {
+      "name": "but-for-general-styling",
+      "targetTime": 38.130449230107594
+    },
+    {
+      "name": "classes-better-styling",
+      "targetTime": 40.527929081923446
+    },
+    {
+      "name": "reusable-and-maintainable",
+      "targetTime": 43.16312782475282
+    },
+    {
       "name": "s7-end",
-      "targetTime": 77.00137723723125
+      "targetTime": 46.16312782475282
     }
   ],
   "seed": 3862291422

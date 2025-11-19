@@ -1,15 +1,17 @@
-import { Circle, Code, Icon, Layout, makeScene2D } from "@motion-canvas/2d";
+import { Code, Icon, Layout, lines, makeScene2D, Txt } from "@motion-canvas/2d";
 import colors from "../lib/colors";
-import { Cursor, ExtendedCircle, Grid, HTMLCode, JSCode } from "../nodes";
-import { all, createRef, delay, Direction, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
+import { Cursor, ExtendedCircle, Grid, HTMLCode, JSCode, ViewportManager } from "../nodes";
+import { all, createRef, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
+import beq1 from "../images/s7/beq1.png"
+import beq2 from "../images/s7/beq2.png"
 
 export default makeScene2D(function*(view) {
   view.fontFamily("Geist");
   view.fill(colors.zinc[950]);
-  view.opacity(0.7);
-  view.add(<Grid />);
+  // view.opacity(0.7);
+  // view.add(<Grid />);
 
   yield* slideTransition(Direction.Right, 0.75);
 
@@ -331,6 +333,142 @@ toggle.onclick = () => {
     icon2Circle().y(spaceNY[4.5], 0.75),
     iconName().y(spaceNY[3.5], 0.75),
   )
+
+  yield* waitUntil("form-labels")
+  iconName().position([0, spaceY[2]])
+  iconName().text("Form Labels")
+  yield* all(
+    icon3Circle().opacity(1, 0.75),
+    icon3Circle().y(spaceNY[1.5], 0.75),
+    iconName().y(spaceY[1], 0.75),
+    iconName().opacity(1, 0.75),
+  )
+
+  yield* waitUntil("labels-start")
+  yield* all(
+    icon3Circle().scale(0.5, 0.75),
+    icon3Circle().position([spaceNX[8.5], spaceNY[5.5]], 0.75),
+    iconName().position([spaceNX[6.5], spaceNY[4.5]], 0.75),
+    iconName().fontWeight(400, 0.75),
+  )
+
+  const viewportManager = new ViewportManager()
+    .addHtml()
+    .addCss()
+    .addBrowser();
+  viewportManager.addToView(view);
+  const wrapper = viewportManager.getWrapper();
+  const refs = viewportManager.getViewportRefs();
+  const htmlCode1: Reference<Code> = refs.html?.code;
+  const cssCode: Reference<Code> = refs.css?.code;
+
+  viewportManager.updateLayoutDimensions(spaceX[18], spaceY[8]);
+  viewportManager.removeViewport("css");
+  yield* all(
+    viewportManager.animateToLayout({ duration: 0.75, browserImage: beq1 }),
+    wrapper().size([spaceX[18], spaceY[8]], 0.75),
+    wrapper().y(spaceY[1], 0.75),
+    htmlCode1().code.append(`\
+<form>
+  <label for="name">Name:</label>
+  <input id="name" type="text" />
+</form>
+`, 0.75),
+  );
+  const targetingTxt1 = createRef<Txt>();
+  view.add(
+    <>
+      <Txt
+        ref={targetingTxt1}
+        position={[spaceX[0.25] - 4, spaceNY[1.33]]}
+        fill={colors.zinc[700]}
+        fontSize={spaceY[0.33]}
+      />
+    </>
+  )
+  targetingTxt1().text("")
+  targetingTxt1().opacity(1)
+  cursor().position([spaceX[1.5], spaceNY[1.25]]);
+  yield* all(
+    cursor().opacity(1, 0.5),
+    cursor().position([spaceX[0.5], spaceNY[2.25]], 0.5),
+  )
+  yield* all(
+    cursor().scale(0.8, 0.5).to(1, 0.5),
+    targetingTxt1().text("Clicking the label focuses this input", 1.25),
+    targetingTxt1().position([spaceX[2.75], spaceNY[1.33]], 1.25),
+    delay(0.25, viewportManager.animateToLayout({ duration: 0.75, browserImage: beq2 })),
+  )
+
+  yield* waitUntil("but-for-general-styling")
+  viewportManager.removeViewport("browser");
+  viewportManager.showViewport("css");
+  const classTitle = createRef<ExtendedTxt>();
+  view.add(
+    <>
+      <ExtendedTxt
+        ref={classTitle}
+        fontSize={spaceY[0.5]}
+        fontWeight={500}
+        y={spaceNY[4.5]}
+      />
+    </>
+  )
+  yield* all(
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceX[1.5], spaceNY[1.25]], 0.75),
+    targetingTxt1().opacity(0, 0.75),
+    viewportManager.animateToLayout({ duration: 0.75 }),
+    iconName().opacity(0, 0.75),
+    icon3Circle().scale(0, 0.75),
+    icon3Circle().opacity(0, 0.75),
+    icon3Circle().y(spaceNY[4.5], 0.75),
+    iconName().y(spaceNY[3.5], 0.75),
+    delay(0.5, htmlCode1().code.replace(lines(0, 3), `\
+<h2 class="emphasis">
+  Reusable classes on a heading
+</h2>
+<p class="note small emphasis">
+  A small emphasized note.
+</p>
+<p class="note large">
+  A large note without emphasis.
+</p>
+`, 0.75)),
+    delay(0.5, cssCode().code.append(`\
+.emphasis {
+  color: #b73aff;
+  font-weight: 600;
+}
+.note {
+  background: #dff6e3;
+  border-left: 4px solid #3ba776;
+  padding: 8px;
+}
+.small {
+  font-size: 0.85rem;
+}
+.large {
+  font-size: 1.25rem;
+}
+`, 0.75)),
+  )
+  yield* waitUntil("classes-better-styling")
+  yield* classTitle().text("Classes: The Better Styling Choice", 1.75);
+  cursor().position([spaceNX[5], spaceNY[1.5]])
+  yield* waitUntil("reusable-and-maintainable")
+  yield* all(
+    cursor().position([spaceNX[6], spaceNY[2.5]], 0.75),
+    cursor().opacity(1, 0.75),
+    htmlCode1().selection(htmlCode1().findAllRanges(/class="[^"]+"/g), 0.75),
+    cssCode().selection(
+      cssCode().findAllRanges(/\.[A-Za-z_][A-Za-z0-9_-]*/g),
+      0.75
+    ),
+  );
+  yield* cursor().position([spaceNX[4], spaceNY[1]], 0.75);
+  yield* cursor().position([spaceNX[6.75], spaceNY[1]], 0.75);
+  yield* cursor().position([spaceNX[6.75], spaceY[0.33]], 0.75);
 
   yield* waitUntil("s7-end");
 })

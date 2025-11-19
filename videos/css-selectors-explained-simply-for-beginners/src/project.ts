@@ -8,8 +8,9 @@ import scene4 from "./scenes/scene4-case-sensitivity-&-invalidity?scene";
 import scene5 from "./scenes/scene5-ID-intro-syntax-&-specificity?scene";
 import scene6 from "./scenes/scene6-ID-uniqueness?scene";
 import scene7 from "./scenes/scene7-ID-why-exist?scene";
+import scene8 from "./scenes/scene8-ID-case-sensitivity-&-invalidity?scene";
 
 export default makeProject({
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8],
   audio: audioAI1,
 });
