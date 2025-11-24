@@ -23,91 +23,91 @@
     },
     {
       "name": "maybe-10",
-      "targetTime": 14.21631557223756
+      "targetTime": 13.317928347597569
     },
     {
       "name": "only-two",
-      "targetTime": 17.20435869022215
+      "targetTime": 15.322392348950444
     },
     {
       "name": "class-selectors",
-      "targetTime": 19.341440191217913
+      "targetTime": 17.459473849946207
     },
     {
       "name": "specific-elements",
-      "targetTime": 22.410307514737017
+      "targetTime": 20.52834117346531
     },
     {
       "name": "style-them",
-      "targetTime": 25.66185199411918
+      "targetTime": 23.081655878699944
     },
     {
       "name": "first-in-html",
-      "targetTime": 31.198177021245662
+      "targetTime": 27.798768039499492
     },
     {
       "name": "class-attribute",
-      "targetTime": 33.3125242202209
+      "targetTime": 29.91311523847473
     },
     {
       "name": "to-the-elements",
-      "targetTime": 34.638018861458505
+      "targetTime": 31.238609879712335
     },
     {
       "name": "example-here",
-      "targetTime": 37.49816587932971
+      "targetTime": 32.9446580973397
     },
     {
       "name": "class-highlight",
-      "targetTime": 39.41329373380252
+      "targetTime": 34.859785951812505
     },
     {
       "name": "now-in-css",
-      "targetTime": 42.040548181602496
+      "targetTime": 37.09166149298095
     },
     {
       "name": "dot-followed-by-class-name",
-      "targetTime": 44.252518917359204
+      "targetTime": 38.59018547395067
     },
     {
       "name": "leaving-other",
-      "targetTime": 51.581233431725956
+      "targetTime": 44.84018547395067
     },
     {
       "name": "we-used-dot",
-      "targetTime": 54.066299066183085
+      "targetTime": 46.89228599578107
     },
     {
       "name": "no-dot-html",
-      "targetTime": 57.588888780620735
+      "targetTime": 49.50839227882393
     },
     {
       "name": "dot-in-css",
-      "targetTime": 59.72817577712547
+      "targetTime": 51.38527617676702
     },
     {
       "name": "indicates-class",
-      "targetTime": 62.126213018247476
+      "targetTime": 53.25850722076573
     },
     {
       "name": "other-selectors",
-      "targetTime": 64.9120332232928
+      "targetTime": 55.31675519798102
     },
     {
       "name": "indicates-type-selector",
-      "targetTime": 65.6620332232928
+      "targetTime": 56.25759381511676
     },
     {
       "name": "indicates-id-selector",
-      "targetTime": 68.57057296565759
+      "targetTime": 57.25759381511676
     },
     {
       "name": "this-pattern",
-      "targetTime": 71.01805988205263
+      "targetTime": 58.00759381511676
     },
     {
       "name": "s3-end",
-      "targetTime": 77.70669983427118
+      "targetTime": 59.409794259976834
     }
   ],
   "seed": 841587742

@@ -11,91 +11,91 @@
     },
     {
       "name": "still-match",
-      "targetTime": 6.893308251639679
+      "targetTime": 6.35050419508055
     },
     {
       "name": "other-classes",
-      "targetTime": 9.168799580944171
+      "targetTime": 7.776389174988143
     },
     {
       "name": "apply-style",
-      "targetTime": 12.443885787579315
+      "targetTime": 9.989467444877164
     },
     {
       "name": "do-this",
-      "targetTime": 15.9040283029452
+      "targetTime": 12.739467444877164
     },
     {
       "name": "this-rule",
-      "targetTime": 21.6140357774213
+      "targetTime": 17.489467444877164
     },
     {
       "name": "only-apply",
-      "targetTime": 23.047876718144003
+      "targetTime": 18.923308385599867
     },
     {
       "name": "that-have-these",
-      "targetTime": 28.52792511955788
+      "targetTime": 23.423308385599867
     },
     {
       "name": "so-this-html",
-      "targetTime": 30.52792511955788
+      "targetTime": 25.423308385599867
     },
     {
       "name": "incredibly-useful",
-      "targetTime": 33.79439546849228
+      "targetTime": 28.173308385599867
     },
     {
       "name": "let's-take-buttons",
-      "targetTime": 37.482531806074164
+      "targetTime": 28.923308385599867
     },
     {
       "name": "base-button-style",
-      "targetTime": 40.27096262025444
+      "targetTime": 31.71173919978014
     },
     {
       "name": "variations-like",
-      "targetTime": 44.97556930677072
+      "targetTime": 33.702325603500775
     },
     {
       "name": "mix&match",
-      "targetTime": 48.886255062795264
+      "targetTime": 37.613011359525316
     },
     {
       "name": "primaryLarge",
-      "targetTime": 52.74694081881981
+      "targetTime": 41.096094293595684
     },
     {
       "name": "secondaryLarge",
-      "targetTime": 54.646646342221416
+      "targetTime": 42.122593291228256
     },
     {
       "name": "justPrimary",
-      "targetTime": 56.354734278389415
+      "targetTime": 43.00467505437149
     },
     {
       "name": "saves-us",
-      "targetTime": 60.49647718685949
+      "targetTime": 45.877881580140524
     },
     {
       "name": "dot-primary",
-      "targetTime": 65.70628180701826
+      "targetTime": 50.59208249648444
     },
     {
       "name": "dot-secondary",
-      "targetTime": 66.97967372405948
+      "targetTime": 51.41707106245507
     },
     {
       "name": "dozens",
-      "targetTime": 68.93039635727169
+      "targetTime": 52.75418910999174
     },
     {
       "name": "real-power",
-      "targetTime": 72.05009035292053
+      "targetTime": 56.08628469298982
     },
     {
       "name": "s3-end",
-      "targetTime": 75.06677996076763
+      "targetTime": 59.10297430083692
     }
   ],
   "seed": 2447903078

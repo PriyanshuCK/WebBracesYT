@@ -7,163 +7,163 @@
     },
     {
       "name": "different",
-      "targetTime": 4.837024519327697
+      "targetTime": 5.117189055394983
     },
     {
       "name": "whenWorkingWithHTML",
-      "targetTime": 6.6512023527141455
+      "targetTime": 6.931366888781431
     },
     {
       "name": "the-browser",
-      "targetTime": 9.346465203859958
+      "targetTime": 9.626629739927244
     },
     {
       "name": "exactly-as",
-      "targetTime": 12.340913814087566
+      "targetTime": 11.876629739927244
     },
     {
       "name": "these-three",
-      "targetTime": 14.749330103707367
+      "targetTime": 14.285046029547045
     },
     {
       "name": "completely-different",
-      "targetTime": 15.749330103707367
+      "targetTime": 15.285046029547045
     },
     {
       "name": "why-confusion",
-      "targetTime": 17.749330103707365
+      "targetTime": 17.285046029547047
     },
     {
       "name": "cssDoesntCare",
-      "targetTime": 20.865287510462444
+      "targetTime": 19.86849939375357
     },
     {
       "name": "actual-html",
-      "targetTime": 26.48299025313404
+      "targetTime": 24.740696476857188
     },
     {
       "name": "html-case-sensitive",
-      "targetTime": 31.70577230023215
+      "targetTime": 28.97834604524047
     },
     {
       "name": "most-developers",
-      "targetTime": 34.087854451021286
+      "targetTime": 30.90779975986333
     },
     {
       "name": "hyphen",
-      "targetTime": 36.087854451021286
+      "targetTime": 32.90779975986333
     },
     {
       "name": "this-way",
-      "targetTime": 39.75090246816561
+      "targetTime": 35.47921448978312
     },
     {
       "name": "now-invalid",
-      "targetTime": 44.90162467146635
+      "targetTime": 40.629936693083856
     },
     {
       "name": "or-special-characters",
-      "targetTime": 47.08342670296365
+      "targetTime": 44.1124609214875
     },
     {
       "name": "allowed-in-html",
-      "targetTime": 49.011084757368074
+      "targetTime": 45.36807917415698
     },
     {
       "name": "but-in-css",
-      "targetTime": 51.12468882036267
+      "targetTime": 47.48168323715158
     },
     {
       "name": "start-with-number",
-      "targetTime": 52.434598834679626
+      "targetTime": 48.791593251468534
     },
     {
       "name": "invalid-selectors",
-      "targetTime": 58.87459999359781
+      "targetTime": 53.302189818308975
     },
     {
       "name": "browser-ignore",
-      "targetTime": 60.15144701793663
+      "targetTime": 54.579036842647795
     },
     {
       "name": "no-style-applied",
-      "targetTime": 63.72162814822091
+      "targetTime": 57.56389298432421
     },
     {
       "name": "use-numbers",
-      "targetTime": 68.045115893513
+      "targetTime": 60.84286138967637
     },
     {
       "name": "or-special-characters-2",
-      "targetTime": 69.8647126255909
+      "targetTime": 61.84286138967637
     },
     {
       "name": "escape-them",
-      "targetTime": 71.86972012158517
+      "targetTime": 63.47341855625822
     },
     {
       "name": "the-backslash",
-      "targetTime": 73.77679145252792
+      "targetTime": 65.38048988720097
     },
     {
       "name": "treat-it-normal",
-      "targetTime": 76.41349982088882
+      "targetTime": 68.01719825556187
     },
     {
       "name": "for-example",
-      "targetTime": 78.87786463637059
+      "targetTime": 69.67353867599576
     },
     {
       "name": "class-like-this",
-      "targetTime": 80.0632588752231
+      "targetTime": 70.50419049751018
     },
     {
       "name": "escaped-like-this",
-      "targetTime": 82.39665373170892
+      "targetTime": 72.12810051931982
     },
     {
       "name": "and-for-this",
-      "targetTime": 87.18821189504958
+      "targetTime": 74.25909055262477
     },
     {
       "name": "escapes-the-number",
-      "targetTime": 92.02637210667808
+      "targetTime": 78.30893428127973
     },
     {
       "name": "space-tells",
-      "targetTime": 93.80079014311293
+      "targetTime": 80.49721847127569
     },
     {
       "name": "its-odd",
-      "targetTime": 96.32023947877313
+      "targetTime": 83.58819725709171
     },
     {
       "name": "it-works",
-      "targetTime": 97.32023947877313
+      "targetTime": 84.58819725709171
     },
     {
       "name": "honestly-easier",
-      "targetTime": 98.32023947877313
+      "targetTime": 85.58819725709171
     },
     {
       "name": "stick-to-letters",
-      "targetTime": 99.87496099152982
+      "targetTime": 87.1429187698484
     },
     {
       "name": "stick-to-numbers",
-      "targetTime": 100.80555926279374
+      "targetTime": 88.07351704111231
     },
     {
       "name": "stick-to-hyphens",
-      "targetTime": 102.60949842793094
+      "targetTime": 89.87745620624952
     },
     {
       "name": "stick-to-underscores",
-      "targetTime": 103.62096159677573
+      "targetTime": 90.8889193750943
     },
     {
       "name": "s4-end",
-      "targetTime": 104.96925218063782
+      "targetTime": 92.2372099589564
     }
   ],
   "seed": 3177809425

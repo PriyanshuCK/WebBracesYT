@@ -3,83 +3,83 @@
   "timeEvents": [
     {
       "name": "dont-worry",
-      "targetTime": 2.196582566606139
+      "targetTime": 2.1
     },
     {
       "name": "not-expected",
-      "targetTime": 4.915586118007397
+      "targetTime": 4.8190035514012575
     },
     {
       "name": "showing-them",
-      "targetTime": 7.470440839725222
+      "targetTime": 7.373858273119082
     },
     {
       "name": "bigger-picture",
-      "targetTime": 9.06822114660133
+      "targetTime": 8.553713183676951
     },
     {
       "name": "three-main-purposes",
-      "targetTime": 13.783430647811581
+      "targetTime": 11.597221099614243
     },
     {
       "name": "first",
-      "targetTime": 15.459553647934657
+      "targetTime": 14.387811823252623
     },
     {
       "name": "js-start",
-      "targetTime": 17.281697148078244
+      "targetTime": 16.488572254275038
     },
     {
       "name": "ids-perfect",
-      "targetTime": 20.86962798267653
+      "targetTime": 19.129205523885314
     },
     {
       "name": "guarantee",
-      "targetTime": 22.294595316310716
+      "targetTime": 20.10838576811338
     },
     {
       "name": "second",
-      "targetTime": 25.63685990024234
+      "targetTime": 23.19989511425406
     },
     {
       "name": "anchor-links",
-      "targetTime": 26.38685990024234
+      "targetTime": 23.94989511425406
     },
     {
       "name": "anchor-start",
-      "targetTime": 27.551044400426953
+      "targetTime": 25.114079614438673
     },
     {
       "name": "directly",
-      "targetTime": 28.301044400426953
+      "targetTime": 25.864079614438673
     },
     {
       "name": "third",
-      "targetTime": 32.3890829066042
+      "targetTime": 28.67711406564144
     },
     {
       "name": "form-labels",
-      "targetTime": 33.1390829066042
+      "targetTime": 29.42711406564144
     },
     {
       "name": "labels-start",
-      "targetTime": 34.074137953658166
+      "targetTime": 30.362169112695405
     },
     {
       "name": "but-for-general-styling",
-      "targetTime": 38.130449230107594
+      "targetTime": 34.41848038914483
     },
     {
       "name": "classes-better-styling",
-      "targetTime": 40.527929081923446
+      "targetTime": 36.14991334657103
     },
     {
       "name": "reusable-and-maintainable",
-      "targetTime": 43.16312782475282
+      "targetTime": 38.78511208940041
     },
     {
       "name": "s7-end",
-      "targetTime": 46.16312782475282
+      "targetTime": 41.78511208940041
     }
   ],
   "seed": 3862291422

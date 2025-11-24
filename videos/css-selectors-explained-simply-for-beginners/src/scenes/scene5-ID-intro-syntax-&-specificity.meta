@@ -7,91 +7,91 @@
     },
     {
       "name": "one-crucial-difference",
-      "targetTime": 5.600362722467999
+      "targetTime": 4.562236038013491
     },
     {
       "name": "while-you-can-give",
-      "targetTime": 7.740979012098498
+      "targetTime": 6.206356956817921
     },
     {
       "name": "an-id-must-be-unique",
-      "targetTime": 10.479198996016065
+      "targetTime": 8.44808156990942
     },
     {
       "name": "think-of-it",
-      "targetTime": 12.80605951906019
+      "targetTime": 9.94808156990942
     },
     {
       "name": "each-has-unique",
-      "targetTime": 14.796350303626376
+      "targetTime": 11.464444955050721
     },
     {
       "name": "no-two-are-same",
-      "targetTime": 16.104481156681164
+      "targetTime": 12.45662420848892
     },
     {
       "name": "in-html-add",
-      "targetTime": 18.35316585469864
+      "targetTime": 14.569901078099289
     },
     {
       "name": "add-id-attr",
-      "targetTime": 19.74398276005784
+      "targetTime": 15.531926526835974
     },
     {
       "name": "and-in-css",
-      "targetTime": 22.84408318036907
+      "targetTime": 18.180667519123503
     },
     {
       "name": "use-hash",
-      "targetTime": 24.278184954967234
+      "targetTime": 19.180667519123503
     },
     {
       "name": "just-like-class",
-      "targetTime": 27.010081826082132
+      "targetTime": 21.9125643902384
     },
     {
       "name": "ids-use-hash",
-      "targetTime": 29.440299914506774
+      "targetTime": 23.756015222232236
     },
     {
       "name": "IDs-have-more-power",
-      "targetTime": 32.95175902332581
+      "targetTime": 27.154634474045352
     },
     {
       "name": "high-specificity",
-      "targetTime": 36.05945673047074
+      "targetTime": 29.585293039154735
     },
     {
       "name": "this-means-style-same",
-      "targetTime": 38.247952047709035
+      "targetTime": 30.835293039154735
     },
     {
       "name": "both-a-class",
-      "targetTime": 40.30084377929946
+      "targetTime": 32.88818477074516
     },
     {
       "name": "and-an-id",
-      "targetTime": 41.216898607835496
+      "targetTime": 33.804239599281196
     },
     {
       "name": "ids-style-win",
-      "targetTime": 41.966898607835496
+      "targetTime": 34.554239599281196
     },
     {
       "name": "like-friend",
-      "targetTime": 44.80360856589388
+      "targetTime": 36.554239599281196
     },
     {
       "name": "like-teacher",
-      "targetTime": 47.043360442436864
+      "targetTime": 37.304239599281196
     },
     {
       "name": "follow-teacher",
-      "targetTime": 49.191278299192945
+      "targetTime": 38.054239599281196
     },
     {
       "name": "s5-end",
-      "targetTime": 50.34802495677343
+      "targetTime": 38.804239599281196
     }
   ],
   "seed": 1904701812

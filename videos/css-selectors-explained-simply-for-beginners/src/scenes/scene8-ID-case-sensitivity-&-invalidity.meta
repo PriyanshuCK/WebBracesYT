@@ -2,8 +2,36 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "IDs-case-sensitive",
+      "targetTime": 1.7805649514168376
+    },
+    {
+      "name": "same-naming-rules",
+      "targetTime": 3.280564951416838
+    },
+    {
+      "name": "cant-start-with-number",
+      "targetTime": 5.12529273346899
+    },
+    {
+      "name": "stick-with-letters",
+      "targetTime": 6.283479236507205
+    },
+    {
+      "name": "hyphens",
+      "targetTime": 7.960315468960319
+    },
+    {
+      "name": "underscores",
+      "targetTime": 8.846377636639724
+    },
+    {
+      "name": "same-ID-twice",
+      "targetTime": 11.740641881647457
+    },
+    {
       "name": "s8-end",
-      "targetTime": 16.839754672395372
+      "targetTime": 22.330396554042828
     }
   ],
   "seed": 233038730
