@@ -15,23 +15,59 @@
     },
     {
       "name": "stick-with-letters",
-      "targetTime": 6.283479236507205
+      "targetTime": 6.8278568944954365
     },
     {
       "name": "hyphens",
-      "targetTime": 7.960315468960319
+      "targetTime": 7.5778568944954365
     },
     {
       "name": "underscores",
-      "targetTime": 8.846377636639724
+      "targetTime": 8.327856894495437
     },
     {
       "name": "same-ID-twice",
-      "targetTime": 11.740641881647457
+      "targetTime": 11.22212113950317
+    },
+    {
+      "name": "this-breaks-one-per-page",
+      "targetTime": 14.60507171479565
+    },
+    {
+      "name": "css-might-work",
+      "targetTime": 17.252756533334715
+    },
+    {
+      "name": "style-both-elements",
+      "targetTime": 18.62213977271899
+    },
+    {
+      "name": "but-invalid-HTML",
+      "targetTime": 19.622528741831786
+    },
+    {
+      "name": "think-of-it-like",
+      "targetTime": 21.97721975792983
+    },
+    {
+      "name": "total-chaos",
+      "targetTime": 23.906862748703936
+    },
+    {
+      "name": "browser-wont-show-error",
+      "targetTime": 26.232220381542323
+    },
+    {
+      "name": "behave-unpredictably",
+      "targetTime": 28.80820309233227
+    },
+    {
+      "name": "keep-ids-unique",
+      "targetTime": 30.721819525678807
     },
     {
       "name": "s8-end",
-      "targetTime": 22.330396554042828
+      "targetTime": 34.20621662080958
     }
   ],
   "seed": 233038730
