@@ -125,15 +125,15 @@ export default makeScene2D(function*(view) {
       htmlCode().findAllRanges('class="highlight important"'), 0.75)),
   );
 
-  yield* all(
-    delay(0.5, cursor().position([spaceX[3.5], spaceY[2.75]], 1.5)),
-    htmlCode().selection(DEFAULT, 0.75),
-  );
+  // yield* all(
+  //   delay(0.5, cursor().position([spaceX[3.5], spaceY[2.75]], 1.5)),
+  //   htmlCode().selection(DEFAULT, 0.75),
+  // );
 
-  yield* waitUntil("that-have-these")
-  yield* cssCode().selection(word(0, 0, 20), 0.75);
-  yield* waitFor(0.5)
-  yield* cssCode().selection(DEFAULT, 0.75);
+  // yield* waitUntil("that-have-these")
+  // yield* cssCode().selection(word(0, 0, 20), 0.75);
+  // yield* waitFor(0.5)
+  // yield* cssCode().selection(DEFAULT, 0.75);
 
   yield* waitUntil("so-this-html");
 
@@ -181,6 +181,7 @@ export default makeScene2D(function*(view) {
     highlightRect1().size([spaceX[6], spaceY[1.25]], 0.75),
   );
 
+  yield* waitUntil("but-this-wouldnt");
   yield* all(
     viewportManager.animateToPresetLayout('test2', { browserImage: eqh2 }),
     htmlCode().code.append(`\
