@@ -66,8 +66,68 @@
       "targetTime": 31.384451928456766
     },
     {
+      "name": "you-can-mix",
+      "targetTime": 32.77128503697557
+    },
+    {
+      "name": "make-all-ps",
+      "targetTime": 41.4445956163
+    },
+    {
+      "name": "highlight-class",
+      "targetTime": 43.02599146136277
+    },
+    {
+      "name": "id-special-text",
+      "targetTime": 44.55492057833906
+    },
+    {
+      "name": "bold",
+      "targetTime": 46.2573934882168
+    },
+    {
+      "name": "you-can-combine-classes",
+      "targetTime": 47.0073934882168
+    },
+    {
+      "name": "multiple-classes",
+      "targetTime": 50.16682707803464
+    },
+    {
+      "name": "those-combinations",
+      "targetTime": 51.908981207664574
+    },
+    {
+      "name": "button-primary",
+      "targetTime": 55.007650331124
+    },
+    {
+      "name": "button-secondary",
+      "targetTime": 56.57290256754477
+    },
+    {
+      "name": "link-class",
+      "targetTime": 57.93635969594061
+    },
+    {
+      "name": "spaces-around-commas",
+      "targetTime": 60.16349988668321
+    },
+    {
+      "name": "second-format",
+      "targetTime": 65.90523305736755
+    },
+    {
+      "name": "long-selector-list",
+      "targetTime": 70.32565086570348
+    },
+    {
+      "name": "put-each-selector",
+      "targetTime": 72.58036456971678
+    },
+    {
       "name": "s9-end",
-      "targetTime": 52.588433338287146
+      "targetTime": 78.45442614542029
     }
   ],
   "seed": 2284900989

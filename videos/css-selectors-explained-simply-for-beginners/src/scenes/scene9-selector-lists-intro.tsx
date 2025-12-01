@@ -1,7 +1,7 @@
 import { Code, Layout, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, Grid, ViewportManager } from "../nodes";
-import { all, createRef, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
+import { all, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import beq1 from "../images/s9/beq1.png"
@@ -10,8 +10,8 @@ import eqh1 from "../images/s9/eqh1.png"
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
-  view.opacity(0.7);
-  view.add(<Grid />);
+  // view.opacity(0.7);
+  // view.add(<Grid />);
 
   const table = createRef<Layout>();
   const leftColumn = createRef<Layout>();
@@ -397,6 +397,138 @@ h1, h2, h3 {
   yield* all(
     cursor().position([spaceNX[1.33] - 8, spaceNY[2]], 0.75),
     cssCode().selection(lines(1), 0.75),
+  )
+
+  yield* waitUntil("you-can-mix")
+  viewportManager.removeViewport("html").removeViewport("browser")
+  cssCode().selection(DEFAULT);
+  htmlCode().selection(DEFAULT);
+  yield* all(
+    viewportManager.animateToLayout({ duration: 0.75 }),
+    cssCode().code.replace(lines(0, 2), `\
+p, .highlight, #special-text {
+  font-weight: bold;
+}
+`, 0.75),
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceNX[0.33], spaceNY[1]], 0.75),
+  )
+
+  yield* waitUntil("make-all-ps")
+  cursor().position([spaceNX[3.25] + 8, spaceNY[1.5] + 8]);
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceNX[4.25] + 8, spaceNY[2.5] + 8], 0.75),
+    cssCode().selection(word(0, 0, 2), 0.75),
+  )
+
+  yield* waitUntil("highlight-class")
+  yield* all(
+    cssCode().selection(word(0, 3, 11), 0.75),
+    cursor().x(spaceNX[2.75], 0.75),
+  )
+
+  yield* waitUntil("id-special-text");
+  yield* all(
+    cssCode().selection(word(0, 15, 13), 0.75),
+    cursor().x(spaceNX[0.5], 0.75),
+  )
+
+  yield* waitUntil("bold")
+  yield* all(
+    cssCode().selection(lines(1), 0.75),
+    cursor().position([spaceNX[1.33], spaceNY[2] + 4], 0.75),
+  )
+
+  yield* waitUntil("you-can-combine-classes")
+  cssCode().selection(DEFAULT);
+  yield* all(
+    cssCode().code.replace(lines(0, 2), `\
+.btn.primary, .btn.secondary, .link {
+    text-decoration: none;
+    display: inline-block;
+}
+`, 0.75),
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceNX[0.33], spaceNY[1]], 0.75),
+    cssCode().selection(word(0, 0, 39), 0.75),
+  )
+
+  yield* waitUntil("multiple-classes")
+  cursor().position([spaceNX[3.25], spaceNY[1.5] + 8]);
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceNX[4.25], spaceNY[2.5] + 8], 0.75).to([spaceNX[2.25], spaceNY[2.5] + 8], 0.75),
+  )
+
+  yield* waitUntil("those-combinations")
+  yield* cursor().x(spaceX[0.5], 1);
+
+  yield* waitUntil("button-primary")
+  yield* all(
+    cursor().x(spaceNX[3.33] + 8, 0.75),
+    cssCode().selection(word(0, 0, 13), 0.75),
+  )
+
+  yield* waitUntil("button-secondary")
+  yield* all(
+    cursor().x(spaceNX[0.33], 0.75),
+    cssCode().selection(word(0, 14, 15), 0.75),
+  )
+
+  yield* waitUntil("link-class")
+  yield* all(
+    cursor().x(spaceX[1.5], 0.75),
+    cssCode().selection(word(0, 30, 5), 0.75),
+  )
+
+  yield* waitUntil("spaces-around-commas")
+  yield* all(
+    cssCode().selection(DEFAULT, 0.75),
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceX[0.5], spaceNY[1.5]], 0.75),
+    cssCode().code.insert([0, 0], `\
+/* These all work the same */
+.btn.primary,.btn.secondary,.link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+`, 0.75),
+    cssCode().code.append(`
+.btn.primary ,.btn.secondary ,.link {
+    text-decoration: none;
+    display: inline-block;
+}
+`, 0.75),
+  )
+
+  yield* cssCode().selection(cssCode().findAllRanges(/([.#][A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*)(\s*,\s*)?/g), 0.75);
+
+  yield* waitUntil("second-format")
+  yield* cssCode().selection(word(6, 0, 35), 0.75);
+
+  cursor().position([spaceNX[1.25], spaceY[1.25]]);
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceNX[2.25] + 8, spaceY[0.25] + 8], 0.75).wait(0.1).to([spaceNX[2] + 8, spaceY[0.25] + 8], 0.75),
+  )
+
+  yield* waitUntil("long-selector-list")
+  yield* all(
+    cssCode().selection(DEFAULT, 0.75),
+    cssCode().code.remove(lines(0, 5), 0.75),
+    cssCode().code.remove(lines(11, 14), 0.75),
+    cursor().position([spaceNX[4], spaceNY[2.5]], 0.75).to([spaceX[1.75], spaceNY[2.5]], 0.75),
+  )
+
+  yield* waitUntil("put-each-selector")
+  yield* all(
+    cssCode().code.replace(word(0, 13, 17), `
+.btn.secondary,
+`, 0.75),
+    cursor().position([spaceX[0.75], spaceNY[1.5]], 0.75),
+    cursor().opacity(0, 0.75),
   )
 
   yield* waitUntil("s9-end");

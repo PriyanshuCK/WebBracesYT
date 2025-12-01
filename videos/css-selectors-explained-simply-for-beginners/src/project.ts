@@ -10,8 +10,9 @@ import scene6 from "./scenes/scene6-ID-uniqueness?scene";
 import scene7 from "./scenes/scene7-ID-why-exist?scene";
 import scene8 from "./scenes/scene8-ID-case-sensitivity-&-invalidity?scene";
 import scene9 from "./scenes/scene9-selector-lists-intro?scene";
+import scene10 from "./scenes/scene10-selector-lists-space-vs-comma?scene"
 
 export default makeProject({
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10],
   audio: audio1,
 });
