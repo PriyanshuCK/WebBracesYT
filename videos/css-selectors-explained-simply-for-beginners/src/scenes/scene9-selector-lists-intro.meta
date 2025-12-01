@@ -2,8 +2,20 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "type-selectors",
+      "targetTime": 0.75
+    },
+    {
+      "name": "lets-talk",
+      "targetTime": 3.4635171692050255
+    },
+    {
+      "name": "selector-lists-title",
+      "targetTime": 6.564211384459085
+    },
+    {
       "name": "s9-end",
-      "targetTime": 21.24423209676675
+      "targetTime": 24.058443481225837
     }
   ],
   "seed": 2284900989
