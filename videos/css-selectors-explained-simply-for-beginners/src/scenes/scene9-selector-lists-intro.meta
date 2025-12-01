@@ -14,8 +14,60 @@
       "targetTime": 6.564211384459085
     },
     {
+      "name": "instead-of",
+      "targetTime": 8.688738715373848
+    },
+    {
+      "name": "separate-rules",
+      "targetTime": 9.438738715373848
+    },
+    {
+      "name": "group-together",
+      "targetTime": 11.336680537196123
+    },
+    {
+      "name": "lets-say-you-want",
+      "targetTime": 13.41516679001179
+    },
+    {
+      "name": "all-your-headings",
+      "targetTime": 14.609257246718766
+    },
+    {
+      "name": "h1",
+      "targetTime": 15.359257246718766
+    },
+    {
+      "name": "without-selector-lists",
+      "targetTime": 18.43063547885668
+    },
+    {
+      "name": "you-would-write-this",
+      "targetTime": 19.845371955656514
+    },
+    {
+      "name": "lots-of-repetition",
+      "targetTime": 21.34223791295186
+    },
+    {
+      "name": "with-selector-lists",
+      "targetTime": 22.84223791295186
+    },
+    {
+      "name": "you-can-combine-them",
+      "targetTime": 24.094936153439107
+    },
+    {
+      "name": "reads-as-h1",
+      "targetTime": 28.84782561387196
+    },
+    {
+      "name": "should-all-blue",
+      "targetTime": 31.384451928456766
+    },
+    {
       "name": "s9-end",
-      "targetTime": 24.058443481225837
+      "targetTime": 52.588433338287146
     }
   ],
   "seed": 2284900989
