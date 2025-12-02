@@ -2,8 +2,16 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "look-this-rule",
+      "targetTime": 2.3331138188659053
+    },
+    {
+      "name": "it-looks-like",
+      "targetTime": 4.262981665001816
+    },
+    {
       "name": "s10-end",
-      "targetTime": 14.595932316757635
+      "targetTime": 17.35891398175945
     }
   ],
   "seed": 4079150671
