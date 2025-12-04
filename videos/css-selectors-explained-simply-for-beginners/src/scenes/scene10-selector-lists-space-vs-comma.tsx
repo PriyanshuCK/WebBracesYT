@@ -1,15 +1,16 @@
-import { Code, makeScene2D, word } from "@motion-canvas/2d";
+import { Code, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { Cursor, Grid, ViewportManager } from "../nodes";
-import { all, createRef, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
-import spaceX, { spaceNX, spaceNY } from "../lib/space";
+import { all, createRef, DEFAULT, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
+import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import eqh1 from "../images/s10/eqh1.png"
+import eqh2 from "../images/s10/eqh2.png"
 
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
-  view.opacity(0.7);
-  view.add(<Grid />);
+  // view.opacity(0.7);
+  // view.add(<Grid />);
 
   const viewportManager = new ViewportManager()
     .addHtml()
@@ -90,6 +91,61 @@ h1, .sidebar p {
   yield* all(
     cursor().position([spaceNX[0.67] + 8, spaceNY[4.5] + 8], 0.75),
     cssCode().selection(word(0, 4, 10), 0.75),
+  )
+
+  yield* waitUntil("it-means");
+  yield* all(
+    cursor().position([spaceNX[6], spaceNY[2]], 0.75),
+  )
+
+  yield* waitUntil("inside-sidebar");
+  yield* cursor().y(spaceNY[2.5] - 8, 0.75);
+
+  yield* waitUntil("this-rule-really-applies");
+  yield* all(
+    cssCode().selection(DEFAULT, 0.75),
+    cursor().position([spaceNX[2.67], spaceNY[4.5]], 0.75).to([spaceNX[0.5] + 8, spaceNY[4.5]], 0.75),
+  )
+
+  yield* waitUntil("all-h1-headings-2");
+  yield* cursor().position([spaceNX[8.5] + 8, spaceNY[4.5]], 0.75);
+
+  yield* waitUntil("all-ps-2");
+  yield* all(
+    cursor().position([spaceNX[6], spaceNY[2]], 0.75),
+    htmlCode().selection(lines(4, 6), 0.75),
+  )
+
+  yield* waitUntil("actually-wanted");
+  yield* all(
+    htmlCode().selection(DEFAULT, 0.75),
+  )
+
+  yield* waitUntil("all-h1-headings-3");
+  yield* all(
+    cursor().position([spaceNX[8.5] + 8, spaceNY[4.5]], 0.75),
+    htmlCode().selection(lines(0), 0.75),
+  )
+
+  yield* waitUntil("all-sidebar");
+  yield* all(
+    cursor().position([spaceNX[6], spaceNY[2.5]], 0.75),
+    htmlCode().selection(lines(4, 6), 0.75),
+  )
+
+  yield* waitUntil("all-ps-3");
+  yield* all(
+    cursor().position([spaceNX[8.5], spaceNY[3.5]], 0.75),
+    htmlCode().selection(htmlCode().findAllRanges(/<p\b[^>]*>[\s\S]*?<\/p>/g), 0.75),
+  )
+
+  yield* waitUntil("need-commas");
+  yield* all(
+    cursor().position([spaceNX[0.67] + 8, spaceNY[4.5] + 8], 0.75),
+    cssCode().code.insert([0, 12], `,`, 0.75),
+    cssCode().selection(word(0, 0, 15), 0.75),
+    htmlCode().selection(DEFAULT, 0.75),
+    viewportManager.animateToPresetLayout("EQ_H", { duration: 0.75, browserImage: eqh2 }),
   )
 
   yield* waitUntil("s10-end");

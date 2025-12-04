@@ -30,8 +30,48 @@
       "targetTime": 12.145914750369055
     },
     {
+      "name": "it-means",
+      "targetTime": 16.017337280019756
+    },
+    {
+      "name": "inside-sidebar",
+      "targetTime": 17.558894189452708
+    },
+    {
+      "name": "this-rule-really-applies",
+      "targetTime": 19.19006131504788
+    },
+    {
+      "name": "all-h1-headings-2",
+      "targetTime": 20.790061315047883
+    },
+    {
+      "name": "all-ps-2",
+      "targetTime": 22.003047431886024
+    },
+    {
+      "name": "actually-wanted",
+      "targetTime": 25.008237871968586
+    },
+    {
+      "name": "all-h1-headings-3",
+      "targetTime": 26.35563931305006
+    },
+    {
+      "name": "all-sidebar",
+      "targetTime": 27.457585793034237
+    },
+    {
+      "name": "all-ps-3",
+      "targetTime": 28.62787696463185
+    },
+    {
+      "name": "need-commas",
+      "targetTime": 29.705669250547608
+    },
+    {
       "name": "s10-end",
-      "targetTime": 22.991847067126685
+      "targetTime": 52.448293603688235
     }
   ],
   "seed": 4079150671
