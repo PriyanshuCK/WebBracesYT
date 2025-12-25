@@ -5,6 +5,7 @@ import { all, createRef, DEFAULT, Direction, Reference, slideTransition, waitUnt
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import eqh1 from "../images/s10/eqh1.png"
 import eqh2 from "../images/s10/eqh2.png"
+import { ExtendedTxt } from "../nodes/ExtendedTxt";
 
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
@@ -147,6 +148,37 @@ h1, .sidebar p {
     htmlCode().selection(DEFAULT, 0.75),
     viewportManager.animateToPresetLayout("EQ_H", { duration: 0.75, browserImage: eqh2 }),
   )
+
+  yield* waitUntil("now-you-might");
+  yield* all(
+    cursor().opacity(0, 0.75),
+    cursor().position([spaceX[0.67], spaceNY[3.5]], 0.75),
+  )
+
+  yield* waitUntil("if-a-space");
+  yield* all(
+    cursor().opacity(1, 0.75),
+    cursor().position([spaceNX[0.67] + 8, spaceNY[4.5] + 8], 0.75),
+    cssCode().code.remove(word(0, 12, 1), 0.75),
+    cssCode().selection(word(0, 4, 10), 0.75),
+    viewportManager.animateToPresetLayout("EQ_H", { duration: 0.75, browserImage: eqh1 }),
+  )
+
+  yield* waitUntil("are-there-other-symbols");
+  const thinkingEmoji = createRef<ExtendedTxt>();
+  view.add(
+    <>
+      <ExtendedTxt
+        ref={thinkingEmoji}
+        text={"🤔"}
+        fontSize={spaceY[1]}
+        fontWeight={500}
+        opacity={0}
+      />
+    </>
+  )
+
+  yield* thinkingEmoji().opacity(1, 0.75);
 
   yield* waitUntil("s10-end");
 });

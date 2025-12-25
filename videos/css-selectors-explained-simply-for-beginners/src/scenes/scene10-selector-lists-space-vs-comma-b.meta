@@ -1,0 +1,18 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "called-combinators",
+      "targetTime": 6.431055405776906
+    },
+    {
+      "name": "explore-them",
+      "targetTime": 10.903444186685837
+    },
+    {
+      "name": "s10b-end",
+      "targetTime": 15.206302238367776
+    }
+  ],
+  "seed": 1511336615
+}
