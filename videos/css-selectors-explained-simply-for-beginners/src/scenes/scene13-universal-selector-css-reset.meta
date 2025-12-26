@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "css-reset",
+      "targetTime": 3.6589943274557943
+    },
+    {
+      "name": "every-browser-gives",
+      "targetTime": 6.303774346855659
+    },
+    {
+      "name": "default-styles",
+      "targetTime": 8.321379374338802
+    },
+    {
+      "name": "called-UA",
+      "targetTime": 12.103689440082789
+    },
+    {
+      "name": "s13-end",
+      "targetTime": 171.19057125240914
+    }
+  ],
+  "seed": 2721736897
+}

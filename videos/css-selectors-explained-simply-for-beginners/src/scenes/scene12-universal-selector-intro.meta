@@ -2,8 +2,52 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "type-selectors",
+      "targetTime": 1.154905108339014
+    },
+    {
+      "name": "class-selectors",
+      "targetTime": 2.1208544994531544
+    },
+    {
+      "name": "id-selectors",
+      "targetTime": 3.6086815857598005
+    },
+    {
+      "name": "selector-lists",
+      "targetTime": 5.150496019844981
+    },
+    {
+      "name": "select-every",
+      "targetTime": 7.736065844315174
+    },
+    {
+      "name": "at-once",
+      "targetTime": 9.916175785338105
+    },
+    {
+      "name": "written-with-star",
+      "targetTime": 12.986366291608956
+    },
+    {
+      "name": "just-a-star",
+      "targetTime": 13.924489846171456
+    },
+    {
+      "name": "so-when-I-write",
+      "targetTime": 16.116770431150634
+    },
+    {
+      "name": "every-element-type",
+      "targetTime": 19.521402812199263
+    },
+    {
+      "name": "make-blue",
+      "targetTime": 21.065702264796492
+    },
+    {
       "name": "s12-end",
-      "targetTime": 74.62639475844269
+      "targetTime": 22.030348477212392
     }
   ],
   "seed": 768540133

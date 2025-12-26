@@ -158,7 +158,7 @@ h3 {
       ref={apples}
       src={applesImg}
       radius={32}
-      stroke={colors.fuchsia[500]}
+      stroke={colors.rose[500]}
       lineWidth={16}
       y={spaceY[2]}
       scale={0.25}
