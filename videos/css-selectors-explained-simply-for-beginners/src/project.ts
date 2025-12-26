@@ -13,8 +13,9 @@ import scene9 from "./scenes/scene9-selector-lists-intro?scene";
 import scene10 from "./scenes/scene10-selector-lists-space-vs-comma?scene"
 import scene10b from "./scenes/scene10-selector-lists-space-vs-comma-b?scene"
 import scene11 from "./scenes/scene11-selector-lists-invalidity?scene"
+import scene12 from "./scenes/scene12-universal-selector-intro?scene"
 
 export default makeProject({
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene10b, scene11],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene10b, scene11, scene12],
   audio: audio1,
 });

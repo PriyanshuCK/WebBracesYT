@@ -2,8 +2,56 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "even-one-invalid",
+      "targetTime": 2.6314248249382817
+    },
+    {
+      "name": "entire-ignored",
+      "targetTime": 4.891834042960826
+    },
+    {
+      "name": "none-of-headings",
+      "targetTime": 11.333231096379109
+    },
+    {
+      "name": "even-though",
+      "targetTime": 12.833231096379109
+    },
+    {
+      "name": "this-is-diff",
+      "targetTime": 16.299016553700277
+    },
+    {
+      "name": "individual",
+      "targetTime": 17.631330736628744
+    },
+    {
+      "name": "invalid-selector",
+      "targetTime": 19.633306229924948
+    },
+    {
+      "name": "browser-ignores",
+      "targetTime": 21.63528172322115
+    },
+    {
+      "name": "keeps-rest",
+      "targetTime": 23.22963728846743
+    },
+    {
+      "name": "with-selector-lists",
+      "targetTime": 24.47963728846743
+    },
+    {
+      "name": "one-invalid-selector",
+      "targetTime": 25.66637292566378
+    },
+    {
+      "name": "bad-apple",
+      "targetTime": 28.454472565913413
+    },
+    {
       "name": "s11-end",
-      "targetTime": 118.37182598173762
+      "targetTime": 45.859064390979725
     }
   ],
   "seed": 3749492169
