@@ -1,0 +1,34 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "remember",
+      "targetTime": 1.293835760623057
+    },
+    {
+      "name": "if-a-rule",
+      "targetTime": 4.4910966834268145
+    },
+    {
+      "name": "class",
+      "targetTime": 7.239101977889785
+    },
+    {
+      "name": "id",
+      "targetTime": 8.261019858201314
+    },
+    {
+      "name": "others-win",
+      "targetTime": 10.122336412517996
+    },
+    {
+      "name": "we-want",
+      "targetTime": 11.971830450299393
+    },
+    {
+      "name": "s14b-end",
+      "targetTime": 33.10855915693682
+    }
+  ],
+  "seed": 629614778
+}

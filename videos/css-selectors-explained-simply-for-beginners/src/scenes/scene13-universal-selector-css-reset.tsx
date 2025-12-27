@@ -13,7 +13,7 @@ import ua3hImg from "../images/s13/ua3h.png";
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
-  view.add(<Grid />);
+  // view.add(<Grid />);
 
   yield* slideTransition(Direction.Right);
 

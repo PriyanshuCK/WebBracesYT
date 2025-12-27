@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "this-rule",
+      "targetTime": 3.0487920947006732
+    },
+    {
+      "name": "space-special",
+      "targetTime": 4.814077070661054
+    },
+    {
+      "name": "selects-paras",
+      "targetTime": 8.267825104468589
+    },
+    {
+      "name": "that-space",
+      "targetTime": 10.521646348458683
+    },
+    {
+      "name": "descendant-combinator",
+      "targetTime": 11.271646348458683
+    },
+    {
+      "name": "it-selects",
+      "targetTime": 13.551360248959751
+    },
+    {
+      "name": "dont-worry",
+      "targetTime": 17.281000939278254
+    },
+    {
+      "name": "s15-end",
+      "targetTime": 40.82619463119852
+    }
+  ],
+  "seed": 4096137485
+}

@@ -2,8 +2,16 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "selects-all",
+      "targetTime": 1.35
+    },
+    {
+      "name": "low-specificity",
+      "targetTime": 2.6
+    },
+    {
       "name": "s14-end",
-      "targetTime": 44.405367341008
+      "targetTime": 4.558987595535884
     }
   ],
   "seed": 1020660219
