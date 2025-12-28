@@ -2,8 +2,52 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "put-structure",
+      "targetTime": 3.5030000067812592
+    },
+    {
+      "name": "walls",
+      "targetTime": 4.87495538875725
+    },
+    {
+      "name": "windows",
+      "targetTime": 5.62495538875725
+    },
+    {
+      "name": "doors",
+      "targetTime": 6.37495538875725
+    },
+    {
+      "name": "your-html",
+      "targetTime": 7.12495538875725
+    },
+    {
+      "name": "walls-colors",
+      "targetTime": 9.239376208273699
+    },
+    {
+      "name": "windows-colors",
+      "targetTime": 10.230992395063069
+    },
+    {
+      "name": "all-colors",
+      "targetTime": 13.297665244867037
+    },
+    {
+      "name": "css-comes",
+      "targetTime": 14.601961202795595
+    },
+    {
+      "name": "style-work",
+      "targetTime": 17.09357738958496
+    },
+    {
+      "name": "make-beautiful",
+      "targetTime": 20.273951974348634
+    },
+    {
       "name": "s1-end",
-      "targetTime": 56.80733101859735
+      "targetTime": 65.83128299294599
     }
   ],
   "seed": 2895194543
