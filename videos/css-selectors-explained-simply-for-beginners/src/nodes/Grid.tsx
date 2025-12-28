@@ -1,4 +1,4 @@
-import { Line, Node, NodeProps } from "@motion-canvas/2d";
+import { Line, Node, NodeProps, Txt, Layout } from "@motion-canvas/2d";
 import colors from "../lib/colors";
 import { range } from "@motion-canvas/core";
 
@@ -50,10 +50,80 @@ export class Grid extends Node {
       );
     });
 
+    const xLabels = range(columns + 1).map((i) => {
+      const x = i * cellWidth - halfWidth;
+      let spaceValue = "";
+
+      if (i === 10) {
+        spaceValue = "0";
+      } else if (i >= 1 && i <= 9) {
+        spaceValue = `${i - 10}`;
+      } else if (i >= 11 && i <= 19) {
+        spaceValue = `${i - 10}`;
+      }
+
+      if (spaceValue === "") return null;
+
+      return (
+        <Layout
+          key={`x-label-${i}`}
+          position={[x, -halfHeight + cellHeight / 2]}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Txt
+            text={spaceValue}
+            fill={colors.slate[500]}
+            fontSize={12}
+            fontFamily={"'Cascadia Code', Consolas, 'Courier New', Monospace"}
+            opacity={0.7}
+          />
+        </Layout>
+      );
+    }).filter(Boolean);
+
+    const yLabels = range(rows + 1).map((i) => {
+      const y = i * cellHeight - halfHeight;
+      let spaceValue = "";
+
+      if (i === 6) {
+        spaceValue = "0";
+      } else if (i >= 1 && i <= 5) {
+        spaceValue = `${6 - i}`;
+      } else if (i >= 7 && i <= 11) {
+        spaceValue = `-${i - 6}`;
+      }
+
+      if (spaceValue === "") return null;
+
+      return (
+        <Layout
+          key={`y-label-${i}`}
+          position={[-halfWidth + cellWidth / 2, y]}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Txt
+            text={spaceValue}
+            fill={colors.slate[500]}
+            fontSize={12}
+            fontFamily={"'Cascadia Code', Consolas, 'Courier New', Monospace"}
+            opacity={0.7}
+          />
+        </Layout>
+      );
+    }).filter(Boolean);
+
+
+
+
+
     this.add(
       <>
         {horizontalLines}
         {verticalLines}
+        {xLabels}
+        {yLabels}
       </>
     );
   }
