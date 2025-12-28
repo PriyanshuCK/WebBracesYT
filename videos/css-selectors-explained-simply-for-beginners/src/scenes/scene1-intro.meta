@@ -46,8 +46,64 @@
       "targetTime": 20.273951974348634
     },
     {
+      "name": "instructions",
+      "targetTime": 22.488154845421192
+    },
+    {
+      "name": "css-write",
+      "targetTime": 27.016427193182952
+    },
+    {
+      "name": "css-rule",
+      "targetTime": 29.26014928642616
+    },
+    {
+      "name": "two-parts",
+      "targetTime": 30.614423487186265
+    },
+    {
+      "name": "selector",
+      "targetTime": 31.964423487186266
+    },
+    {
+      "name": "declaration",
+      "targetTime": 34.25462821125717
+    },
+    {
+      "name": "select-ps",
+      "targetTime": 39.09924053047154
+    },
+    {
+      "name": "text-green",
+      "targetTime": 40.732410516197845
+    },
+    {
+      "name": "p-selector",
+      "targetTime": 42.3950997240948
+    },
+    {
+      "name": "part-inside",
+      "targetTime": 45.661439695547415
+    },
+    {
+      "name": "is-declaration",
+      "targetTime": 47.015713896307524
+    },
+    {
+      "name": "you-can-style",
+      "targetTime": 50.18281069934794
+    },
+    {
+      "name": "multiple",
+      "targetTime": 51.815980685074244
+    },
+    {
+      "name": "specific-parts",
+      "targetTime": 52.93784173169585
+    },
+    {
       "name": "s1-end",
-      "targetTime": 65.83128299294599
+      "targetTime": 57.1448464259952
     }
   ],
   "seed": 2895194543
