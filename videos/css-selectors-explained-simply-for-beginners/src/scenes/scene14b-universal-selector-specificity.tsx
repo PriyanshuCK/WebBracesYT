@@ -9,7 +9,7 @@ import eqh1 from "../images/s14/eqh1.png";
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
   view.fill(colors.zinc[950]);
-  view.add(<Grid />);
+  // view.add(<Grid />);
   const specificityOrder = createRef<ExtendedTxt>();
   const order = createRef<ExtendedTxt>();
   const cursor = createRef<Cursor>();

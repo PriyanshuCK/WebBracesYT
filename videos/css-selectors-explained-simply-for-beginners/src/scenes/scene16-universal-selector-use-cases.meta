@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "first",
+      "targetTime": 4.2224587911779095
+    },
+    {
+      "name": "this-rule",
+      "targetTime": 6.286345097152044
+    },
+    {
+      "name": "second",
+      "targetTime": 14.738437235621106
+    },
+    {
+      "name": "this-rule-box",
+      "targetTime": 17.724066990455714
+    },
+    {
+      "name": "feb1st",
+      "targetTime": 24.59043427688703
+    },
+    {
+      "name": "dont-worry",
+      "targetTime": 29.706326077302652
+    },
+    {
+      "name": "box-model",
+      "targetTime": 33.977870878581285
+    },
+    {
+      "name": "this-video",
+      "targetTime": 49.41127113186589
+    },
+    {
+      "name": "s16-end",
+      "targetTime": 56.92040658179262
+    }
+  ],
+  "seed": 2024083172
+}
