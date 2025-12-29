@@ -11,47 +11,47 @@
     },
     {
       "name": "none-of-headings",
-      "targetTime": 11.333231096379109
+      "targetTime": 7.299376138839325
     },
     {
       "name": "even-though",
-      "targetTime": 12.833231096379109
+      "targetTime": 8.799376138839325
     },
     {
       "name": "this-is-diff",
-      "targetTime": 16.299016553700277
+      "targetTime": 12.265161596160493
     },
     {
       "name": "individual",
-      "targetTime": 17.631330736628744
+      "targetTime": 13.59747577908896
     },
     {
       "name": "invalid-selector",
-      "targetTime": 19.633306229924948
+      "targetTime": 15.599451272385163
     },
     {
       "name": "browser-ignores",
-      "targetTime": 21.63528172322115
+      "targetTime": 17.601426765681367
     },
     {
       "name": "keeps-rest",
-      "targetTime": 23.22963728846743
+      "targetTime": 19.195782330927646
     },
     {
       "name": "with-selector-lists",
-      "targetTime": 24.47963728846743
+      "targetTime": 20.445782330927646
     },
     {
       "name": "one-invalid-selector",
-      "targetTime": 25.66637292566378
+      "targetTime": 21.632517968123995
     },
     {
       "name": "bad-apple",
-      "targetTime": 28.454472565913413
+      "targetTime": 24.42061760837363
     },
     {
       "name": "s11-end",
-      "targetTime": 46.407935760061584
+      "targetTime": 27.837666541117176
     }
   ],
   "seed": 3749492169
