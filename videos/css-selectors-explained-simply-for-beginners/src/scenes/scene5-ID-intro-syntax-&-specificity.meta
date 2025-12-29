@@ -51,35 +51,35 @@
     },
     {
       "name": "ids-use-hash",
-      "targetTime": 24.00569196653531
+      "targetTime": 23.754621454261716
     },
     {
       "name": "IDs-have-more-power",
-      "targetTime": 27.404311218348425
+      "targetTime": 26.728352146842596
     },
     {
       "name": "high-specificity",
-      "targetTime": 29.834969783457808
+      "targetTime": 29.15901071195198
     },
     {
       "name": "this-means-style-same",
-      "targetTime": 31.084969783457808
+      "targetTime": 30.40901071195198
     },
     {
       "name": "both-a-class",
-      "targetTime": 33.137861515048236
+      "targetTime": 32.46190244354241
     },
     {
       "name": "and-an-id",
-      "targetTime": 34.05391634358427
+      "targetTime": 33.37795727207844
     },
     {
       "name": "ids-style-win",
-      "targetTime": 34.80391634358427
+      "targetTime": 34.12795727207844
     },
     {
       "name": "s5-end",
-      "targetTime": 39.05391634358427
+      "targetTime": 36.12795727207844
     }
   ],
   "seed": 1904701812

@@ -143,27 +143,27 @@
     },
     {
       "name": "honestly-easier",
-      "targetTime": 85.58819725709171
+      "targetTime": 86.3443057613618
     },
     {
       "name": "stick-to-letters",
-      "targetTime": 87.1429187698484
+      "targetTime": 87.89902727411848
     },
     {
       "name": "stick-to-numbers",
-      "targetTime": 88.07351704111231
+      "targetTime": 88.8296255453824
     },
     {
       "name": "stick-to-hyphens",
-      "targetTime": 89.87745620624952
+      "targetTime": 90.63356471051961
     },
     {
       "name": "stick-to-underscores",
-      "targetTime": 90.8889193750943
+      "targetTime": 91.45382802770989
     },
     {
       "name": "s4-end",
-      "targetTime": 92.2372099589564
+      "targetTime": 92.61864400644897
     }
   ],
   "seed": 3177809425

@@ -11,59 +11,59 @@
     },
     {
       "name": "so-only-one",
-      "targetTime": 6.5
+      "targetTime": 7.916295197440774
     },
     {
       "name": "less-flexible",
-      "targetTime": 8.68161556521659
+      "targetTime": 10.8811649248784
     },
     {
       "name": "imagine-style-button",
-      "targetTime": 10.18161556521659
+      "targetTime": 12.71377970609555
     },
     {
       "name": "using-an-id",
-      "targetTime": 11.40394502361204
+      "targetTime": 13.936109164491
     },
     {
       "name": "another-button",
-      "targetTime": 12.605418715190462
+      "targetTime": 15.373632055642885
     },
     {
       "name": "cant-reuse-id",
-      "targetTime": 15.14815818212296
+      "targetTime": 17.916371522575385
     },
     {
       "name": "create-new-id",
-      "targetTime": 16.869882868120875
+      "targetTime": 19.638096208573298
     },
     {
       "name": "same-styles",
-      "targetTime": 18.673752836714304
+      "targetTime": 21.441966177166726
     },
     {
       "name": "inefficient",
-      "targetTime": 19.892648325419188
+      "targetTime": 22.66086166587161
     },
     {
       "name": "thinking",
-      "targetTime": 21.315257844910384
+      "targetTime": 24.083471185362807
     },
     {
       "name": "classes-can-do-same",
-      "targetTime": 22.84450142817775
+      "targetTime": 25.612714768630173
     },
     {
       "name": "more-flexible",
-      "targetTime": 23.59450142817775
+      "targetTime": 26.362714768630173
     },
     {
       "name": "why-do-ids-exist",
-      "targetTime": 24.55936991846929
+      "targetTime": 27.327583258921713
     },
     {
       "name": "s6-end",
-      "targetTime": 26.754188471887655
+      "targetTime": 29.522401812340078
     }
   ],
   "seed": 309190047
