@@ -455,40 +455,5 @@ intention.
   yield* cursor().position([spaceX[0.25], spaceNY[4] + 8], 1)
   yield* cursor().x(spaceX[6], 1)
 
-  yield* waitUntil("like-friend")
-  const friendEmoji = createRef<ExtendedTxt>();
-  const teacherEmoji = createRef<ExtendedTxt>();
-  view.add(
-    <>
-      <ExtendedTxt
-        ref={friendEmoji}
-        text={"🧑‍🤝‍🧑"}
-        position={[spaceNX[5], spaceNY[4.25]]}
-        fontSize={spaceY[0.5]}
-        opacity={0}
-      />
-      <ExtendedTxt
-        ref={teacherEmoji}
-        text={"👩‍🏫"}
-        position={[spaceNX[5], spaceNY[2.75]]}
-        fontSize={spaceY[0.5]}
-        opacity={0}
-      />
-    </>
-  )
-  yield* all(
-    cursor().position([spaceNX[7.5], spaceNY[4.5]], 0.75),
-    friendEmoji().opacity(1, 0.75),
-  )
-
-  yield* waitUntil("like-teacher")
-  yield* all(
-    cursor().position([spaceNX[7.5], spaceNY[3]], 0.75),
-    teacherEmoji().opacity(1, 0.75),
-  )
-
-  yield* waitUntil("follow-teacher")
-  yield* teacherEmoji().fontSize(spaceY[0.67], 0.75);
-
   yield* waitUntil("s5-end");
 });
