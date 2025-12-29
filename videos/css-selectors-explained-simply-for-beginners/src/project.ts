@@ -1,6 +1,6 @@
 import { makeProject } from "@motion-canvas/core";
 
-import audio1 from "./audio/Final Aud1.wav";
+import audio from "./audio/audio.wav";
 import scene1 from "./scenes/scene1-intro?scene";
 import scene2 from "./scenes/scene2-type-class-intro?scene";
 import scene3 from "./scenes/scene3-multiple-classes?scene";
@@ -22,5 +22,5 @@ import scene16 from "./scenes/scene16-universal-selector-use-cases?scene"
 
 export default makeProject({
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene10b, scene11, scene12, scene13, scene14, scene14b, scene15, scene16],
-  audio: audio1,
+  audio: audio,
 });
