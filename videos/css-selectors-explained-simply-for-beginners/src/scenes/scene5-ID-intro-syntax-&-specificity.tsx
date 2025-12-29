@@ -1,12 +1,14 @@
-import { Circle, Code, Layout, Line, lines, makeScene2D, word } from "@motion-canvas/2d";
+import { Circle, Code, Img, Layout, Line, lines, makeScene2D, word } from "@motion-canvas/2d";
 import colors from "../lib/colors";
-import { Cursor, ExtendedRect, Face, ViewportManager } from "../nodes";
+import { Cursor, ExtendedRect, Face, Grid, ViewportManager } from "../nodes";
 import { all, any, createRef, DEFAULT, delay, Direction, Reference, slideTransition, waitUntil } from "@motion-canvas/core";
 import { ExtendedTxt } from "../nodes/ExtendedTxt";
 import spaceX, { spaceNX, spaceNY, spaceY } from "../lib/space";
 import beq1 from "../images/s5/beq1.png"
 import beq2 from "../images/s5/beq2.png"
 import beq3 from "../images/s5/beq3.png"
+import pass1 from "../images/passportBlack.png"
+import pass2 from "../images/passportBlack1.png"
 
 export default makeScene2D(function*(view) {
   view.fontFamily('Geist');
@@ -194,153 +196,19 @@ export default makeScene2D(function*(view) {
   yield* cursor().position([spaceNX[4.5] + 8, spaceNY[2.5]], 0.75)
 
   yield* waitUntil("think-of-it");
-  const passport1 = createRef<ExtendedRect>();
-  const header1 = createRef<ExtendedRect>();
-  const photoBox1 = createRef<ExtendedRect>();
-  const photoHead1 = createRef<Circle>();
-  const photoBody1 = createRef<Line>();
-  const passport1Number = createRef<ExtendedRect>();
-  const number1Txt = createRef<ExtendedTxt>();
 
+  const passport1 = createRef<Img>();
   view.add(
-    <ExtendedRect
-      ref={passport1}
-      width={spaceX[5]}
-      height={spaceY[3]}
-      radius={8}
-      lineWidth={2}
-      y={spaceY[1.5]}
-      opacity={0}
-    >
-      <ExtendedRect
-        ref={header1}
-        width={360}
-        height={45}
-        radius={8}
-        y={-97.5}
-      >
-        <ExtendedTxt
-          text="PASSPORT"
-          fill="#d4af37"
-          fontSize={20}
-          fontWeight={700}
-          fontFamily="Arial"
-        />
-      </ExtendedRect>
-
-      <ExtendedRect
-        ref={photoBox1}
-        width={90}
-        height={110}
-        radius={4}
-        fill="#e8e8e8"
-        lineWidth={2}
-        x={-115}
-        y={-15}
-      >
-        <Circle
-          ref={photoHead1}
-          size={36}
-          fill="#ccc"
-          y={-15}
-        />
-        <Line
-          ref={photoBody1}
-          points={[
-            [-20, 20],
-            [0, 10],
-            [20, 20],
-            [20, 40],
-            [-20, 40],
-            [-20, 20],
-          ]}
-          closed
-          fill="#ccc"
-        />
-      </ExtendedRect>
-
-      <ExtendedTxt
-        text="NAME:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-95}
-        y={-55}
+    <>
+      <Img
+        ref={passport1}
+        src={pass1}
+        radius={16}
+        scale={0.6}
+        y={spaceY[1.75]}
+        opacity={0}
       />
-      <Line
-        points={[
-          [35, -50],
-          [165, -50],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedTxt
-        text="DATE OF BIRTH:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-65}
-        y={-25}
-      />
-      <Line
-        points={[
-          [35, -20],
-          [165, -20],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedTxt
-        text="NATIONALITY:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-75}
-        y={5}
-      />
-      <Line
-        points={[
-          [35, 10],
-          [165, 10],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedRect
-        ref={passport1Number}
-        width={330}
-        height={40}
-        radius={4}
-        lineWidth={2}
-        y={70}
-      >
-        <ExtendedTxt
-          text="PASSPORT NO:"
-          fill="#d4af37"
-          fontSize={12}
-          fontWeight={700}
-          fontFamily="monospace"
-          x={-90}
-          y={-8}
-        />
-        <ExtendedTxt
-          ref={number1Txt}
-          text="P-123456789"
-          fill="#fff"
-          fontSize={20}
-          fontWeight={700}
-          fontFamily="monospace"
-          y={8}
-        />
-      </ExtendedRect>
-    </ExtendedRect>
+    </>
   );
 
   yield* all(
@@ -378,162 +246,28 @@ export default makeScene2D(function*(view) {
   cursor().position([spaceX[1], spaceY[3.5]]);
   yield* all(
     cursor().opacity(1, 0.75),
-    cursor().position([spaceX[0], spaceY[2.5]], 0.75),
+    cursor().position([spaceX[0.5], spaceY[3.25]], 0.75),
     face1().opacity(1, 0.75),
   )
 
-  const passport2 = createRef<ExtendedRect>();
-  const header2 = createRef<ExtendedRect>();
-  const photoBox2 = createRef<ExtendedRect>();
-  const photoHead2 = createRef<Circle>();
-  const photoBody2 = createRef<Line>();
-  const passport2Number = createRef<ExtendedRect>();
-  const number2Txt = createRef<ExtendedTxt>();
-
+  const passport2 = createRef<Img>();
   view.add(
-    <ExtendedRect
-      ref={passport2}
-      width={spaceX[5]}
-      height={spaceY[3]}
-      radius={8}
-      lineWidth={2}
-      y={spaceY[1.5]}
-      opacity={0}
-    >
-      <ExtendedRect
-        ref={header2}
-        width={360}
-        height={45}
-        radius={8}
-        y={-97.5}
-      >
-        <ExtendedTxt
-          text="PASSPORT"
-          fill="#d4af37"
-          fontSize={20}
-          fontWeight={700}
-          fontFamily="Arial"
-        />
-      </ExtendedRect>
-
-      <ExtendedRect
-        ref={photoBox2}
-        width={90}
-        height={110}
-        radius={4}
-        fill="#e8e8e8"
-        lineWidth={2}
-        x={-115}
-        y={-15}
-      >
-        <Circle
-          ref={photoHead2}
-          size={36}
-          fill="#ccc"
-          y={-15}
-        />
-        <Line
-          ref={photoBody2}
-          points={[
-            [-20, 20],
-            [0, 10],
-            [20, 20],
-            [20, 40],
-            [-20, 40],
-            [-20, 20],
-          ]}
-          closed
-          fill="#ccc"
-        />
-      </ExtendedRect>
-
-      <ExtendedTxt
-        text="NAME:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-95}
-        y={-55}
+    <>
+      <Img
+        ref={passport2}
+        src={pass2}
+        radius={16}
+        scale={0.6}
+        y={spaceY[1.25]}
+        opacity={0}
       />
-      <Line
-        points={[
-          [35, -50],
-          [165, -50],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedTxt
-        text="DATE OF BIRTH:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-65}
-        y={-25}
-      />
-      <Line
-        points={[
-          [35, -20],
-          [165, -20],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedTxt
-        text="NATIONALITY:"
-        fill="#fff"
-        fontSize={12}
-        fontWeight={700}
-        fontFamily="monospace"
-        x={-75}
-        y={5}
-      />
-      <Line
-        points={[
-          [35, 10],
-          [165, 10],
-        ]}
-        stroke="#d4af37"
-        lineWidth={1}
-      />
-
-      <ExtendedRect
-        ref={passport2Number}
-        width={330}
-        height={40}
-        radius={4}
-        lineWidth={2}
-        y={70}
-      >
-        <ExtendedTxt
-          text="PASSPORT NO:"
-          fill="#d4af37"
-          fontSize={12}
-          fontWeight={700}
-          fontFamily="monospace"
-          x={-90}
-          y={-8}
-        />
-        <ExtendedTxt
-          ref={number2Txt}
-          text="P-123456789"
-          fill="#fff"
-          fontSize={20}
-          fontWeight={700}
-          fontFamily="monospace"
-          y={8}
-        />
-      </ExtendedRect>
-    </ExtendedRect>
+    </>
   );
 
   yield* waitUntil("no-two-are-same")
   yield* all(
     passport1().x(spaceNX[3], 0.75),
+    passport1().y(spaceY[1.25], 0.75),
     face1().x(spaceNX[3], 0.75),
     passport2().opacity(1, 0.75),
     passport2().x(spaceX[3], 0.75),
